@@ -1,0 +1,75 @@
+{
+  "projectType": "saas",
+  "projectName": "Scott AI",
+  "projectDescription": "Scott AI is an agentic workspace that helps engineering teams plan, align on, and hand off software specs to coding agents.",
+  "theme": "luma",
+  "primaryColor": "#345cec",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "access-and-login"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/workspace",
+              "concepts/specs",
+              "concepts/agents",
+              "concepts/team-collaboration"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/writing-specs",
+              "guides/running-agents",
+              "guides/reviewing-output",
+              "guides/team-workflows"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "pages": [
+              "account/plans",
+              "account/authentication",
+              "account/data-privacy"
+            ]
+          },
+          {
+            "group": "Legal",
+            "pages": [
+              "legal/terms",
+              "legal/privacy"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Agentic workspace for engineering alignment",
+    "AI-generated software specs and design artifacts",
+    "Team collaboration on plans before coding agents execute",
+    "Integration with Anthropic Claude and OpenAI for AI assistance",
+    "SSO via Google and GitHub",
+    "Subscription billing via Stripe",
+    "Desktop and web application"
+  ],
+  "publicApiSurface": [
+    "Web application at app.tryscott.ai",
+    "SSO login (Google, GitHub)",
+    "Spec creation and editing",
+    "Agent execution from specs",
+    "Team access and sharing"
+  ]
+}
