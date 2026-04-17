@@ -1,13 +1,24 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Scott AI Docs",
+  "name": "Scott AI",
   "colors": {
-    "primary": "#6366F1",
-    "light": "#818CF8",
-    "dark": "#4F46E5"
+    "primary": "#2580F5",
+    "light": "#3B82F6",
+    "dark": "#1D6FE0"
+  },
+  "font": {
+    "headings": {
+      "family": "Geist",
+      "weight": 500
+    },
+    "body": {
+      "family": "Geist",
+      "weight": 400
+    }
   },
   "favicon": "/favicon.svg",
+  "css": "/custom.css",
   "navigation": {
     "tabs": [
       {
@@ -89,7 +100,8 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/tryscottai"
+      "x": "https://x.com/scott_ai_"
     }
-  }
+  },
+  "rounded": "default"
 }
