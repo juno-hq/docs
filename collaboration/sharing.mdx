@@ -43,12 +43,6 @@ Public planspaces are accessible at `tryscott.ai/share/{planspace-id}`.
 
 You can also share planspace context with teammates from the terminal:
 
-```bash
-# Push your current context to a planspace
-scott push
+`scott push` outputs links to both the web app and desktop app. Share either link with a teammate. They can then run `scott pull` in their own environment to link the planspace to their local branch. See [CLI](/developer-tools/cli) for details.
 
-# Share the planspace link with a teammate
-# They receive both a web link and a desktop app link
-```
-
-The teammate can then run `scott pull` in their own environment to pull the planspace state into their local branch. See [CLI](/developer-tools/cli) for details.
+Invited members receive a [notification](/notifications) when added to a planspace.
