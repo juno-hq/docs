@@ -1,0 +1,56 @@
+---
+title: "Sharing"
+description: "Share planspaces with your team or publish read-only public links."
+---
+
+Planspaces can be shared with specific teammates via invite or made publicly accessible via a shareable link.
+
+## Invite members
+
+1. Open the planspace and click **Share** in the top bar
+2. Enter a teammate's email address
+3. Select their role: **Editor**, **Commenter**, or **Viewer**
+4. Send the invite
+
+Invited members receive a notification and can access the planspace immediately after accepting.
+
+## Manage members
+
+From the Share modal, you can:
+
+- **Change roles** — promote or demote existing members
+- **Remove members** — revoke access for a specific person
+- **Revoke pending invites** — cancel invites that haven't been accepted
+
+Only planspace **Owners** can manage members and roles.
+
+## Roles
+
+| Role | Send messages | Edit document | Comment | View | Manage members |
+|------|:---:|:---:|:---:|:---:|:---:|
+| **Owner** | Yes | Yes | Yes | Yes | Yes |
+| **Editor** | Yes | Yes | Yes | Yes | No |
+| **Commenter** | No | No | Yes | Yes | No |
+| **Viewer** | No | No | No | Yes | No |
+
+## Public links
+
+Toggle **Make public** in the Share modal to generate a read-only link. Anyone with the link can view the document and its version history without signing in.
+
+Public planspaces are accessible at `tryscott.ai/share/{planspace-id}`.
+
+<Info>Public links are read-only. Viewers cannot comment, edit, or see private comments. To collaborate, invite members directly.</Info>
+
+## Sharing context via the CLI
+
+You can also share planspace context with teammates from the terminal:
+
+```bash
+# Push your current context to a planspace
+scott push
+
+# Share the planspace link with a teammate
+# They receive both a web link and a desktop app link
+```
+
+The teammate can then run `scott pull` in their own environment to pull the planspace state into their local branch. See [CLI](/developer-tools/cli) for details.

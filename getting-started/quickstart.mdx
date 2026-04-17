@@ -1,0 +1,100 @@
+---
+title: "Quickstart"
+description: "Create your first planspace and capture context in under 2 minutes."
+---
+
+## Choose your path
+
+Scott AI works in the browser and as a desktop app. The desktop app adds local sandbox execution and local folder access.
+
+<Tabs>
+  <Tab title="Desktop app (recommended)">
+    ### 1. Download Scott AI
+
+    Download the desktop app for macOS from the [download page](https://tryscott.ai/oneshot-download).
+
+    ### 2. Sign in
+
+    Open Scott AI and sign in with Google or GitHub.
+
+    ### 3. Create a planspace
+
+    Click **New planspace** from the home screen. Give it a name that describes the work you're planning — this becomes the title of your living spec.
+
+    ### 4. Attach context
+
+    Select the sources that are relevant to your work:
+    - **GitHub repo** — select a repository and branch
+    - **Local folder** — point to a directory on your machine
+    - **Files** — upload specs, designs, or reference docs
+
+    ### 5. Start building
+
+    Describe what you want to build. Scott's agent will generate a versioned spec document based on your intent and the attached context. Each message you send creates a new version — you can branch, compare, and navigate the full history at any time.
+  </Tab>
+  <Tab title="Browser">
+    ### 1. Sign in
+
+    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub.
+
+    ### 2. Create a planspace
+
+    Click **New planspace**. Give it a name and select **Cloud sandbox** as the execution environment.
+
+    ### 3. Attach context
+
+    Select relevant sources:
+    - **GitHub repo** — select a repository and branch
+    - **Files** — upload specs, designs, or reference docs
+    - **Google Drive** — connect documents from your Drive
+
+    ### 4. Start building
+
+    Describe what you want to build. The agent generates a versioned spec from your intent and context. Every exchange creates a new version you can branch and navigate.
+  </Tab>
+  <Tab title="CLI">
+    ### 1. Install the CLI
+
+    ```bash
+    npm install -g @tryscott/cli
+    ```
+
+    ### 2. Initialize in your repo
+
+    ```bash
+    cd your-project
+    scott init
+    ```
+
+    This captures the context of your current working branch and any recent Claude Code or Codex conversations.
+
+    ### 3. Select and push context
+
+    ```bash
+    scott push
+    ```
+
+    Scott lets you select which conversation context and branch state to capture, then pushes it to a new planspace. You'll get links to both the desktop and web app.
+
+    ### 4. Pull updates back
+
+    ```bash
+    scott pull
+    ```
+
+    Pull the latest planspace state back to your local environment, auto-linking the planspace head to your current branch.
+
+    <Info>See the full [CLI reference](/developer-tools/cli) for all available commands.</Info>
+  </Tab>
+</Tabs>
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
+    Understand planspaces, context flows, and documents.
+  </Card>
+  <Card title="Invite your team" icon="users" href="/collaboration/sharing">
+    Share your planspace and start collaborating.
+  </Card>
+</Columns>

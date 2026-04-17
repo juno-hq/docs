@@ -1,0 +1,51 @@
+---
+title: "Connected sources"
+description: "Attach GitHub repos, files, and folders as context for the agent."
+---
+
+Connected sources give the agent access to your existing code, docs, and files so it can generate specs grounded in your actual codebase — not generic suggestions.
+
+## Overview
+
+When you create a planspace, you attach sources that are relevant to the work. The agent uses these sources to understand your system's architecture, existing patterns, and constraints. Sources can be refreshed mid-conversation as your code evolves.
+
+## Source types
+
+### GitHub repositories
+
+Connect a GitHub repo and select specific branches. The agent reads the repository contents to understand your codebase structure, existing code patterns, and recent changes.
+
+1. Click **Add source** in the planspace
+2. Select **GitHub**
+3. Choose the repository and branch
+4. The agent indexes the repo contents
+
+<Info>You'll need to authorize Scott's GitHub integration the first time you connect a repo. This is a one-time setup per GitHub account.</Info>
+
+### Uploaded files
+
+Upload files directly to a planspace — PDFs, design specs, architecture docs, code snippets, or any reference material.
+
+1. Click **Add source** and select **Files**
+2. Drag and drop or browse for files
+3. Files are available to the agent immediately
+
+### Local folders (desktop app only)
+
+Point the agent at a directory on your machine. This is useful when your code isn't on GitHub or when you want the agent to reference local files that aren't committed.
+
+1. Click **Add source** and select **Local folder**
+2. Select the directory
+3. The agent reads the folder contents
+
+### Google Drive (browser only)
+
+Connect documents from your Google Drive as reference material.
+
+1. Click **Add source** and select **Google Drive**
+2. Authorize access and select documents
+3. Documents are pulled into the planspace as context
+
+## Refresh sources
+
+If your code has changed since you attached a source, click **Refresh** on the source to pull in the latest state. This is useful during long planning sessions where the codebase is actively evolving.
