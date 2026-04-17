@@ -1,0 +1,51 @@
+---
+title: "Planspaces"
+description: "Create and manage collaborative containers for your specs, decisions, and version history."
+---
+
+A planspace combines three things that are usually separate:
+- A **conversation** with the agent (and your teammates)
+- A **[versioned document](/planspaces/documents)** that updates as you iterate
+- A **[context flow](/planspaces/context-flows)** — the branching history of all versions
+
+The planspace layout is split into two panels. The **left panel** shows the conversation and version history. The **right panel** shows the current document, comments, and reviews.
+
+## Create a planspace
+
+1. Click **New planspace** from the home screen
+2. Name your planspace — this becomes the document title
+3. Choose your sandbox environment:
+   - **Local sandbox** (desktop app) — the agent runs on your machine
+   - **Cloud sandbox** (browser) — the agent runs in the cloud, auto-pauses when idle
+4. Attach [connected sources](/developer-tools/connected-sources) — GitHub repos, files, or folders
+
+## Navigate a planspace
+
+The **title bar** at the top of the planspace shows your current position in the version history:
+
+| Indicator | Meaning |
+|-----------|---------|
+| Checkmark | You're viewing the **latest** version across all branches |
+| Branch icon | You're at the **tip** of a specific branch |
+| History icon | You're viewing an **older version** |
+
+Click the title dropdown to quickly jump to the latest version, the current branch tip, or open the full context flow.
+
+## Planspace access
+
+Planspaces support role-based access for team members:
+
+| Role | Permissions |
+|------|------------|
+| **Owner** | Full control — edit, comment, review, manage members, delete |
+| **Editor** | Edit the document, send messages, comment, request reviews |
+| **Commenter** | View and leave comments, but cannot edit or send messages |
+| **Viewer** | Read-only access |
+
+You can also make a planspace **public**, which generates a shareable read-only link. See [Sharing](/collaboration/sharing) for details.
+
+## Delete a planspace
+
+Open the planspace settings menu and select **Delete planspace**. This action is permanent and removes all version history, comments, and reviews.
+
+<Warning>Deleting a planspace cannot be undone. Make sure any important decisions or context have been captured elsewhere before deleting.</Warning>

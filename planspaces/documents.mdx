@@ -1,0 +1,46 @@
+---
+title: "Documents"
+description: "Versioned specs that evolve as your conversation progresses."
+---
+
+Every planspace produces a **document** — a spec that the agent maintains and updates with each turn. Every agent response produces a new document snapshot. You can navigate to any previous version, see what changed, and understand why by looking at the conversation that produced it.
+
+The document is always connected to the conversation and reasoning that shaped it.
+
+## Editing
+
+The document editor supports:
+
+- **Rich text** — headings, bold, italic, lists, links
+- **Code blocks** — syntax-highlighted, language-aware
+- **Mermaid diagrams** — rendered inline from Mermaid syntax
+
+Code in documents isn't decoration — it's planning content. Plans that include implementation snippets, API shapes, or prototype code give reviewers and agents concrete material to react to.
+
+You can edit the document directly at any time. Your edits are saved as a **draft** at the current branch tip. When the agent responds next, your manual edits are incorporated into the new version.
+
+## Semantic diffs
+
+When the agent updates the document, Scott generates a **semantic diff** — a structured summary of what changed:
+
+| Change type | Meaning |
+|-------------|---------|
+| **Added** | New sections, concepts, or requirements introduced |
+| **Modified** | Existing content refined or updated |
+| **Removed** | Content deleted from the previous version |
+
+Diffs appear as badges in the conversation and can be expanded for detail.
+
+## Version navigation
+
+Every document version is accessible through the [context flow](/planspaces/context-flows):
+
+- Use the **title dropdown** to jump to the latest version or branch tip
+- Switch to the **Versions tab** in the left panel to see the full DAG
+- Click any node in the context flow to view that version's document
+
+You can reply from any version to create a new branch. When a version is ready for sign-off, [request a review](/collaboration/reviews).
+
+## Inline comments
+
+Select text in the document and leave a [comment](/collaboration/comments) anchored to that selection. Comments are attached to the text content, not a fixed position — they survive document edits.

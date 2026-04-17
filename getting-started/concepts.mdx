@@ -1,0 +1,52 @@
+---
+title: "How Scott AI works"
+description: "The Plan → Align → Delegate → Ship lifecycle and the concepts behind it."
+---
+
+Scott AI gives your team one place to plan intent, align on direction, and connect approved specs to the code that ships.
+
+## Principles
+
+Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method):
+
+- **Review intent, not code** — as agents and CI take over code writing and review, the quality gate moves upstream to the plan
+- **Prototype to decide** — the fastest way to resolve a design debate is to build it, not argue about it
+- **Make context visible** — every engineer should see the full reasoning behind what's being built, including which parts came from an agent
+- **Stay unopinionated about everything else** — how you write code, which agents you use, how you structure your team: your call
+
+## Plan
+
+**Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build — or push a prototype from your coding agent — and the agent generates a structured spec grounded in the context you provide. Plans contain code: code blobs, prototype references, and Mermaid diagrams are first-class planning content, not attachments.
+
+**Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/developer-tools/connected-sources).
+
+## Align
+
+**Context flows** are the version history of your plan — a directed acyclic graph where every branch, fork, and direction the team explored is preserved. [Learn more](/planspaces/context-flows).
+
+**Comments** are anchored to specific text in the document and can be promoted into the chat as context for the agent. **Reviews** create a formal approval record — when a version is approved, it becomes the trusted reference for implementation. [Comments](/collaboration/comments) · [Reviews](/collaboration/reviews).
+
+## Delegate
+
+The **CLI** bridges your local environment and your planspaces:
+
+- `scott init` — captures your current branch state and recent agent conversations
+- `scott push` — pushes selected context to a planspace
+- `scott pull` — links the planspace to your git branch
+
+[Learn more](/developer-tools/cli).
+
+## Ship
+
+**Scott CI** traces pull requests back to the approved planspace automatically. Every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it. [Learn more](/developer-tools/scott-ci).
+
+## Key terms
+
+| Term | Meaning |
+|------|---------|
+| **Planspace** | A collaborative environment with a chat, versioned document, and context flow |
+| **Turn** | A single exchange — a user message plus the agent's response and document update |
+| **Version** | A turn that produced a document snapshot |
+| **Context flow** | The DAG of all versions and branches in a planspace |
+| **Branch** | A divergent path where someone explored a different direction |
+| **Connected source** | A GitHub repo, file, or folder attached as context for the agent |

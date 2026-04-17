@@ -1,0 +1,57 @@
+---
+title: "Context flows"
+description: "Branch, navigate, and explore the full history of how your spec evolved."
+---
+
+Every planspace maintains a **directed acyclic graph (DAG)** of versions — like `git log --graph`, but for intent. Your planspace captures not just what you decided, but what you considered and why you chose one path over another.
+
+## How it works
+
+Every turn in a planspace has a parent. When you reply to the latest message, you extend the current branch. When you reply to an *older* message, you create a new branch. Both branches are preserved.
+
+Switch to the **Versions** tab in the left panel to see the full context flow:
+
+- **Nodes** — each node is a version that produced a document update
+- **Edges** — parent-child relationships between versions
+- **Branches** — divergent paths where someone explored a different direction
+- **Color coding** — the primary branch is highlighted; older branches use distinct colors
+
+## Branch off any version
+
+1. Navigate to any previous version using the Versions tab or the title dropdown
+2. Type a new message in the chat input
+3. Scott creates a new branch from that point — the agent responds with a fresh document version based on the context up to that turn, plus your new direction
+
+Your original branch is untouched. You can switch between branches at any time.
+
+## When to branch
+
+- **Explore alternatives** — try a different architectural approach without losing the original
+- **Hand off a direction** — share a branch with a teammate to develop independently
+- **Revisit a decision** — go back to a point before a decision was made and take a different path
+- **Compare approaches** — view two branches and evaluate tradeoffs
+
+## Using context flows with the CLI
+
+`scott pull` links your planspace's current branch tip to your local git branch. When you push to GitHub, [Scott CI](/developer-tools/scott-ci) traces the link back through the context flow to the [approved spec](/collaboration/reviews).
+
+```bash
+scott pull
+git add . && git commit -m "implement auth flow"
+git push origin feature/auth
+# Scott CI auto-links the PR to the approved spec
+```
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I merge branches?">
+    Not currently. If you want to combine ideas from two branches, navigate to one and ask the agent to incorporate specific elements from the other.
+  </Accordion>
+  <Accordion title="Can I delete a branch?">
+    No. All version history is permanent. The history of what was considered is as valuable as what was decided.
+  </Accordion>
+  <Accordion title="How is this different from git?">
+    Git versions code. Scott versions intent. A git branch contains file changes; a Scott branch contains the conversation, decisions, and spec evolution that led to those changes. They're complementary — Scott CI links the two together.
+  </Accordion>
+</AccordionGroup>

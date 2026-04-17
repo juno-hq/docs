@@ -1,0 +1,39 @@
+---
+title: "Reviews"
+description: "Request reviews on your spec, approve designs, and track decisions."
+---
+
+Reviews bring a pull-request-style approval flow to your specs. Reviews are tied to a specific version of the document — reviewers see exactly which version you want feedback on.
+
+## Request a review
+
+Request a review once the planspace has a prototype and at least one round of [comment](/collaboration/comments)-driven iteration.
+
+1. Navigate to the version you want reviewed
+2. Click **Request review** in the top bar or sidebar
+3. Select one or more reviewers from the planspace members
+4. Add an optional message explaining what you'd like feedback on
+5. Submit the request
+
+Reviewers receive a notification in their [For You](/notifications) inbox with a direct link to the version.
+
+## Submit a review decision
+
+1. Open the planspace from the notification or your **Reviews** tab in [For You](/notifications)
+2. Read the document version and any comments
+3. Click **Approve** or **Request changes**
+4. Add a comment with your feedback
+5. Submit your decision
+
+## Review states
+
+| Status | Meaning |
+|--------|---------|
+| **Open** | Review is pending — waiting for reviewer decisions |
+| **Approved** | All reviewers have approved |
+| **Changes requested** | One or more reviewers requested changes |
+| **Closed** | Author closed the review (superseded or no longer needed) |
+
+## Reviews and Scott CI
+
+When a review is **approved**, that version becomes the trusted reference point. [Scott CI](/developer-tools/scott-ci) links pull requests back to the approved version, confirming that the implementation matches the signed-off intent.

@@ -1,0 +1,78 @@
+---
+title: "Quickstart"
+description: "Get started with Scott AI based on your role."
+---
+
+## Get a quick overview
+
+<CardGroup cols={2}>
+  <Card title="The Scott Method" icon="book-open" href="https://tryscott.ai/method">
+    Our philosophy on building with agents — why intent review matters.
+  </Card>
+  <Card title="How Scott AI works" icon="compass" href="/getting-started/concepts">
+    Planspaces, context flows, and the lifecycle.
+  </Card>
+</CardGroup>
+
+## Set up Scott AI
+
+<AccordionGroup>
+  <Accordion icon="users" title="I'm setting up for my team">
+    1. **Install Scott AI** — run the install script (see [Install](#install) below) or sign in at [app.tryscott.ai](https://app.tryscott.ai/login) for the browser version
+    2. **Create a planspace** — name it after the feature or project you're planning
+    3. **Attach context** — connect your GitHub repo, upload docs, or point to a local folder so the agent can ground its output in your codebase
+    4. **Describe what you want to build** — start with a rough prototype from your coding agent, or describe the intent from scratch
+    5. **Invite your team** — click **Share**, add teammates by email, assign roles
+    6. **Request a review** — when the spec is ready, request reviews from stakeholders
+
+    <Tip>Start with a real project your team is about to begin. The best way to evaluate Scott is with a plan that actually matters.</Tip>
+
+    **Next steps:** [Sharing](/collaboration/sharing) · [Reviews](/collaboration/reviews) · [Making the most of Scott AI](/getting-started/making-the-most)
+  </Accordion>
+
+  <Accordion icon="user" title="I'm joining a team">
+    1. **Accept your invite** — check your email for a planspace invite and sign in
+    2. **Explore the planspace** — read the document on the right, then switch to the **Versions** tab to see how the spec evolved
+    3. **Leave comments** — select text in the document and add your feedback. Use `@` to mention teammates
+    4. **Install Scott AI** — `curl -fsSL https://tryscott.ai/install | sh`
+    5. **Pull context** — run `scott pull` in your repo to link the planspace to your local branch
+
+    **Next steps:** [Context flows](/planspaces/context-flows) · [Comments](/collaboration/comments) · [CLI](/developer-tools/cli)
+  </Accordion>
+
+  <Accordion icon="eye" title="I'm evaluating Scott AI">
+    1. **Read The Scott Method** at [tryscott.ai/method](https://tryscott.ai/method)
+    2. **Create a planspace** or ask your team for a public link to see one in action
+    3. **Check the For You inbox** — your surface for visibility into what's being planned across teams
+    4. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs
+
+    **Next steps:** [For You](/notifications) · [Scott CI](/developer-tools/scott-ci) · [Making the most of Scott AI](/getting-started/making-the-most)
+  </Accordion>
+</AccordionGroup>
+
+## Install
+
+<AccordionGroup>
+  <Accordion icon="terminal" title="Desktop app + CLI (recommended)">
+    One command installs both the Scott AI desktop app and the `scott` CLI:
+
+    ```bash
+    curl -fsSL https://tryscott.ai/install | sh
+    ```
+
+    After installing, sign in with Google or GitHub. The desktop app adds local sandbox execution and local folder access.
+
+    Initialize Scott in your repo:
+
+    ```bash
+    cd your-project
+    scott init
+    ```
+
+    See the full [CLI reference](/developer-tools/cli).
+  </Accordion>
+
+  <Accordion icon="globe" title="Browser only">
+    Go to [app.tryscott.ai](https://app.tryscott.ai/login) and sign in with Google or GitHub. The browser app uses cloud sandbox execution and supports Google Drive as a connected source.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,84 @@
+---
+title: "CLI"
+description: "Push and pull context between your terminal and Scott AI."
+---
+
+The CLI captures branch state and recent agent conversations, and lets you push and pull context without leaving the terminal.
+
+## Install
+
+The install script sets up both the Scott AI desktop app and the CLI:
+
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+```
+
+## Commands
+
+### `scott init`
+
+Initialize Scott in your repository. This captures the context of your current working branch and detects recent conversations from supported agents (currently Claude Code and Codex).
+
+```bash
+cd your-project
+scott init
+```
+
+After initialization, you can select which context to include before pushing.
+
+### `scott push`
+
+Push your selected context to a planspace. Scott lets you interactively choose which conversation context and branch state to capture.
+
+```bash
+scott push
+```
+
+After pushing, you receive links to both the **desktop app** and **web app** for the planspace.
+
+### `scott pull`
+
+Pull the latest planspace state into your local environment. This auto-links the planspace head to your current git branch.
+
+```bash
+scott pull
+```
+
+This link is what enables [Scott CI](/developer-tools/scott-ci) — when you push your branch to GitHub, Scott CI knows which planspace and approved spec to connect the PR to. Always pull before starting implementation.
+
+## Typical workflow
+
+```bash
+# Start a feature, init Scott in the repo
+cd my-project
+git checkout -b feature/auth-redesign
+scott init
+
+# Select relevant context and push to Scott
+scott push
+# → Opens planspace in browser/desktop with your context
+
+# Collaborate in Scott — iterate on the spec, get reviews
+
+# Pull the approved spec back to your branch
+scott pull
+
+# Implement and push to GitHub
+git add . && git commit -m "implement auth redesign"
+git push origin feature/auth-redesign
+# Scott CI auto-links the PR to the approved spec
+```
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What agent conversations does scott init detect?">
+    Currently Claude Code and Codex. The CLI looks for conversation artifacts in your local environment and presents them for selection.
+  </Accordion>
+  <Accordion title="Can I use the CLI without the desktop app?">
+    Yes. The CLI works independently. After `scott push`, you can use either the web app or desktop app.
+  </Accordion>
+  <Accordion title="Does scott pull modify my code?">
+    No. `scott pull` links the planspace to your branch — it does not write files or modify your working tree.
+  </Accordion>
+</AccordionGroup>
