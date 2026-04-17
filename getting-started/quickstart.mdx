@@ -6,10 +6,10 @@ description: "Get started with Scott AI based on your role."
 ## Get a quick overview
 
 <CardGroup cols={2}>
-  <Card title="The Scott Method" icon="book" href="https://tryscott.ai/method">
+  <Card title="The Scott Method" icon="book-open" href="https://tryscott.ai/method">
     Our philosophy on building with agents — why intent review matters.
   </Card>
-  <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
+  <Card title="How Scott AI works" icon="compass" href="/getting-started/concepts">
     Planspaces, context flows, and the lifecycle.
   </Card>
 </CardGroup>
@@ -18,7 +18,7 @@ description: "Get started with Scott AI based on your role."
 
 <AccordionGroup>
   <Accordion icon="users" title="I'm setting up for my team">
-    1. **Sign in** at [tryscott.ai](https://tryscott.ai) or download the [desktop app](https://tryscott.ai/oneshot-download)
+    1. **Install Scott AI** — run the install script (see [Install](#install) below) or sign in at [app.tryscott.ai](https://app.tryscott.ai/login) for the browser version
     2. **Create a planspace** — name it after the feature or project you're planning
     3. **Attach context** — connect your GitHub repo, upload docs, or point to a local folder so the agent can ground its output in your codebase
     4. **Describe what you want to build** — start with a rough prototype from your coding agent, or describe the intent from scratch
@@ -34,13 +34,13 @@ description: "Get started with Scott AI based on your role."
     1. **Accept your invite** — check your email for a planspace invite and sign in
     2. **Explore the planspace** — read the document on the right, then switch to the **Versions** tab to see how the spec evolved
     3. **Leave comments** — select text in the document and add your feedback. Use `@` to mention teammates
-    4. **Install the CLI** — `npm install -g @tryscott/cli`
+    4. **Install Scott AI** — `curl -fsSL https://tryscott.ai/install | sh`
     5. **Pull context** — run `scott pull` in your repo to link the planspace to your local branch
 
     **Next steps:** [Context flows](/planspaces/context-flows) · [Comments](/collaboration/comments) · [CLI](/developer-tools/cli)
   </Accordion>
 
-  <Accordion icon="chart-line" title="I'm evaluating Scott AI">
+  <Accordion icon="eye" title="I'm evaluating Scott AI">
     1. **Read The Scott Method** at [tryscott.ai/method](https://tryscott.ai/method)
     2. **Create a planspace** or ask your team for a public link to see one in action
     3. **Check the For You inbox** — your surface for visibility into what's being planned across teams
@@ -53,20 +53,16 @@ description: "Get started with Scott AI based on your role."
 ## Install
 
 <AccordionGroup>
-  <Accordion icon="desktop" title="Desktop app (macOS)">
-    Download from the [download page](https://tryscott.ai/oneshot-download). Sign in with Google or GitHub. The desktop app adds local sandbox execution and local folder access.
-  </Accordion>
+  <Accordion icon="terminal" title="Desktop app + CLI (recommended)">
+    One command installs both the Scott AI desktop app and the `scott` CLI:
 
-  <Accordion icon="browser" title="Browser">
-    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub.
-  </Accordion>
-
-  <Accordion icon="terminal" title="CLI">
     ```bash
-    npm install -g @tryscott/cli
+    curl -fsSL https://tryscott.ai/install | sh
     ```
 
-    Initialize in your repo:
+    After installing, sign in with Google or GitHub. The desktop app adds local sandbox execution and local folder access.
+
+    Initialize Scott in your repo:
 
     ```bash
     cd your-project
@@ -74,5 +70,9 @@ description: "Get started with Scott AI based on your role."
     ```
 
     See the full [CLI reference](/developer-tools/cli).
+  </Accordion>
+
+  <Accordion icon="globe" title="Browser only">
+    Go to [app.tryscott.ai](https://app.tryscott.ai/login) and sign in with Google or GitHub. The browser app uses cloud sandbox execution and supports Google Drive as a connected source.
   </Accordion>
 </AccordionGroup>

@@ -66,17 +66,17 @@
         {
           "anchor": "The Scott Method",
           "href": "https://tryscott.ai/method",
-          "icon": "book"
+          "icon": "book-open"
         },
         {
           "anchor": "App",
           "href": "https://tryscott.ai",
-          "icon": "browser"
+          "icon": "globe"
         },
         {
-          "anchor": "Download",
-          "href": "https://tryscott.ai/oneshot-download",
-          "icon": "desktop"
+          "anchor": "Install",
+          "href": "/getting-started/quickstart#install",
+          "icon": "terminal"
         }
       ]
     }
@@ -89,13 +89,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:david@tryscott.ai"
+        "href": "mailto:support@tryscott.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "https://tryscott.ai/login"
+      "href": "https://app.tryscott.ai/login"
     }
   },
   "footer": {
