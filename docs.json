@@ -18,7 +18,8 @@
             "pages": [
               "index",
               "getting-started/quickstart",
-              "getting-started/concepts"
+              "getting-started/concepts",
+              "getting-started/making-the-most"
             ]
           },
           {
@@ -34,7 +35,8 @@
             "pages": [
               "collaboration/comments",
               "collaboration/reviews",
-              "collaboration/sharing"
+              "collaboration/sharing",
+              "notifications"
             ]
           },
           {
@@ -44,18 +46,17 @@
               "developer-tools/scott-ci",
               "developer-tools/connected-sources"
             ]
-          },
-          {
-            "group": "For Leaders",
-            "pages": [
-              "notifications"
-            ]
           }
         ]
       }
     ],
     "global": {
       "anchors": [
+        {
+          "anchor": "The Scott Method",
+          "href": "https://tryscott.ai/method",
+          "icon": "book"
+        },
         {
           "anchor": "App",
           "href": "https://tryscott.ai",

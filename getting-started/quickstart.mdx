@@ -1,100 +1,86 @@
 ---
 title: "Quickstart"
-description: "Create your first planspace and capture context in under 2 minutes."
+description: "Get started with Scott AI based on your role and how you learn best."
 ---
 
-## Choose your path
+## Get a quick overview
 
-Scott AI works in the browser and as a desktop app. The desktop app adds local sandbox execution and local folder access.
+<CardGroup cols={2}>
+  <Card title="The Scott Method" icon="book" href="https://tryscott.ai/method">
+    Our philosophy on building with agents — why intent review matters.
+  </Card>
+  <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
+    Understand planspaces, context flows, and the lifecycle.
+  </Card>
+</CardGroup>
 
-<Tabs>
-  <Tab title="Desktop app (recommended)">
-    ### 1. Download Scott AI
+## Set up Scott AI
 
-    Download the desktop app for macOS from the [download page](https://tryscott.ai/oneshot-download).
+Choose your path based on how you're using Scott AI.
 
-    ### 2. Sign in
+<AccordionGroup>
+  <Accordion icon="users" title="I'm setting up for my team">
+    You're the first person on your team adopting Scott AI. Here's how to get your team started:
 
-    Open Scott AI and sign in with Google or GitHub.
+    1. **Sign in** at [tryscott.ai](https://tryscott.ai) or download the [desktop app](https://tryscott.ai/oneshot-download)
+    2. **Create your first planspace** — click **New planspace**, name it after the feature or project you're planning, and choose your sandbox environment
+    3. **Attach context** — connect your GitHub repo, upload relevant docs, or point to a local folder
+    4. **Iterate with the agent** — describe what you want to build. The agent generates a versioned spec from your intent and context
+    5. **Invite your team** — click **Share**, add your teammates by email, and assign roles
+    6. **Request a review** — when the spec is ready, request reviews from the relevant stakeholders
 
-    ### 3. Create a planspace
+    <Tip>Start with a real project your team is about to begin. The best way to evaluate Scott is with a plan that actually matters.</Tip>
 
-    Click **New planspace** from the home screen. Give it a name that describes the work you're planning — this becomes the title of your living spec.
+    **Next steps:** [Sharing](/collaboration/sharing) · [Reviews](/collaboration/reviews) · [Making the most of Scott AI](/getting-started/making-the-most)
+  </Accordion>
 
-    ### 4. Attach context
+  <Accordion icon="user" title="I'm joining a team">
+    Your team is already using Scott AI. Here's how to get up to speed:
 
-    Select the sources that are relevant to your work:
-    - **GitHub repo** — select a repository and branch
-    - **Local folder** — point to a directory on your machine
-    - **Files** — upload specs, designs, or reference docs
+    1. **Accept your invite** — check your email for a planspace invite and sign in
+    2. **Explore the planspace** — read the document in the right panel, then switch to the **Versions** tab to see how the spec evolved
+    3. **Leave comments** — select text in the document and add your feedback. Use `@` to mention teammates
+    4. **Install the CLI** — run `npm install -g @tryscott/cli` to push and pull context from your terminal
+    5. **Pull context** — run `scott pull` in your repo to link the planspace to your local branch
 
-    ### 5. Start building
+    **Next steps:** [Context flows](/planspaces/context-flows) · [Comments](/collaboration/comments) · [CLI](/developer-tools/cli)
+  </Accordion>
 
-    Describe what you want to build. Scott's agent will generate a versioned spec document based on your intent and the attached context. Each message you send creates a new version — you can branch, compare, and navigate the full history at any time.
-  </Tab>
-  <Tab title="Browser">
-    ### 1. Sign in
+  <Accordion icon="chart-line" title="I'm evaluating Scott AI">
+    You want to understand what your team will experience. Here's where to look:
 
-    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub.
+    1. **Read The Scott Method** — [tryscott.ai/method](https://tryscott.ai/method) explains why intent review matters and how it fits into the SDLC
+    2. **Open a shared planspace** — ask your team for a public link to see a planspace in action
+    3. **Check the For You inbox** — this is your surface for visibility into what's being planned across teams
+    4. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs
 
-    ### 2. Create a planspace
+    **Next steps:** [For You](/notifications) · [Scott CI](/developer-tools/scott-ci) · [Making the most of Scott AI](/getting-started/making-the-most)
+  </Accordion>
+</AccordionGroup>
 
-    Click **New planspace**. Give it a name and select **Cloud sandbox** as the execution environment.
+## Install
 
-    ### 3. Attach context
+<AccordionGroup>
+  <Accordion icon="desktop" title="Desktop app (macOS)">
+    Download from the [download page](https://tryscott.ai/oneshot-download). Sign in with Google or GitHub. The desktop app adds local sandbox execution and local folder access.
+  </Accordion>
 
-    Select relevant sources:
-    - **GitHub repo** — select a repository and branch
-    - **Files** — upload specs, designs, or reference docs
-    - **Google Drive** — connect documents from your Drive
+  <Accordion icon="browser" title="Browser">
+    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub. The browser app uses cloud sandbox execution and supports Google Drive as a connected source.
+  </Accordion>
 
-    ### 4. Start building
-
-    Describe what you want to build. The agent generates a versioned spec from your intent and context. Every exchange creates a new version you can branch and navigate.
-  </Tab>
-  <Tab title="CLI">
-    ### 1. Install the CLI
-
+  <Accordion icon="terminal" title="CLI">
     ```bash
     npm install -g @tryscott/cli
     ```
 
-    ### 2. Initialize in your repo
+    Then initialize in your repo:
 
     ```bash
     cd your-project
     scott init
     ```
 
-    This captures the context of your current working branch and any recent Claude Code or Codex conversations.
-
-    ### 3. Select and push context
-
-    ```bash
-    scott push
-    ```
-
-    Scott lets you select which conversation context and branch state to capture, then pushes it to a new planspace. You'll get links to both the desktop and web app.
-
-    ### 4. Pull updates back
-
-    ```bash
-    scott pull
-    ```
-
-    Pull the latest planspace state back to your local environment, auto-linking the planspace head to your current branch.
-
-    <Info>See the full [CLI reference](/developer-tools/cli) for all available commands.</Info>
-  </Tab>
-</Tabs>
-
-## Next steps
-
-<Columns cols={2}>
-  <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
-    Understand planspaces, context flows, and documents.
-  </Card>
-  <Card title="Invite your team" icon="users" href="/collaboration/sharing">
-    Share your planspace and start collaborating.
-  </Card>
-</Columns>
+    See the full [CLI reference](/developer-tools/cli) for all commands.
+  </Accordion>
+</AccordionGroup>

@@ -74,6 +74,10 @@ git push origin feature/auth-redesign
 # Scott CI auto-links the PR to the approved spec
 ```
 
+<Note>
+**How we work at Scott.** Our typical flow: start a feature branch, run `scott init` to capture the branch state and recent Claude Code session, `scott push` to create a planspace with that context, iterate on the plan with the team, then `scott pull` once the spec is approved. We always pull before starting implementation so Scott CI can trace the PR back.
+</Note>
+
 ## FAQ
 
 <AccordionGroup>

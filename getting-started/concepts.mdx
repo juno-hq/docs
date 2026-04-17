@@ -1,86 +1,67 @@
 ---
 title: "How Scott AI works"
-description: "The mental model behind planspaces, context flows, and documents."
+description: "Understand planspaces, context flows, and the Plan → Align → Delegate → Ship lifecycle."
 ---
 
-Scott AI is built on a simple idea: the knowledge behind your code — the intent, the decisions, the tradeoffs — should be a first-class object that you can version, branch, share, and link back to implementation.
+Scott AI is the stakeholder alignment layer for teams building with agents. It gives your team one place to plan intent, align on direction, and connect approved specs to the code that ships.
 
-If you've used git, the concepts will feel familiar. Instead of versioning code, Scott versions the *intent and design* that drives the code.
+The product maps to four phases of work:
 
-## Core concepts
+## Plan
 
 ### Planspaces
 
-A **planspace** is the primary container for collaborative work in Scott AI. Think of it as a shared, living document with superpowers.
+A **planspace** is a collaborative environment where you iterate on a plan with Scott's agent. The layout is a chat on the left and a versioned document on the right. You describe what you want to build, and the agent generates a structured spec grounded in the context you provide.
 
-Each planspace contains:
-- A **conversation** between you (and your teammates) and Scott's agent
-- A **versioned document** — the spec that evolves as you iterate
-- A **context flow** — the full branching history of how the document got to where it is
-- **Connected sources** — GitHub repos, files, and folders that give the agent context
-
-Planspaces can be private (invite-only with role-based access) or public (shareable via link).
-
-<Card title="Learn more about planspaces" icon="folder-open" href="/planspaces/overview" horizontal />
-
-### Turns and versions
-
-Every exchange in a planspace creates a **turn** — a snapshot of the conversation and the document at that point in time. Turns are the atomic unit of Scott's version history.
-
-When the agent responds to your message, it produces:
-- Updated conversation text
-- A new **document version** with the spec changes
-- A **semantic diff** showing what was added, modified, or removed
-
-You can navigate to any previous version, see exactly what changed, and pick up from any point in the history.
-
-### Context flows
-
-This is where Scott diverges from a linear chat. Turns are organized in a **directed acyclic graph (DAG)** — not a flat conversation.
-
-You can **branch** off any previous turn. When you do, the agent rewrites the document from that branch point forward based on your new direction. All branches are preserved. This means you can:
-
-- Explore alternative approaches without losing your original path
-- Let a teammate fork your spec and take it in a different direction
-- Compare how the document evolved across different branches
-
-Context flows are the thing that makes Scott fundamentally different from a chat with an AI. Your intent has history, and that history is navigable.
-
-<Card title="Deep dive into context flows" icon="code-branch" href="/planspaces/context-flows" horizontal />
-
-### Documents
-
-The right panel of every planspace shows the **document** — the versioned spec that the agent maintains as you collaborate. Documents support:
-
-- Rich text formatting
-- Code blocks
-- Mermaid diagrams
-- Inline comments anchored to specific text
-
-The document updates with each agent turn, and you can view the semantic diff between any two versions to see exactly what changed and why.
-
-<Card title="Learn more about documents" icon="file-lines" href="/planspaces/documents" horizontal />
+Planspaces support rich content — code blobs, prototype references, and Mermaid diagrams are first-class planning artifacts, not attachments. [Learn more about planspaces](/planspaces/overview).
 
 ### Connected sources
 
-Connected sources are the context that feeds into the agent's understanding of your work. You can attach:
+You can attach **GitHub repos**, **uploaded files**, **local folders** (desktop), and **Google Drive** (browser) as context. The agent uses these to understand your codebase and generate specs that fit your architecture. [Learn more about connected sources](/developer-tools/connected-sources).
 
-- **GitHub repositories** — select specific branches for the agent to reference
-- **Uploaded files** — PDFs, docs, code files, design specs
-- **Local folders** — directories on your machine (desktop app only)
-- **Google Drive** — documents from your Drive (browser only)
+## Align
 
-Sources are attached when you create a planspace and can be refreshed at any time during the conversation.
+### Context flows
 
-## How it fits together
+Every planspace maintains a **directed acyclic graph (DAG)** of versions — like `git log --graph`, but for intent. When you reply to the latest message, you extend the current branch. When you reply to an older message, you create a new branch. Both are preserved.
 
-Here's the typical workflow:
+This is what makes Scott different from a linear chat. Teammates can time-travel to any point in the plan's history, see how the spec evolved, and understand which parts came from an agent versus the human leading the project. [Learn more about context flows](/planspaces/context-flows).
 
-1. **Create a planspace** and attach relevant context (your repo, existing specs, etc.)
-2. **Describe your intent** — what you want to build, the constraints, the tradeoffs
-3. **Iterate with the agent** — each exchange refines the spec document
-4. **Branch when needed** — explore alternatives or hand off to a teammate
-5. **Review and approve** — request reviews from teammates, leave inline comments
-6. **Link to implementation** — use `scott pull` to connect planspace state to your git branch, and Scott CI to auto-link PRs back to the approved spec
+### Comments and reviews
 
-The spec stays alive because it's connected to the implementation at both ends — the intent that started it and the code that shipped it.
+Teammates leave [inline comments](/collaboration/comments) anchored to specific text in the document. When a version is ready for sign-off, the author requests a [review](/collaboration/reviews) — reviewers can approve or request changes, and the decision history is permanent.
+
+### Sharing
+
+Planspaces can be shared with teammates via [invite](/collaboration/sharing) (with role-based access) or published as read-only public links.
+
+## Delegate
+
+### CLI
+
+The Scott CLI bridges your local development environment and your planspaces:
+
+- `scott init` — captures your current branch state and recent agent conversations
+- `scott push` — pushes selected context to a planspace
+- `scott pull` — links the planspace to your git branch and pulls the approved plan locally
+
+[Learn more about the CLI](/developer-tools/cli).
+
+## Ship
+
+### Scott CI
+
+When you push your branch to GitHub, [Scott CI](/developer-tools/scott-ci) traces the pull request back to the approved planspace — automatically. Every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it.
+
+This is how documentation stays alive. The spec and the implementation are tethered structurally, not maintained manually.
+
+## Key terms
+
+| Term | Meaning |
+|------|---------|
+| **Planspace** | A collaborative workspace with a chat, a versioned document, and a context flow |
+| **Turn** | A single exchange — a user message plus the agent's response and document update |
+| **Version** | A turn that produced a document snapshot |
+| **Branch** | A divergent path in the context flow where someone explored a different direction |
+| **DRI** | Directly Responsible Individual — the person who owns the plan |
+| **Connected source** | A GitHub repo, file, or folder attached as context for the agent |

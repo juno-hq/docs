@@ -1,103 +1,50 @@
 ---
-title: "Scott AI Documentation"
-description: "The knowledge layer for teams building with AI agents."
+title: "Scott AI Docs"
+description: "Get an overview of Scott AI's features, integrations, and how to use them."
 ---
 
-Scott AI captures the intent, decisions, and context behind your code — so the knowledge that drives your AI agents doesn't disappear when the conversation ends.
+## Popular
 
-## Start here
-
-<Columns cols={2}>
-  <Card
-    title="Quickstart"
-    icon="rocket"
-    href="/getting-started/quickstart"
-  >
-    Create your first planspace and capture context in under 2 minutes.
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/getting-started/quickstart">
+    Get started with Scott AI — choose your path based on your role.
   </Card>
-  <Card
-    title="How Scott AI works"
-    icon="lightbulb"
-    href="/getting-started/concepts"
-  >
-    Understand the mental model — planspaces, context flows, and documents.
+  <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
+    Understand planspaces, context flows, and the Plan → Align → Delegate → Ship lifecycle.
   </Card>
-</Columns>
+  <Card title="Context flows" icon="code-branch" href="/planspaces/context-flows">
+    Branch, navigate, and explore the full history of how your spec evolved.
+  </Card>
+  <Card title="CLI" icon="terminal" href="/developer-tools/cli">
+    Push and pull context between your terminal and Scott AI.
+  </Card>
+</CardGroup>
 
-## Core features
+## Scott AI basics
 
-<Columns cols={3}>
-  <Card
-    title="Planspaces"
-    icon="folder-open"
-    href="/planspaces/overview"
-  >
+<CardGroup cols={2}>
+  <Card title="Planspaces" icon="folder-open" href="/planspaces/overview">
     Collaborative containers for specs, decisions, and version history.
   </Card>
-  <Card
-    title="Context flows"
-    icon="code-branch"
-    href="/planspaces/context-flows"
-  >
-    Branch, navigate, and share the full history of how ideas evolved.
+  <Card title="Documents" icon="file-lines" href="/planspaces/documents">
+    Versioned specs with code blobs, Mermaid diagrams, and semantic diffs.
   </Card>
-  <Card
-    title="Documents"
-    icon="file-lines"
-    href="/planspaces/documents"
-  >
-    Versioned specs that update as your conversation progresses.
-  </Card>
-</Columns>
-
-## Collaborate
-
-<Columns cols={3}>
-  <Card
-    title="Comments"
-    icon="comment"
-    href="/collaboration/comments"
-  >
+  <Card title="Comments" icon="comment" href="/collaboration/comments">
     Inline threaded comments anchored to specific text.
   </Card>
-  <Card
-    title="Reviews"
-    icon="check-double"
-    href="/collaboration/reviews"
-  >
+  <Card title="Reviews" icon="check-double" href="/collaboration/reviews">
     Request reviews, approve specs, and track decisions.
   </Card>
-  <Card
-    title="Sharing"
-    icon="share-nodes"
-    href="/collaboration/sharing"
-  >
+  <Card title="Sharing" icon="share-nodes" href="/collaboration/sharing">
     Share planspaces with your team or publish public links.
   </Card>
-</Columns>
-
-## Developer tools
-
-<Columns cols={3}>
-  <Card
-    title="CLI"
-    icon="terminal"
-    href="/developer-tools/cli"
-  >
-    Push and pull context from your terminal with scott init, pull, and push.
+  <Card title="Scott CI" icon="circle-check" href="/developer-tools/scott-ci">
+    Auto-link PRs to approved specs. Ship non-stale documentation.
   </Card>
-  <Card
-    title="Scott CI"
-    icon="circle-check"
-    href="/developer-tools/scott-ci"
-  >
-    Auto-link PRs to intent docs. Ship non-stale documentation.
+  <Card title="Connected sources" icon="plug" href="/developer-tools/connected-sources">
+    Attach GitHub repos, files, and folders as context for the agent.
   </Card>
-  <Card
-    title="Connected sources"
-    icon="plug"
-    href="/developer-tools/connected-sources"
-  >
-    Attach GitHub repos, files, and folders as context for the AI.
+  <Card title="For You" icon="bell" href="/notifications">
+    Your inbox for notifications, review requests, and mentions.
   </Card>
-</Columns>
+</CardGroup>

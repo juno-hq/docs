@@ -47,6 +47,10 @@ The requester is notified of your decision.
 | **Changes requested** | One or more reviewers requested changes |
 | **Closed** | Author closed the review (superseded by a new version or no longer needed) |
 
+<Note>
+**How we work at Scott.** We request reviews once a planspace has a prototype and at least one round of comment-driven iteration. Reviewers dig into the context flow to understand how the proposal evolved — not just the final document. Most plans go through one formal review before the DRI runs `scott pull` and delegates to agents.
+</Note>
+
 ## Reviews and Scott CI
 
 When a review is **approved**, that version becomes a trusted reference point. [Scott CI](/developer-tools/scott-ci) can link pull requests back to the approved version, confirming that the implementation matches the signed-off intent. This is the mechanism that keeps your documentation non-stale — the spec isn't just a document someone wrote, it's an approved artifact connected to the code that shipped.
