@@ -3,13 +3,9 @@ title: "Documents"
 description: "Versioned specs that evolve as your conversation progresses."
 ---
 
-Every planspace produces a **document** — a living spec that the agent maintains and updates with each turn. Documents are displayed in the right panel and support rich formatting, inline comments, and semantic diffs.
+Every planspace produces a **document** — a spec that the agent maintains and updates with each turn. Every agent response produces a new document snapshot. You can navigate to any previous version, see what changed, and understand why by looking at the conversation that produced it.
 
-## Overview
-
-The document is not a static artifact. It's versioned alongside the conversation — every agent response produces a new document snapshot. You can navigate to any previous version, see what changed, and understand why it changed by looking at the conversation that produced it.
-
-This is what makes Scott's documents different from a Google Doc or a Notion page: the document is always tethered to the intent and reasoning that shaped it.
+The document is always connected to the conversation and reasoning that shaped it.
 
 ## Editing
 
@@ -19,11 +15,13 @@ The document editor supports:
 - **Code blocks** — syntax-highlighted, language-aware
 - **Mermaid diagrams** — rendered inline from Mermaid syntax
 
-You can edit the document directly at any time. Your edits are saved as a **draft** at the current branch tip. When the agent responds next, your manual edits are incorporated into the new version. Teammates can leave [inline comments](/collaboration/comments) on any text in the document while you're working.
+Code in documents isn't decoration — it's planning content. Plans that include implementation snippets, API shapes, or prototype code give reviewers and agents concrete material to react to.
+
+You can edit the document directly at any time. Your edits are saved as a **draft** at the current branch tip. When the agent responds next, your manual edits are incorporated into the new version.
 
 ## Semantic diffs
 
-When the agent updates the document, Scott generates a **semantic diff** — not a line-by-line text diff, but a structured summary of what changed:
+When the agent updates the document, Scott generates a **semantic diff** — a structured summary of what changed:
 
 | Change type | Meaning |
 |-------------|---------|
@@ -31,18 +29,18 @@ When the agent updates the document, Scott generates a **semantic diff** — not
 | **Modified** | Existing content refined or updated |
 | **Removed** | Content deleted from the previous version |
 
-You can view the diff for any version to understand exactly what the agent changed and why. Diffs appear as badges in the conversation and can be expanded for detail.
+Diffs appear as badges in the conversation and can be expanded for detail.
 
 ## Version navigation
 
-Every document version is accessible through the [context flow](/planspaces/context-flows). To navigate versions:
+Every document version is accessible through the [context flow](/planspaces/context-flows):
 
 - Use the **title dropdown** to jump to the latest version or branch tip
 - Switch to the **Versions tab** in the left panel to see the full DAG
 - Click any node in the context flow to view that version's document
 
-When viewing an older version, the document panel shows the spec as it existed at that point. You can reply from any version to create a new branch.
+You can reply from any version to create a new branch.
 
 ## Inline comments
 
-You can select text in the document and leave a comment anchored to that selection. Comments survive document edits — they're attached to the text content, not to a fixed position. See [Comments](/collaboration/comments) for the full commenting workflow.
+Select text in the document and leave a [comment](/collaboration/comments) anchored to that selection. Comments are attached to the text content, not a fixed position — they survive document edits.

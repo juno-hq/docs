@@ -3,41 +3,31 @@ title: "Making the most of Scott AI"
 description: "How to get the best results from Scott AI across the full development lifecycle."
 ---
 
-Scott AI supports many workflows but works best when teams align on intent before delegating to agents. Learn more about our philosophy in [The Scott Method](https://tryscott.ai/method).
-
-This guide walks through the four phases of working with Scott — from planning to shipping — and how to get the most out of each.
+Scott works best when teams align on intent before delegating to agents. Learn more about our philosophy in [The Scott Method](https://tryscott.ai/method).
 
 ## Plan
 
-The planning phase is where ideas become structured, codebase-aware artifacts that agents can execute on.
-
 - **Start with a prototype, not a document.** Use your coding agent to build something rough, then run `scott init` and `scott push` to bring that context into a planspace. A working prototype resolves more unknowns than a paragraph of speculation.
-- **Attach relevant sources.** Connect your GitHub repo and any reference docs so the agent generates specs grounded in your actual codebase — not generic suggestions.
-- **Include code in your plan.** Code blobs and prototype references are first-class content in planspaces. Plans that contain working code are more useful to reviewers and to the agents that will implement them.
+- **Attach relevant sources.** Connect your GitHub repo and reference docs so the agent generates specs grounded in your actual codebase.
+- **Include code in your plan.** Code blobs and prototype references are first-class content. Plans with implementation snippets give reviewers and agents concrete material to react to.
 
 ## Align
 
-The alignment phase is where your team reviews, debates, and approves the plan before agents execute at scale.
-
-- **Share early.** Don't wait until the plan is "done." Share the planspace as soon as there's enough context for teammates to react to.
-- **Use comments for specifics.** [Inline comments](/collaboration/comments) are anchored to text in the document. Use them for targeted feedback rather than broad reactions.
-- **Fork to explore alternatives.** When you disagree with an approach, don't just argue — [branch off](/planspaces/context-flows) from an earlier version, try a different direction, and let the team compare.
-- **Request reviews when aligned.** [Reviews](/collaboration/reviews) create a formal approval record. When a version is approved, it becomes the trusted reference point for implementation.
+- **Share early.** The DRI creates the planspace, iterates with the agent, and shares with the team once there's a prototype worth reacting to.
+- **Use comments for specifics.** [Inline comments](/collaboration/comments) are anchored to text in the document. Use them for targeted feedback.
+- **Fork to explore alternatives.** [Branch off](/planspaces/context-flows) from an earlier version, try a different direction, and let the team compare working prototypes.
+- **Request reviews when aligned.** [Reviews](/collaboration/reviews) create a formal approval record. Request a review once the planspace has a prototype and at least one round of comment-driven iteration.
 
 ## Delegate
 
-The delegation phase is where the approved plan connects to your local development environment and coding agents.
-
-- **Pull the plan into your branch.** Run `scott pull` in your repo to link the planspace to your git branch. This connection is what enables [Scott CI](/developer-tools/scott-ci) to trace the code back to the intent.
+- **Pull the plan into your branch.** Run `scott pull` to link the planspace to your git branch. This is what enables [Scott CI](/developer-tools/scott-ci) to trace the code back to the intent.
 - **Hand off to any agent.** Scott is unopinionated about how you build. Use the approved plan with Cursor, Claude Code, Devin, Copilot, or whatever agent your team prefers.
 
 ## Ship
 
-The shipping phase is where Scott CI closes the loop between intent and implementation.
-
-- **Push to GitHub.** When your branch is ready, push and open a PR. [Scott CI](/developer-tools/scott-ci) automatically leaves a comment linking the PR back to the approved planspace.
-- **Keep docs alive.** Because the plan and the PR are structurally linked, your specs don't go stale. Six months from now, anyone can trace from the code to the decisions that drove it — or from the spec to the code that implemented it.
+- **Push to GitHub.** Open a PR. [Scott CI](/developer-tools/scott-ci) automatically leaves a comment linking the PR to the approved planspace.
+- **Trace intent to code.** Six months from now, anyone can trace from the code to the decisions that drove it — or from the spec to the PRs that implemented it.
 
 <Note>
-**How we work at Scott.** We use planspaces for every feature that involves more than one engineer. The DRI creates the planspace, iterates with the agent, and shares it with the team once there's a prototype worth reacting to. Reviews happen asynchronously — most plans go through 2-3 rounds of comments and one formal review before the DRI delegates to agents. We run `scott pull` before starting implementation and let Scott CI handle the linkage.
+**How we work at Scott.** We use planspaces for every feature that involves more than one engineer. The DRI creates the planspace, iterates with the agent, and shares it once there's a prototype worth reacting to. Reviews happen asynchronously — most plans go through 2-3 rounds of comments and one formal review before the DRI runs `scott pull` and delegates to agents.
 </Note>

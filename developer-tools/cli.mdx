@@ -3,7 +3,7 @@ title: "CLI"
 description: "Push and pull context between your terminal and Scott AI."
 ---
 
-The Scott CLI connects your local development environment to your planspaces. It captures branch state, recent agent conversations, and lets you push and pull context without leaving the terminal.
+The CLI captures branch state and recent agent conversations, and lets you push and pull context without leaving the terminal.
 
 ## Install
 
@@ -15,20 +15,14 @@ npm install -g @tryscott/cli
 
 ### `scott init`
 
-Initialize Scott in your repository. This captures the context of your current working branch and detects recent Claude Code and Codex conversations.
+Initialize Scott in your repository. This captures the context of your current working branch and detects recent conversations from supported agents (currently Claude Code and Codex).
 
 ```bash
 cd your-project
 scott init
 ```
 
-What `scott init` captures:
-- Current git branch name and state
-- Recent commit history on the branch
-- Detected Claude Code conversation context
-- Detected Codex conversation context
-
-After initialization, you can select which context to include before pushing to Scott.
+After initialization, you can select which context to include before pushing.
 
 ### `scott push`
 
@@ -48,46 +42,41 @@ Pull the latest planspace state into your local environment. This auto-links the
 scott pull
 ```
 
-This link is what enables [Scott CI](/developer-tools/scott-ci) — when you push your branch to GitHub, Scott CI knows which planspace and approved spec to connect the PR to.
+This link is what enables [Scott CI](/developer-tools/scott-ci) — when you push your branch to GitHub, Scott CI knows which planspace and approved spec to connect the PR to. Always pull before starting implementation.
 
 ## Typical workflow
 
 ```bash
-# 1. Start a feature, init Scott in the repo
+# Start a feature, init Scott in the repo
 cd my-project
 git checkout -b feature/auth-redesign
 scott init
 
-# 2. Select relevant context and push to Scott
+# Select relevant context and push to Scott
 scott push
 # → Opens planspace in browser/desktop with your context
 
-# 3. Collaborate in Scott — iterate on the spec, get reviews
+# Collaborate in Scott — iterate on the spec, get reviews
 
-# 4. Pull the approved spec back to your branch
+# Pull the approved spec back to your branch
 scott pull
 
-# 5. Implement and push to GitHub
+# Implement and push to GitHub
 git add . && git commit -m "implement auth redesign"
 git push origin feature/auth-redesign
-
 # Scott CI auto-links the PR to the approved spec
 ```
-
-<Note>
-**How we work at Scott.** Our typical flow: start a feature branch, run `scott init` to capture the branch state and recent Claude Code session, `scott push` to create a planspace with that context, iterate on the plan with the team, then `scott pull` once the spec is approved. We always pull before starting implementation so Scott CI can trace the PR back.
-</Note>
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="What agent conversations does scott init detect?">
-    Currently, Scott detects recent Claude Code and OpenAI Codex conversations. The CLI looks for conversation artifacts in your local environment and presents them for selection.
+    Currently Claude Code and Codex. The CLI looks for conversation artifacts in your local environment and presents them for selection.
   </Accordion>
   <Accordion title="Can I use the CLI without the desktop app?">
-    Yes. The CLI works independently. After `scott push`, you can use either the web app or desktop app to collaborate on the planspace.
+    Yes. The CLI works independently. After `scott push`, you can use either the web app or desktop app.
   </Accordion>
   <Accordion title="Does scott pull modify my code?">
-    No. `scott pull` links the planspace to your branch — it does not write files or modify your working tree. The link is used by Scott CI to connect PRs to specs.
+    No. `scott pull` links the planspace to your branch — it does not write files or modify your working tree.
   </Accordion>
 </AccordionGroup>

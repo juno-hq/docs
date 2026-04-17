@@ -1,67 +1,54 @@
 ---
 title: "How Scott AI works"
-description: "Understand planspaces, context flows, and the Plan → Align → Delegate → Ship lifecycle."
+description: "The Plan → Align → Delegate → Ship lifecycle and the concepts behind it."
 ---
 
 Scott AI is the stakeholder alignment layer for teams building with agents. It gives your team one place to plan intent, align on direction, and connect approved specs to the code that ships.
 
-The product maps to four phases of work:
+## Principles
+
+Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method):
+
+- **Review intent, not code** — as agents and CI take over code writing and review, the quality gate moves upstream to the plan
+- **Prototype to decide** — the fastest way to resolve a design debate is to build it, not argue about it
+- **Make context visible** — every engineer should see the full reasoning behind what's being built, including which parts came from an agent
+- **Stay unopinionated about everything else** — how you write code, which agents you use, how you structure your team: your call
 
 ## Plan
 
-### Planspaces
+**Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build — or push a prototype from your coding agent — and the agent generates a structured spec grounded in the context you provide.
 
-A **planspace** is a collaborative environment where you iterate on a plan with Scott's agent. The layout is a chat on the left and a versioned document on the right. You describe what you want to build, and the agent generates a structured spec grounded in the context you provide.
+Plans contain code. Code blobs, prototype references, and Mermaid diagrams are first-class planning content, not attachments.
 
-Planspaces support rich content — code blobs, prototype references, and Mermaid diagrams are first-class planning artifacts, not attachments. [Learn more about planspaces](/planspaces/overview).
-
-### Connected sources
-
-You can attach **GitHub repos**, **uploaded files**, **local folders** (desktop), and **Google Drive** (browser) as context. The agent uses these to understand your codebase and generate specs that fit your architecture. [Learn more about connected sources](/developer-tools/connected-sources).
+**Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/developer-tools/connected-sources).
 
 ## Align
 
-### Context flows
+**Context flows** are the version history of your plan — a directed acyclic graph where every branch, fork, and direction the team explored is preserved. A linear chat loses context when you backtrack. The DAG preserves every direction the team explored. [Learn more](/planspaces/context-flows).
 
-Every planspace maintains a **directed acyclic graph (DAG)** of versions — like `git log --graph`, but for intent. When you reply to the latest message, you extend the current branch. When you reply to an older message, you create a new branch. Both are preserved.
-
-This is what makes Scott different from a linear chat. Teammates can time-travel to any point in the plan's history, see how the spec evolved, and understand which parts came from an agent versus the human leading the project. [Learn more about context flows](/planspaces/context-flows).
-
-### Comments and reviews
-
-Teammates leave [inline comments](/collaboration/comments) anchored to specific text in the document. When a version is ready for sign-off, the author requests a [review](/collaboration/reviews) — reviewers can approve or request changes, and the decision history is permanent.
-
-### Sharing
-
-Planspaces can be shared with teammates via [invite](/collaboration/sharing) (with role-based access) or published as read-only public links.
+**Comments** are anchored to specific text in the document and can be promoted into the chat as context for the agent. **Reviews** create a formal approval record — when a version is approved, it becomes the trusted reference for implementation. [Comments](/collaboration/comments) · [Reviews](/collaboration/reviews).
 
 ## Delegate
 
-### CLI
-
-The Scott CLI bridges your local development environment and your planspaces:
+The **CLI** bridges your local environment and your planspaces:
 
 - `scott init` — captures your current branch state and recent agent conversations
 - `scott push` — pushes selected context to a planspace
-- `scott pull` — links the planspace to your git branch and pulls the approved plan locally
+- `scott pull` — links the planspace to your git branch
 
-[Learn more about the CLI](/developer-tools/cli).
+[Learn more](/developer-tools/cli).
 
 ## Ship
 
-### Scott CI
-
-When you push your branch to GitHub, [Scott CI](/developer-tools/scott-ci) traces the pull request back to the approved planspace — automatically. Every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it.
-
-This is how documentation stays alive. The spec and the implementation are tethered structurally, not maintained manually.
+**Scott CI** traces pull requests back to the approved planspace automatically. Every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it. [Learn more](/developer-tools/scott-ci).
 
 ## Key terms
 
 | Term | Meaning |
 |------|---------|
-| **Planspace** | A collaborative workspace with a chat, a versioned document, and a context flow |
+| **Planspace** | A collaborative environment with a chat, versioned document, and context flow |
 | **Turn** | A single exchange — a user message plus the agent's response and document update |
 | **Version** | A turn that produced a document snapshot |
-| **Branch** | A divergent path in the context flow where someone explored a different direction |
-| **DRI** | Directly Responsible Individual — the person who owns the plan |
+| **Context flow** | The DAG of all versions and branches in a planspace |
+| **Branch** | A divergent path where someone explored a different direction |
 | **Connected source** | A GitHub repo, file, or folder attached as context for the agent |

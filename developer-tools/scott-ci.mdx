@@ -1,23 +1,11 @@
 ---
 title: "Scott CI"
-description: "Auto-link pull requests to approved specs. Ship non-stale documentation."
+description: "Auto-link pull requests to approved specs."
 ---
 
-Scott CI connects your GitHub pull requests back to the planspace and spec that drove the work. When a PR lands, Scott CI traces it to the approved intent and leaves comments linking the two — keeping your documentation alive and accurate.
-
-## Overview
-
-Documentation goes stale because there's no connection between the spec and the code that ships. Scott CI solves this by maintaining a link between:
-
-1. The **planspace** where the spec was written and approved
-2. The **git branch** where the work was implemented
-3. The **pull request** where the code was reviewed and merged
-
-When you use [`scott pull`](/developer-tools/cli) to link a planspace to your branch, Scott CI picks up the connection automatically. No manual tagging, no JIRA ticket numbers in commit messages, no stale wiki pages. The link traces through the [context flow](/planspaces/context-flows) to the [approved version](/collaboration/reviews).
+Scott CI connects your pull requests back to the planspace that drove the work. When a PR lands, Scott CI traces it to the approved intent and leaves a comment linking the two.
 
 ## Setup
-
-Scott CI is configured at the repository level. Once set up, it runs automatically on every PR.
 
 1. Install the Scott CI GitHub App from your team settings
 2. Select the repositories you want to enable
@@ -35,10 +23,10 @@ planspace (approved spec)
    auto-comment linking PR → approved spec
 ```
 
-When a pull request is opened on a branch that was linked via `scott pull`:
+When a pull request is opened on a branch linked via [`scott pull`](/developer-tools/cli):
 
 1. Scott CI detects the planspace association
-2. It traces back through the [context flow](/planspaces/context-flows) to the approved version
+2. It traces back through the [context flow](/planspaces/context-flows) to the [approved version](/collaboration/reviews)
 3. It leaves a comment on the PR with:
    - A link to the approved spec
    - A summary of the intent from the planspace
@@ -46,25 +34,20 @@ When a pull request is opened on a branch that was linked via `scott pull`:
 
 ## Non-stale documentation
 
-This is the core value of Scott CI. Traditional docs are write-once artifacts that drift from reality the moment code changes. Scott's approach is different:
+The spec is authored collaboratively with the agent, reviewed and approved before implementation, linked to the branch via `scott pull`, and auto-linked back by Scott CI.
 
-- The spec is **authored collaboratively** with the agent, not written after the fact
-- The spec is **reviewed and approved** before implementation begins
-- The implementation is **linked to the spec** via `scott pull`
-- The PR is **auto-linked back** by Scott CI
-
-The result: when someone reads the spec six months later, they can see exactly which PRs implemented it, and when someone reads a PR, they can trace back to the design decisions that drove it.
+The result: every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it. When someone reads the spec six months later, they can see exactly what shipped. When someone reads a PR, they can trace back to the design decisions that drove it.
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="What if I didn't use scott pull?">
-    Scott CI only links PRs to planspaces when the connection was established via `scott pull`. If you skip this step, the PR won't be auto-linked. You can always retroactively link by running `scott pull` and force-pushing, but the cleanest workflow is to link before you start implementing.
+    Scott CI only links PRs to planspaces when the connection was established via `scott pull`. You can retroactively link by running `scott pull` on the branch and pushing again.
   </Accordion>
   <Accordion title="Does Scott CI block merges?">
-    No. Scott CI is informational — it leaves comments but does not create required status checks. Your existing CI/CD pipeline is unaffected.
+    No. Scott CI is informational — it leaves comments but does not create required status checks.
   </Accordion>
   <Accordion title="Can I use Scott CI without the rest of Scott?">
-    Scott CI requires a planspace with an approved spec to link to. It's designed to work with the full Scott workflow, not as a standalone tool.
+    Scott CI requires a planspace with an approved spec to link to.
   </Accordion>
 </AccordionGroup>

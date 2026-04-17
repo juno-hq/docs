@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Get started with Scott AI based on your role and how you learn best."
+description: "Get started with Scott AI based on your role."
 ---
 
 ## Get a quick overview
@@ -10,24 +10,20 @@ description: "Get started with Scott AI based on your role and how you learn bes
     Our philosophy on building with agents — why intent review matters.
   </Card>
   <Card title="How Scott AI works" icon="lightbulb" href="/getting-started/concepts">
-    Understand planspaces, context flows, and the lifecycle.
+    Planspaces, context flows, and the lifecycle.
   </Card>
 </CardGroup>
 
 ## Set up Scott AI
 
-Choose your path based on how you're using Scott AI.
-
 <AccordionGroup>
   <Accordion icon="users" title="I'm setting up for my team">
-    You're the first person on your team adopting Scott AI. Here's how to get your team started:
-
     1. **Sign in** at [tryscott.ai](https://tryscott.ai) or download the [desktop app](https://tryscott.ai/oneshot-download)
-    2. **Create your first planspace** — click **New planspace**, name it after the feature or project you're planning, and choose your sandbox environment
-    3. **Attach context** — connect your GitHub repo, upload relevant docs, or point to a local folder
-    4. **Iterate with the agent** — describe what you want to build. The agent generates a versioned spec from your intent and context
-    5. **Invite your team** — click **Share**, add your teammates by email, and assign roles
-    6. **Request a review** — when the spec is ready, request reviews from the relevant stakeholders
+    2. **Create a planspace** — name it after the feature or project you're planning
+    3. **Attach context** — connect your GitHub repo, upload docs, or point to a local folder so the agent can ground its output in your codebase
+    4. **Describe what you want to build** — start with a rough prototype from your coding agent, or describe the intent from scratch
+    5. **Invite your team** — click **Share**, add teammates by email, assign roles
+    6. **Request a review** — when the spec is ready, request reviews from stakeholders
 
     <Tip>Start with a real project your team is about to begin. The best way to evaluate Scott is with a plan that actually matters.</Tip>
 
@@ -35,23 +31,19 @@ Choose your path based on how you're using Scott AI.
   </Accordion>
 
   <Accordion icon="user" title="I'm joining a team">
-    Your team is already using Scott AI. Here's how to get up to speed:
-
     1. **Accept your invite** — check your email for a planspace invite and sign in
-    2. **Explore the planspace** — read the document in the right panel, then switch to the **Versions** tab to see how the spec evolved
+    2. **Explore the planspace** — read the document on the right, then switch to the **Versions** tab to see how the spec evolved
     3. **Leave comments** — select text in the document and add your feedback. Use `@` to mention teammates
-    4. **Install the CLI** — run `npm install -g @tryscott/cli` to push and pull context from your terminal
+    4. **Install the CLI** — `npm install -g @tryscott/cli`
     5. **Pull context** — run `scott pull` in your repo to link the planspace to your local branch
 
     **Next steps:** [Context flows](/planspaces/context-flows) · [Comments](/collaboration/comments) · [CLI](/developer-tools/cli)
   </Accordion>
 
   <Accordion icon="chart-line" title="I'm evaluating Scott AI">
-    You want to understand what your team will experience. Here's where to look:
-
-    1. **Read The Scott Method** — [tryscott.ai/method](https://tryscott.ai/method) explains why intent review matters and how it fits into the SDLC
-    2. **Open a shared planspace** — ask your team for a public link to see a planspace in action
-    3. **Check the For You inbox** — this is your surface for visibility into what's being planned across teams
+    1. **Read The Scott Method** at [tryscott.ai/method](https://tryscott.ai/method)
+    2. **Create a planspace** or ask your team for a public link to see one in action
+    3. **Check the For You inbox** — your surface for visibility into what's being planned across teams
     4. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs
 
     **Next steps:** [For You](/notifications) · [Scott CI](/developer-tools/scott-ci) · [Making the most of Scott AI](/getting-started/making-the-most)
@@ -66,7 +58,7 @@ Choose your path based on how you're using Scott AI.
   </Accordion>
 
   <Accordion icon="browser" title="Browser">
-    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub. The browser app uses cloud sandbox execution and supports Google Drive as a connected source.
+    Go to [tryscott.ai](https://tryscott.ai) and sign in with Google or GitHub.
   </Accordion>
 
   <Accordion icon="terminal" title="CLI">
@@ -74,13 +66,13 @@ Choose your path based on how you're using Scott AI.
     npm install -g @tryscott/cli
     ```
 
-    Then initialize in your repo:
+    Initialize in your repo:
 
     ```bash
     cd your-project
     scott init
     ```
 
-    See the full [CLI reference](/developer-tools/cli) for all commands.
+    See the full [CLI reference](/developer-tools/cli).
   </Accordion>
 </AccordionGroup>
