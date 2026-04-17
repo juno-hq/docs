@@ -1,6 +1,6 @@
 ---
 title: "CLI"
-description: "Push and pull context between your terminal and Scott AI."
+description: "Push and pull context between your terminal, coding agents and the Scott UI."
 ---
 
 The CLI captures branch state and recent agent conversations, and lets you push and pull context without leaving the terminal.
@@ -75,9 +75,11 @@ git push origin feature/auth-redesign
   <Accordion title="What agent conversations does scott init detect?">
     Currently Claude Code and Codex. The CLI looks for conversation artifacts in your local environment and presents them for selection.
   </Accordion>
+
   <Accordion title="Can I use the CLI without the desktop app?">
     Yes. The CLI works independently. After `scott push`, you can use either the web app or desktop app.
   </Accordion>
+
   <Accordion title="Does scott pull modify my code?">
     No. `scott pull` links the planspace to your branch — it does not write files or modify your working tree.
   </Accordion>

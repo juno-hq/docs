@@ -7,14 +7,16 @@ Every planspace maintains a **directed acyclic graph (DAG)** of versions — lik
 
 ## How it works
 
-Every turn in a planspace has a parent. When you reply to the latest message, you extend the current branch. When you reply to an *older* message, you create a new branch. Both branches are preserved.
+Every turn in a planspace has a parent. When you reply to the latest message, you extend the current branch. When you reply to an _older_ message, you create a new branch. Both branches are preserved.
 
-Switch to the **Versions** tab in the left panel to see the full context flow:
+Switch to the **Context Flow** tab in the left panel to see the full context flow:
 
 - **Nodes** — each node is a version that produced a document update
 - **Edges** — parent-child relationships between versions
 - **Branches** — divergent paths where someone explored a different direction
 - **Color coding** — the primary branch is highlighted; older branches use distinct colors
+
+This makes it extremely easy for any stakeholder to leverage the most valuable context associated with a given plan in any manner that they like. For example, an engineer may want to test a prototype while a product manager may want to get a code grounded estimate on the work that needs to be done.
 
 ## Branch off any version
 
@@ -37,6 +39,7 @@ Your original branch is untouched. You can switch between branches at any time.
 
 ```bash
 scott pull
+claude "implement the plan provided by Scott"
 git add . && git commit -m "implement auth flow"
 git push origin feature/auth
 # Scott CI auto-links the PR to the approved spec
@@ -48,9 +51,11 @@ git push origin feature/auth
   <Accordion title="Can I merge branches?">
     Not currently. If you want to combine ideas from two branches, navigate to one and ask the agent to incorporate specific elements from the other.
   </Accordion>
+
   <Accordion title="Can I delete a branch?">
     No. All version history is permanent. The history of what was considered is as valuable as what was decided.
   </Accordion>
+
   <Accordion title="How is this different from git?">
     Git versions code. Scott versions intent. A git branch contains file changes; a Scott branch contains the conversation, decisions, and spec evolution that led to those changes. They're complementary — Scott CI links the two together.
   </Accordion>

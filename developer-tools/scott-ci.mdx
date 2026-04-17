@@ -13,7 +13,7 @@ Scott CI connects your pull requests back to the planspace that drove the work. 
 
 ## How it works
 
-```
+```text
 planspace (approved spec)
        ↓ scott pull
    git branch (linked)
@@ -32,21 +32,17 @@ When a pull request is opened on a branch linked via [`scott pull`](/developer-t
    - A summary of the intent from the planspace
    - The review status (who approved, when)
 
-## Non-stale documentation
-
-The spec is authored collaboratively with the agent, reviewed and approved before implementation, linked to the branch via `scott pull`, and auto-linked back by Scott CI.
-
-The result: every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it. When someone reads the spec six months later, they can see exactly what shipped. When someone reads a PR, they can trace back to the design decisions that drove it.
-
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="What if I didn't use scott pull?">
     Scott CI only links PRs to planspaces when the connection was established via `scott pull`. You can retroactively link by running `scott pull` on the branch and pushing again.
   </Accordion>
+
   <Accordion title="Does Scott CI block merges?">
     No. Scott CI is informational — it leaves comments but does not create required status checks.
   </Accordion>
+
   <Accordion title="Can I use Scott CI without the rest of Scott?">
     Scott CI requires a planspace with an approved spec to link to.
   </Accordion>
