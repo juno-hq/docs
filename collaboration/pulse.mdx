@@ -3,37 +3,62 @@ title: "Pulse"
 description: "Org-wide visibility into what's being planned, what's approved, and how intent maps to shipped code."
 ---
 
-Scott AI gives engineering leaders something that hasn't existed before: a direct, queryable relationship between the intent your team aligned on and the code that shipped. Pulse is where that visibility lives.
+Coding agents are dramatically accelerating how fast code gets written. Controlled studies show [55% faster task completion](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) under experimental conditions, while enterprise deployments report steadier gains around [20% time savings with ~30% suggestion acceptance rates](https://arxiv.org/html/2501.13282v1). But speed without alignment creates a new problem: teams shipping the wrong thing faster, in parallel, with no shared visibility into intent.
 
-## Pulse
+Pulse gives engineering leaders a direct, queryable relationship between the intent your team aligned on and the code that shipped.
 
-Pulse is a conversational interface for understanding what's happening across your engineering org.
+## What Pulse does
 
-Ask questions in natural language:
+Pulse is a conversational interface for understanding what's happening across your engineering org. Ask questions in natural language:
 
 - "Which approved designs have drifted from what actually landed?"
-- "Show me review bottlenecks"
+- "Show me review bottlenecks this sprint"
 - "What needs my attention this morning?"
 
-Pulse answers by referencing planspaces, connected sources like Slack, notion, linear etc, code changes, and real review decisions — not summaries or estimates. Every answer is grounded in the intent your team wrote and the PRs that implemented it.
+Every answer references real planspaces, real code changes, and real review decisions — grounded in the intent your team wrote and the PRs that implemented it. Pulse connects to your team's tools (Slack, Notion, Linear, GitHub) so answers draw from the full context, not just what lives in Scott.
+
+## Why this matters now
+
+As agent usage scales, three cost and quality dynamics become material for leaders:
+
+**Agent spend is increasingly metered.** GitHub Copilot's [premium request model](https://docs.github.com/en/copilot/get-started/plans) and Cursor's [usage-based pricing](https://cursor.com/blog/aug-2025-pricing-teams) both show that agentic requests are variable cost — a single complex prompt can consume an [order of magnitude more tokens](https://cursor.com/blog/aug-2025-pricing-teams) than a simple one. Poorly scoped intent means wasted compute.
+
+**Quality risk scales with speed.** AI-generated code can amplify insecure patterns — one study found [~40% of AI-generated programs contained vulnerabilities](https://arxiv.org/abs/2108.09293). Without clear intent upstream, agents produce more code that needs more review, more rework, and more remediation.
+
+**Rework is the hidden cost.** DORA reports that high-performing teams spend [22% less time on unplanned work and rework](https://dora.dev/concepts/wellbeing/) than low performers. When intent is aligned before agents execute, the rework loops that are invisible to traditional metrics — but brutal in practice — shrink.
+
+Pulse makes these dynamics visible and measurable because Scott owns both sides of the handoff: the intent that started the work and the CI that links it to shipped code.
 
 ## How it works
 
-The link between intent and code is what makes Pulse possible. When your team uses Scott:
+1. Engineers share plans and proposals in [planspaces](/planspaces/overview)
+2. Plans are [reviewed and approved](/collaboration/reviews) by stakeholders
+3. [Scott CI](/developer-tools/scott-ci) traces each PR back to the approved intent automatically
 
-1. Engineers share coding agent plans & proposals in [planspaces](/planspaces/overview)
-2. Plans & proposals are [reviewed and approved](/collaboration/reviews) by stakeholders
-3. [Scott CI](/developer-tools/scott-ci) traces the PR back to the approved intent automatically
-
-This relationship enables pull request reviews to move faster because high level intent is also checked at CI time. This also unlocks new metrics that traditional tools can't measure.
+This creates a data layer that didn't exist before — every PR linked to the plan that drove it, every plan linked to the PRs that implemented it. Pulse queries this layer to answer your questions.
 
 ## Metrics
 
-Because intent and code are structurally linked, Pulse surfaces four metrics that traditional tools can't measure. These are grounded in operational data — not self-reported estimates.
+Pulse surfaces four metrics that are only measurable because intent and code are structurally linked. Each is grounded in operational data, not self-reported estimates.
 
-| Metric | What it tells you |
-|--------|-------------------|
-| **Intent coverage** | Percentage of shipped PRs backed by an approved plan. This is the adoption signal: are your teams aligning on intent before delegating to agents, or shipping without a plan? |
-| **Design fidelity** | How closely the shipped code matches the approved intent. Low fidelity means either the plan was ambiguous or the implementation drifted — both are actionable. |
-| **Rework rate** | How often a team revisits the intent after implementation starts. Research shows high-performing teams spend [22% less time on unplanned rework](https://dora.dev/concepts/wellbeing/). This metric tells you if intent review is actually reducing churn. |
-| **Review cycle time** | Time from review request to first decision. Measures how fast your team reaches alignment. Slow cycles indicate bottlenecks — Pulse surfaces who and where. |
+| Metric | What it measures | Why it matters |
+|--------|-----------------|----------------|
+| **Intent coverage** | % of shipped PRs backed by an approved plan | The adoption signal. Are your teams aligning before delegating, or shipping without a plan? Low coverage correlates with higher rework. |
+| **Design fidelity** | How closely shipped code matches approved intent | Measures execution accuracy. Low fidelity means the plan was ambiguous or the implementation drifted — both actionable. Enterprise studies show [code review is 15% faster](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-code-quality/) and [53% more likely to pass tests](https://github.blog/news-insights/research/does-github-copilot-improve-code-quality-heres-what-the-data-says/) when intent is clear. |
+| **Rework rate** | How often a team revisits intent after implementation starts | The money metric. Directly maps to DORA's finding that high performers spend [22% less on unplanned rework](https://dora.dev/concepts/wellbeing/). Tracks whether intent review is actually reducing churn. |
+| **Review cycle time** | Time from review request to first decision | Measures alignment speed. Slow cycles surface bottlenecks — Pulse shows who and where. |
+
+## Attention alerts
+
+Pulse surfaces items that need action without requiring you to dig through individual planspaces:
+
+- **Stale reviews** — review requests open longer than your team's norm
+- **Design drift** — approved plans where the shipped code diverged significantly
+- **Blocked work** — planspaces waiting on external dependencies or unresolved comments
+- **High fork activity** — designs with multiple competing branches being explored (may need a decision)
+
+## What this replaces
+
+Most engineering leaders piece together visibility from standups, Jira dashboards, PR metrics, and asking people in Slack. That picture is always incomplete and always stale — it measures code throughput but not whether the team is building the right thing.
+
+Pulse replaces that with a single surface where you can ask a question and get an answer grounded in what your team actually planned and what actually shipped.
