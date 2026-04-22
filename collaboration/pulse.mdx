@@ -13,29 +13,15 @@ Each of these problems — rework from instability, wasted senior eng time on co
 
 **Alignment is the force multiplier.** When teams agree on intent before agents execute, every dollar spent on agent compute goes further, every senior engineer's review time is spent on substance instead of correction, and every PR ships code that matches what was actually approved. Pulse makes this visible.
 
-Pulse gives engineering leaders a direct, queryable relationship between the intent your team aligned on and the code that shipped.
-
 ## What Pulse does
 
-Pulse is a conversational interface for understanding what's happening across your engineering org. Ask questions in natural language:
+Pulse is a conversational interface that lets you query the relationship between what your team planned and what actually shipped. Ask questions in natural language:
 
-- "Which approved designs have drifted from what actually landed?"
-- "Show me review bottlenecks this sprint"
-- "What needs my attention this morning?"
+- "Which approved plans have drifted from what landed?" — surfaces **stability risk** before it becomes an incident
+- "Who's blocked on reviews this sprint?" — shows where **senior eng time** is being absorbed by coordination instead of output
+- "What shipped without an approved plan?" — reveals **alignment gaps** where agents executed without shared intent
 
-Every answer references real planspaces, real code changes, and real review decisions — grounded in the intent your team wrote and the PRs that implemented it. Pulse connects to your team's tools (Slack, Notion, Linear, GitHub) so answers draw from the full context, not just what lives in Scott.
-
-## Why this matters now
-
-As agent usage scales, three cost and quality dynamics become material for leaders:
-
-**Agent spend is increasingly metered.** GitHub Copilot's [premium request model](https://docs.github.com/en/copilot/get-started/plans) and Cursor's [usage-based pricing](https://cursor.com/blog/aug-2025-pricing-teams) both show that agentic requests are variable cost — a single complex prompt can consume an [order of magnitude more tokens](https://cursor.com/blog/aug-2025-pricing-teams) than a simple one. Poorly scoped intent means wasted compute.
-
-**Quality risk scales with speed.** AI-generated code can amplify insecure patterns — one study found [~40% of AI-generated programs contained vulnerabilities](https://arxiv.org/abs/2108.09293). Without clear intent upstream, agents produce more code that needs more review, more rework, and more remediation.
-
-**Rework is the hidden cost.** DORA reports that high-performing teams spend [22% less time on unplanned work and rework](https://dora.dev/concepts/wellbeing/) than low performers. When intent is aligned before agents execute, the rework loops that are invisible to traditional metrics — but brutal in practice — shrink.
-
-Pulse makes these dynamics visible and measurable because Scott owns both sides of the handoff: the intent that started the work and the CI that links it to shipped code.
+Every answer references real planspaces, real code changes, and real review decisions. Pulse connects to your team's tools (Slack, Notion, Linear, GitHub) so answers draw from the full context, not just what lives in Scott.
 
 ## How it works
 
@@ -43,30 +29,24 @@ Pulse makes these dynamics visible and measurable because Scott owns both sides 
 2. Plans are [reviewed and approved](/collaboration/reviews) by stakeholders
 3. [Scott CI](/developer-tools/scott-ci) traces each PR back to the approved intent automatically
 
-This creates a data layer that didn't exist before — every PR linked to the plan that drove it, every plan linked to the PRs that implemented it. Pulse queries this layer to answer your questions.
+This creates a data layer that didn't exist before — every PR linked to the plan that drove it, every plan linked to the PRs that implemented it. Pulse queries this layer. Traditional tools measure code throughput. Pulse measures whether the code matches what was agreed on.
 
 ## Metrics
 
-Pulse surfaces four metrics that are only measurable because intent and code are structurally linked. Each is grounded in operational data, not self-reported estimates.
+Each metric maps directly to the cost problems above.
 
-| Metric | What it measures | Why it matters |
-|--------|-----------------|----------------|
-| **Intent coverage** | % of shipped PRs backed by an approved plan | The adoption signal. Are your teams aligning before delegating, or shipping without a plan? Low coverage correlates with higher rework. |
-| **Design fidelity** | How closely shipped code matches approved intent | Measures execution accuracy. Low fidelity means the plan was ambiguous or the implementation drifted — both actionable. Enterprise studies show [code review is 15% faster](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-code-quality/) and [53% more likely to pass tests](https://github.blog/news-insights/research/does-github-copilot-improve-code-quality-heres-what-the-data-says/) when intent is clear. |
-| **Rework rate** | How often a team revisits intent after implementation starts | The money metric. Directly maps to DORA's finding that high performers spend [22% less on unplanned rework](https://dora.dev/concepts/wellbeing/). Tracks whether intent review is actually reducing churn. |
-| **Review cycle time** | Time from review request to first decision | Measures alignment speed. Slow cycles surface bottlenecks — Pulse shows who and where. |
+| Metric | What it measures | Which problem it tracks |
+|--------|-----------------|------------------------|
+| **Intent coverage** | % of shipped PRs backed by an approved plan | **Coordination gaps.** Low coverage means agents are executing without shared intent — the silent coordination failure the research identifies. |
+| **Design fidelity** | How closely shipped code matches approved intent | **Stability risk.** Low fidelity is the leading indicator of the instability DORA measured — code that shipped fast but didn't match the plan. |
+| **Rework rate** | How often a team revisits intent after implementation starts | **Senior eng burden.** Every rework cycle is a senior engineer reviewing, correcting, and re-coordinating instead of shipping. This is the [22% rework gap](https://dora.dev/concepts/wellbeing/) between high and low performers. |
+| **Review cycle time** | Time from review request to first decision | **Alignment speed.** Slow cycles mean intent is stuck waiting for feedback while agents keep executing — widening the gap between what's approved and what's being built. |
 
 ## Attention alerts
 
-Pulse surfaces items that need action without requiring you to dig through individual planspaces:
+Pulse surfaces the specific situations that cost the most if left unaddressed:
 
-- **Stale reviews** — review requests open longer than your team's norm
-- **Design drift** — approved plans where the shipped code diverged significantly
-- **Blocked work** — planspaces waiting on external dependencies or unresolved comments
-- **High fork activity** — designs with multiple competing branches being explored (may need a decision)
-
-## What this replaces
-
-Most engineering leaders piece together visibility from standups, Jira dashboards, PR metrics, and asking people in Slack. That picture is always incomplete and always stale — it measures code throughput but not whether the team is building the right thing.
-
-Pulse replaces that with a single surface where you can ask a question and get an answer grounded in what your team actually planned and what actually shipped.
+- **Stale reviews** — a review open for days means a senior engineer's feedback is blocking a team, or intent is stalling while agent compute continues to burn
+- **Design drift** — an approved plan where the shipped code diverged significantly. This is the stability problem made concrete: what landed doesn't match what was agreed on
+- **Blocked work** — planspaces waiting on unresolved comments or external dependencies. Work that's blocked but still consuming agent sessions is pure waste
+- **High fork activity** — multiple competing branches on the same design. Healthy exploration or misalignment that needs a decision — Pulse surfaces it so you can tell the difference
