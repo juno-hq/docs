@@ -3,7 +3,15 @@ title: "Pulse"
 description: "Org-wide visibility into what's being planned, what's approved, and how intent maps to shipped code."
 ---
 
-Coding agents are dramatically accelerating how fast code gets written. Controlled studies show [55% faster task completion](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) under experimental conditions, while enterprise deployments report steadier gains around [20% time savings with ~30% suggestion acceptance rates](https://arxiv.org/html/2501.13282v1). But speed without alignment creates a new problem: teams shipping the wrong thing faster, in parallel, with no shared visibility into intent.
+Coding agents are accelerating how fast code gets written — [55% faster task completion](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) in controlled studies, [~20% steady-state time savings](https://arxiv.org/html/2501.13282v1) in enterprise deployments. But without alignment on *what* to build, that speed compounds cost instead of reducing it:
+
+- **Stability degrades.** The [2024 DORA State of DevOps Report](https://dora.dev/research/2024/dora-report/) found that a 25% increase in AI usage quickened code reviews but **decreased delivery stability by 7.2%**. More code, shipped faster, with more incidents. Their conclusion: "writing code isn't the bottleneck to deploying reliable applications."
+- **Senior engineers absorb the cost.** A [2025 study of experienced developers](https://arxiv.org/abs/2510.10165) measured a 39-44% gap between perceived and actual productivity. Developers *felt* 20% faster but were **19% slower in practice**. The reason: senior engineers spent their time reviewing and coordinating misaligned agent output instead of shipping their own work — reviewing 6.5% more code while their own output dropped 19%.
+- **Coordination breaks silently.** A [longitudinal study tracking teams from 2023-2025](https://arxiv.org/html/2509.10956v1) found that even as AI adoption increased, core teamwork problems persisted: **misaligned communication across roles, lack of shared visibility into project goals, and ambiguity around accountability**.
+
+Each of these problems — rework from instability, wasted senior eng time on coordination, agents executing on misaligned intent — has a direct dollar cost. DORA reports that high-performing teams spend [22% less time on unplanned rework](https://dora.dev/concepts/wellbeing/). Agent compute is [metered per request](https://docs.github.com/en/copilot/get-started/plans), and a single misaligned prompt can consume an [order of magnitude more tokens](https://cursor.com/blog/aug-2025-pricing-teams) than a well-scoped one. Multiply that across a team running agents in parallel on the wrong direction, and the waste scales with the speed.
+
+**Alignment is the force multiplier.** When teams agree on intent before agents execute, every dollar spent on agent compute goes further, every senior engineer's review time is spent on substance instead of correction, and every PR ships code that matches what was actually approved. Pulse makes this visible.
 
 Pulse gives engineering leaders a direct, queryable relationship between the intent your team aligned on and the code that shipped.
 
