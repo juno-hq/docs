@@ -1,0 +1,41 @@
+---
+title: "Pulse"
+description: "Org-wide visibility into what's being planned, what's approved, and how intent maps to shipped code."
+---
+
+Scott AI gives engineering leaders something that hasn't existed before: a direct, queryable relationship between the intent your team aligned on and the code that shipped. Pulse is where that visibility lives.
+
+## Pulse
+
+Pulse is a conversational interface for understanding what's happening across your engineering org.
+
+Ask questions in natural language:
+
+- "Which approved designs have drifted from what actually landed?"
+- "Show me review bottlenecks"
+- "What needs my attention this morning?"
+
+Pulse answers by referencing planspaces, connected sources like Slack, notion, linear etc, code changes, and real review decisions — not summaries or estimates. Every answer is grounded in the intent your team wrote and the PRs that implemented it.
+
+## How it works
+
+The link between intent and code is what makes Pulse possible. When your team uses Scott:
+
+1. Engineers share coding agent plans & proposals in [planspaces](/planspaces/overview)
+2. Plans & proposals are [reviewed and approved](/collaboration/reviews) by stakeholders
+3. [Scott CI](/developer-tools/scott-ci) traces the PR back to the approved intent automatically
+
+This relationship enables pull request reviews to move faster because high level intent is also checked at CI time. This also unlocks new metrics that traditional tools can't measure.
+
+## Metrics
+
+| Metric | What it tells you |
+|--------|-------------------|
+| **Intent to delivery** | Time from first planning turn to PR merged — measures how fast ideas become shipped code |
+| **Design throughput** | Approved designs per period — measures your team's planning capacity |
+| **Design fidelity** | How closely shipped code matches the approved plan — measures execution accuracy |
+| **Review cycle time** | Review request to first decision — measures alignment speed |
+| **Exploration breadth** | Context branches per design — measures how thoroughly your team explores alternatives |
+| **Collaboration reach** | Unique contributors per design — measures cross-functional engagement |
+| **Knowledge currency** | Percentage of approved docs still current vs. code changes — measures doc freshness |
+| **Decision density** | Turns per design before approval — measures reasoning depth |

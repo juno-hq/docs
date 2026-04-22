@@ -38,24 +38,25 @@
             "pages": [
               "planspaces/overview",
               "planspaces/documents",
-              "planspaces/context-flows"
+              "planspaces/context-flows",
+              "planspaces/connected-sources"
             ]
           },
           {
-            "group": "Collaboration",
+            "group": "Teams",
             "pages": [
               "collaboration/comments",
               "collaboration/reviews",
               "collaboration/sharing",
-              "notifications"
+              "collaboration/notifications",
+              "collaboration/pulse"
             ]
           },
           {
             "group": "Developer Tools",
             "pages": [
               "developer-tools/cli",
-              "developer-tools/scott-ci",
-              "developer-tools/connected-sources"
+              "developer-tools/scott-ci"
             ]
           }
         ]
