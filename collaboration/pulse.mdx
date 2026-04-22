@@ -29,13 +29,11 @@ This relationship enables pull request reviews to move faster because high level
 
 ## Metrics
 
+Because intent and code are structurally linked, Pulse surfaces four metrics that traditional tools can't measure. These are grounded in operational data — not self-reported estimates.
+
 | Metric | What it tells you |
 |--------|-------------------|
-| **Intent to delivery** | Time from first planning turn to PR merged — measures how fast ideas become shipped code |
-| **Design throughput** | Approved designs per period — measures your team's planning capacity |
-| **Design fidelity** | How closely shipped code matches the approved plan — measures execution accuracy |
-| **Review cycle time** | Review request to first decision — measures alignment speed |
-| **Exploration breadth** | Context branches per design — measures how thoroughly your team explores alternatives |
-| **Collaboration reach** | Unique contributors per design — measures cross-functional engagement |
-| **Knowledge currency** | Percentage of approved docs still current vs. code changes — measures doc freshness |
-| **Decision density** | Turns per design before approval — measures reasoning depth |
+| **Intent coverage** | Percentage of shipped PRs backed by an approved plan. This is the adoption signal: are your teams aligning on intent before delegating to agents, or shipping without a plan? |
+| **Design fidelity** | How closely the shipped code matches the approved intent. Low fidelity means either the plan was ambiguous or the implementation drifted — both are actionable. |
+| **Rework rate** | How often a team revisits the intent after implementation starts. Research shows high-performing teams spend [22% less time on unplanned rework](https://dora.dev/concepts/wellbeing/). This metric tells you if intent review is actually reducing churn. |
+| **Review cycle time** | Time from review request to first decision. Measures how fast your team reaches alignment. Slow cycles indicate bottlenecks — Pulse surfaces who and where. |
