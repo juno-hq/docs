@@ -1,86 +1,100 @@
 ---
 title: "CLI"
-description: "Push and pull context between your terminal, coding agents and the Scott UI."
+description: "Push a coding-agent conversation to a Scott planspace from your terminal."
 ---
 
-The CLI captures branch state and recent agent conversations, and lets you push and pull context without leaving the terminal.
+The Scott CLI captures the live transcript of your coding-agent session — Claude Code or Codex — and publishes it to a planspace your team can review and iterate on.
 
 ## Install
 
-The install script sets up both the Scott AI desktop app and the CLI:
+The install script bootstraps the CLI, the Claude Code plugin, and (on macOS) the Scott desktop app:
 
 ```bash
 curl -fsSL https://tryscott.ai/install | sh
 ```
 
+You'll be asked which surfaces to install (CLI, desktop, or both) and prompted to confirm your early-access email. The CLI binary lands at `~/.local/bin/scott` and the plugin is wired into Claude Code automatically when `claude` is on your PATH.
+
 ## Commands
 
-### `scott init`
+### `scott login`
 
-Initialize Scott in your repository. This captures the context of your current working branch and detects recent conversations from supported agents (currently Claude Code and Codex).
+Authenticate the CLI by minting a scoped, revocable token tied to your Scott account. Opens a browser and runs through a loopback handshake; falls back to a paste flow with `--paste` if your environment can't open a browser.
 
 ```bash
-cd your-project
-scott init
+scott login
 ```
 
-After initialization, you can select which context to include before pushing.
+The token is written to `~/.config/scott/auth.json` (mode 0600). It's the same credential the MCP server and the Claude Code plugin read — so you only run `login` once per machine.
 
 ### `scott push`
 
-Push your selected context to a planspace. Scott lets you interactively choose which conversation context and branch state to capture.
+Publish the current conversation to a new planspace. The CLI prefers the live transcript on disk (`~/.claude/projects/...`) so the planspace gets verbatim wording.
 
 ```bash
 scott push
 ```
 
-After pushing, you receive links to both the **desktop app** and **web app** for the planspace.
+You'll get back a URL to open the planspace in the desktop or web app.
 
-### `scott pull`
-
-Pull the latest planspace state into your local environment. This auto-links the planspace head to your current git branch.
+Run with `--from-conversation` to force the literal-transcript path, or pipe markdown on stdin to publish a hand-composed doc:
 
 ```bash
-scott pull
+cat my-spec.md | scott push --title "Auth migration"
 ```
 
-This link is what enables [Scott CI](/developer-tools/scott-ci) — when you push your branch to GitHub, Scott CI knows which planspace and approved spec to connect the PR to. Always pull before starting implementation.
+### `scott revoke`
+
+Revoke this machine's CLI token and remove the local credential file.
+
+```bash
+scott revoke
+```
+
+If the local token can't self-revoke (CLI tokens can't manage CLI tokens — that's by design), the command will direct you to revoke from `https://app.tryscott.ai/settings?tab=cli`.
+
+### `scott logout`
+
+Forget the locally stored token without revoking it server-side. Useful for switching machines without invalidating CI credentials.
+
+```bash
+scott logout
+```
+
+### `scott mcp`
+
+Run the Scott MCP server over stdio. You usually don't invoke this directly — the Claude Code plugin spawns it automatically. Exposed for non-Claude MCP clients (Cursor, Codex, Devin) that want to wire `push_to_planspace` and `push_conversation_from_transcript` tools by hand.
 
 ## Typical workflow
 
 ```bash
-# Start a feature, init Scott in the repo
-cd my-project
-git checkout -b feature/auth-redesign
-scott init
+# One-time setup
+curl -fsSL https://tryscott.ai/install | sh
+# (the installer runs `scott login` for you at the end)
 
-# Select relevant context and push to Scott
+# In any project, after a Claude Code or Codex session
 scott push
-# → Opens planspace in browser/desktop with your context
-
-# Collaborate in Scott — iterate on the spec, get reviews
-
-# Pull the approved spec back to your branch
-scott pull
-
-# Implement and push to GitHub
-git add . && git commit -m "implement auth redesign"
-git push origin feature/auth-redesign
-# Scott CI auto-links the PR to the approved spec
+# → planspace URL; share with your team for review
 ```
+
+Inside Claude Code, "push this to Scott" triggers the bundled skill instead — same flow, just routed through the MCP tool.
 
 ## FAQ
 
 <AccordionGroup>
-  <Accordion title="What agent conversations does scott init detect?">
-    Currently Claude Code and Codex. The CLI looks for conversation artifacts in your local environment and presents them for selection.
+  <Accordion title="Where is the CLI token stored?">
+    `~/.config/scott/auth.json` (or `$XDG_CONFIG_HOME/scott/auth.json` if set), mode 0600. Override with the `SCOTT_TOKEN` environment variable for one-off / CI use.
+  </Accordion>
+
+  <Accordion title="What's the difference between scott logout and scott revoke?">
+    `logout` only deletes the local file — the token still works from any other machine that has it. `revoke` invalidates the token server-side as well, so a stolen laptop can't keep using it.
+  </Accordion>
+
+  <Accordion title="What conversation transcripts does push detect?">
+    Currently Claude Code (`~/.claude/projects/...`) and Codex. The CLI selects the most recent session in your current working directory; pass `--cwd <path>` to override.
   </Accordion>
 
   <Accordion title="Can I use the CLI without the desktop app?">
-    Yes. The CLI works independently. After `scott push`, you can use either the web app or desktop app.
-  </Accordion>
-
-  <Accordion title="Does scott pull modify my code?">
-    No. `scott pull` links the planspace to your branch — it does not write files or modify your working tree.
+    Yes. The CLI works on its own. Planspace links open in the web app at `https://app.tryscott.ai`.
   </Accordion>
 </AccordionGroup>
