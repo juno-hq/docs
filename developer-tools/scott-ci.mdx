@@ -15,15 +15,15 @@ Scott CI connects your pull requests back to the planspace that drove the work. 
 
 ```text
 planspace (approved spec)
-       ↓ scott pull
-   git branch (linked)
+       ↓ planspace URL in PR description / commit message
+   git branch
        ↓ git push
    pull request
        ↓ Scott CI
    auto-comment linking PR → approved spec
 ```
 
-When a pull request is opened on a branch linked via [`scott pull`](/developer-tools/cli):
+When you open a PR, Scott CI looks for a planspace URL in the PR description or commit messages. If it finds one:
 
 1. Scott CI detects the planspace association
 2. It traces back through the [context flow](/planspaces/context-flows) to the [approved version](/collaboration/reviews)
@@ -32,11 +32,15 @@ When a pull request is opened on a branch linked via [`scott pull`](/developer-t
    - A summary of the intent from the planspace
    - The review status (who approved, when)
 
+<Tip>
+  When `scott push` prints the planspace URL, paste it into your PR description (or include it in a commit message on the branch). Scott CI takes it from there.
+</Tip>
+
 ## FAQ
 
 <AccordionGroup>
-  <Accordion title="What if I didn't use scott pull?">
-    Scott CI only links PRs to planspaces when the connection was established via `scott pull`. You can retroactively link by running `scott pull` on the branch and pushing again.
+  <Accordion title="What if I didn't include a planspace URL?">
+    Scott CI only links PRs to planspaces when it can find a URL reference. Add the URL to the PR description (or amend a commit message) and re-push — Scott CI re-runs on PR updates.
   </Accordion>
 
   <Accordion title="Does Scott CI block merges?">
