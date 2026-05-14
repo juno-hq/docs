@@ -24,20 +24,25 @@ description: "Get started with Scott AI based on your role."
   </Accordion>
 
   <Accordion title="Desktop app + CLI (recommended for developers)" icon="terminal">
-    One command installs both the Scott AI desktop app and the `scott` CLI:
+    One command installs both the Scott AI desktop app and the `scott` CLI.
+    Zero dependencies — no Homebrew, no npm, no Node. The CLI is a single
+    self-contained binary; macOS and Linux are supported out of the box.
 
     ```bash
     curl -fsSL https://tryscott.ai/install | sh
     ```
 
-    After installing, sign in with Google or GitHub. The desktop app adds local sandbox execution and local folder access.
-
-    Initialize Scott in your repo:
+    After installing, get going in two commands:
 
     ```bash
-    cd your-project
-    scott init
+    scott login          # one-time browser auth
+    scott setup          # wires Scott into your coding agent
+                         # (Claude Code, Cursor, Codex, OpenCode, Gemini)
     ```
+
+    Then in any project, ask your coding agent to "push this conversation
+    to Scott" — `scott setup` drops the skills and rule that make agents
+    call `scott push` for you. The CLI prints a clickable planspace URL.
 
     See the full [CLI reference](/developer-tools/cli).
   </Accordion>
