@@ -3,15 +3,9 @@ title: "CLI"
 description: "Capture coding-agent sessions as planspaces and wire Scott into Claude Code, Cursor, Codex, OpenCode, and Gemini."
 ---
 
-The `scott` CLI is a single self-contained binary (~50MB). No Node, no Homebrew, no npm required.
-
 ## Install
 
-```bash
-curl -fsSL https://tryscott.ai/install | sh
-```
-
-Installs the binary at `/usr/local/bin/scott` (or `~/.scott/bin/scott` if `/usr/local/bin` isn't writable). macOS and Linux supported; Windows coming.
+See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
 
 ## Commands
 
@@ -23,13 +17,12 @@ Authenticates the CLI via your browser. Opens `app.tryscott.ai/auth/cli`, then r
 scott login
 ```
 
-Token is stored at `~/.scott/credentials.json` (mode 0600). Run once per machine.
-
 ### `scott setup`
 
-Wires Scott's skills, rule, and hosted MCP server entry into your coding agent. Run after `scott login`.
+Wires Scott's skills, rule, and hosted MCP server entry into your coding agent. A bare `scott setup` auto-detects installed agents. Pass flags when you want to target specific agents.
 
 ```bash
+scott setup                 # auto-detect agents
 scott setup --claude        # Set up for Claude Code
 scott setup --cursor        # Set up for Cursor
 scott setup --codex         # Set up for Codex
@@ -43,25 +36,6 @@ Multiple agents in one run:
 scott setup --claude --cursor
 ```
 
-By default this writes all three layers — skills + rule + MCP server entry. Flags:
-
-- `--no-mcp` — skip the hosted MCP server entry (write only skills + rule)
-- `--mcp-only` — write only the MCP server entry (skip skills + rule)
-- `--project` — configure for the current project instead of globally
-
-### `scott push`
-
-Captures the active Claude Code session in the current directory and creates a planspace from it. Zero flags — the command finds the session, parses the transcript with full attribution, and posts to Scott.
-
-```bash
-cd your-project              # in a Claude Code project
-scott push
-```
-
-The CLI prints the planspace URL on its own line for command-click. The auto-summary turn kicks off in the background; the planspace UI shows live progress.
-
-In practice you rarely run `scott push` directly. Once `scott setup` is done, ask your coding agent to "push this to Scott" — the skill loaded by `scott setup` makes the agent run `scott push` for you.
-
 ### `scott remove`
 
 Inverse of `scott setup`. Removes Scott's skills, rule, and MCP entry from the chosen agent without touching the rest of its config.
@@ -70,7 +44,7 @@ Inverse of `scott setup`. Removes Scott's skills, rule, and MCP entry from the c
 scott remove --claude
 ```
 
-Same `--no-mcp` / `--mcp-only` / `--project` flags as `setup`.
+Use `--skills-only` to leave the MCP entry in place, `--mcp-only` to remove only the MCP entry, or `--project` to operate on current-project config.
 
 ### `scott logout`
 
@@ -82,48 +56,5 @@ scott logout
 
 ## Typical workflow
 
-```bash
-# One-time setup
-curl -fsSL https://tryscott.ai/install | sh
-scott login
-scott setup --claude
+See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
 
-# Day-to-day: just use Claude Code normally.
-cd ~/some-project
-# (open Claude Code, have a conversation)
-
-# When you're ready to share or persist the work:
-# Ask the agent — "push this conversation to scott"
-# The agent runs scott push for you.
-# A planspace URL appears in the terminal. Command-click → planspace
-# opens in the browser with the conversation summary.
-```
-
-## FAQ
-
-<AccordionGroup>
-  <Accordion title="Do I need to install anything else?">
-    No. The CLI is a single self-contained binary. No Node, no Python, no Homebrew, no npm. macOS and Linux are supported on both Apple Silicon and Intel.
-  </Accordion>
-
-  <Accordion title="What agent transcripts does scott push detect?">
-    Claude Code today. Codex is wired into the skills layer (`scott setup --codex`) but transcript parsing for Codex is on the roadmap.
-  </Accordion>
-
-  <Accordion title="Can I use the CLI without the desktop app?">
-    Yes. The CLI works on its own — it talks to Scott over HTTPS. After `scott push`, open the printed URL in either the web app or the desktop app.
-  </Accordion>
-
-  <Accordion title="What does scott setup write?">
-    Per agent:
-    - A rule file (e.g. `.claude/rules/scott.md` for Claude Code)
-    - Two skills (`scott-push` and `scott-fetch`) so the agent knows when to call the CLI vs the MCP tools
-    - One MCP server entry pointing at `https://mcp.tryscott.ai/mcp` (skip with `--no-mcp`)
-
-    Run `scott remove --<agent>` to reverse it cleanly.
-  </Accordion>
-
-  <Accordion title="Where do credentials live?">
-    `~/.scott/credentials.json` (mode 0600, parent dir 0700). Cleared by `scott logout`.
-  </Accordion>
-</AccordionGroup>

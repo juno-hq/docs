@@ -20,13 +20,13 @@ Scott works best when teams align on intent before delegating to agents. Learn m
 
 ## Delegate
 
-- **Pull the plan into your branch.** Run `scott pull` to link the planspace to your git branch. This is what enables [Scott CI](/developer-tools/scott-ci) to trace the code back to the intent.
+- **Pull the plan into your agent thread.** Run `scott pull <planspace-url>` to load the planspace's documents, comments, commits, reviewer turns, and conversation context into your terminal. Use `--summary` when you only need the headline document and review context.
 - **Hand off to any agent.** Scott is unopinionated about how you build. Use the approved plan with Cursor, Claude Code, Devin, Copilot, or whatever agent your team prefers via the Scott MCP.
 
 ## Ship
 
-- **Push to GitHub.** Open a PR. [Scott CI](/developer-tools/scott-ci) automatically leaves a comment linking the PR to the approved planspace.
+- **Push to GitHub.** Include the planspace URL in your PR description or a commit message. [Scott CI](/developer-tools/scott-ci) leaves a comment linking the PR to the approved planspace.
 
 <Note>
-  **How we work at Scott.** We use planspaces for every feature that we think others would benefit from knowing about. The DRI creates the planspace, iterates with the agent, and shares it once there's a prototype \+ proposal worth reacting to. Reviews happen asynchronously. Some controversial plans go through 2-3 rounds of comments and one formal review before the DRI runs `scott pull` and delegates to agents.
+  **How we work at Scott.** We use planspaces for every feature that we think others would benefit from knowing about. The DRI creates the planspace, iterates with the agent, and shares it once there's a prototype \+ proposal worth reacting to. Reviews happen asynchronously. Some controversial plans go through 2-3 rounds of comments and one formal review before the DRI runs `scott pull <planspace-url>` and delegates to agents.
 </Note>
