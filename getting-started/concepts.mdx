@@ -9,7 +9,7 @@ Scott AI gives your team one place to plan intent, align on direction, and conne
 
 Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method):
 
-- **Review intent, not code** — as agents take over the responsibility of writing and reviewing code, the quality gate moves upstream to the plan
+- **Review requirements more often than code** — as agents take over the responsibility of writing and reviewing code, the quality gate moves upstream to the plan
 - **Prototype to decide** — the fastest way to resolve a design debate is to prove your perspective by building it
 - **Make context visible** — every engineer should see the full reasoning behind what's being built, including which parts came from an agent
 - **Stay unopinionated about everything else** — how you write code, which agents you use, how you structure your team: your call
@@ -18,7 +18,7 @@ Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method)
 
 **Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build — or push a prototype from your coding agent — and the agent generates a structured spec grounded in the context you provide. Plans contain code: code blobs, prototype references, and Mermaid diagrams are first-class planning content.
 
-**Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/developer-tools/connected-sources).
+**Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/planspaces/connected-sources).
 
 ## Align
 
@@ -28,11 +28,11 @@ Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method)
 
 ## Delegate
 
-The **CLI** bridges your local environment and your planspaces:
-
-- `scott init` — captures your current branch state and recent agent conversations
-- `scott push` — pushes selected context to a planspace
-- `scott pull` — links the planspace to your git branch
+Once your team is sufficiently aligned, you can pull the context back to a new session with all relevant team feedback to build with less token waste:
+```bash
+# In Claude Code, Codex, OpenCode, Cursor etc.
+"pull the project requirements from this planspace and start building -- https://app.tryscott.ai/workspace/xxxxxxx-8f6c-yyyyyy-9056-07d8ca0-zzzzz"
+```
 
 [Learn more](/developer-tools/cli).
 

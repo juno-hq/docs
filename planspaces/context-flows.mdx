@@ -35,14 +35,14 @@ Your original branch is untouched. You can switch between branches at any time.
 
 ## Using context flows with the CLI
 
-`scott pull` links your planspace's current branch tip to your local git branch. When you push to GitHub, [Scott CI](/developer-tools/scott-ci) traces the link back through the context flow to the [approved spec](/collaboration/reviews).
+`scott pull` fetches the current planspace context into your terminal or agent thread. When you are ready to ship, include the planspace URL in your PR description or a commit message so [Scott CI](/developer-tools/scott-ci) can trace the implementation back through the context flow to the [approved spec](/collaboration/reviews).
 
 ```bash
-scott pull
+scott pull https://app.tryscott.ai/workspace/9579e73f-8292-42ea-8d2f-5d390a8f867e
 claude "implement the plan provided by Scott"
 git add . && git commit -m "implement auth flow"
 git push origin feature/auth
-# Scott CI auto-links the PR to the approved spec
+# Add the planspace URL to the PR description so Scott CI can link it.
 ```
 
 ## FAQ
