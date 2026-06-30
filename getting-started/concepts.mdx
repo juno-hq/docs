@@ -16,7 +16,9 @@ Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method)
 
 ## Plan
 
-**Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build — or push a prototype from your coding agent — and the agent generates a structured spec grounded in the context you provide. Plans contain code: code blobs, prototype references, and Mermaid diagrams are first-class planning content.
+**Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build, or use `scott push` to turn one coding-agent session into a team-readable planspace. The agent generates a structured spec grounded in the context you provide. Plans contain code: code blobs, prototype references, and Mermaid diagrams are first-class planning content.
+
+**Sync Chat** is your personal entry point after `scott sync`. It lets you ask across recent local coding-agent sessions, identify themes, and decide which sessions deserve to become shared planspaces.
 
 **Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/planspaces/connected-sources).
 
@@ -28,7 +30,7 @@ Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method)
 
 ## Delegate
 
-Once your team is sufficiently aligned, you can pull the context back to a new session with all relevant team feedback to build with less token waste:
+Once your team is sufficiently aligned, you can pull the planspace context back to a new session with documents, comments, review feedback, commits, and conversation history:
 ```bash
 # In Claude Code, Codex, OpenCode, Cursor etc.
 "pull the project requirements from this planspace and start building -- https://app.tryscott.ai/workspace/xxxxxxx-8f6c-yyyyyy-9056-07d8ca0-zzzzz"
@@ -45,6 +47,7 @@ Once your team is sufficiently aligned, you can pull the context back to a new s
 | Term | Meaning |
 | --- | --- |
 | **Planspace** | A collaborative environment with a chat, versioned document, and context flow |
+| **Sync Chat** | The per-user chat over local agent history uploaded by `scott sync` |
 | **Version** | A turn that produced a document snapshot |
 | **Context flow** | The DAG of all versions and branches in a planspace |
 | **Branch** | A divergent path where someone explored a different direction |

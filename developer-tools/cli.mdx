@@ -1,13 +1,72 @@
 ---
 title: "CLI"
-description: "Capture coding-agent sessions as planspaces and wire Scott into Claude Code, Cursor, Codex, OpenCode, and Gemini."
+description: "Sync local agent history, push shareable planspaces, and pull reviewed context into execution."
 ---
 
 ## Install
 
 See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
 
+## The three core commands
+
+| Command | Best for | What it does |
+| --- | --- | --- |
+| `scott sync` | Onboarding and personal context | Uploads recent local coding-agent sessions from the last 14 days, starts a Sync Chat review, and opens the Sync view. |
+| `scott push` | Sharing with teammates | Captures the current coding-agent thread as a planspace with a generated sharing document. |
+| `scott pull <planspace-url>` | Execution handoff | Loads a planspace's documents, comments, commits, reviewer turns, and conversation context into a fresh agent thread. |
+
 ## Commands
+
+### `scott sync`
+
+Primary onboarding command. `scott sync` reads supported local agent history, uploads recent sessions to Scott as unsynthesized planspaces, starts a Sync Chat review, and prints the Sync view URL.
+
+```bash
+scott sync
+```
+
+Use it when:
+
+- You are setting up Scott for the first time.
+- You want Scott to understand your recent local work across coding agents.
+- You want to chat across all synced sessions in one place before deciding which work should become a team-facing planspace.
+
+Sync currently looks back 14 days and opens **For You → Sync** when it finishes.
+
+### `scott push`
+
+Fastest way to create a sharing document for your teammates. `scott push` captures the current coding-agent session, redacts likely secrets, creates or updates the matching planspace, generates a document, and prints the planspace URL on its own line.
+
+```bash
+scott push
+```
+
+Use it when:
+
+- One active agent thread needs teammate feedback.
+- You want a concrete planspace URL to share in Slack, Linear, a PR, or a review request.
+- You have a prototype or investigation that should become team context.
+
+You can also ask your coding agent:
+
+```text
+push this conversation to Scott so my teammates can review it
+```
+
+### `scott pull`
+
+Best way to bring reviewed team context back into execution. `scott pull` emits planspace context as markdown for your current terminal or agent thread.
+
+```bash
+scott pull https://app.tryscott.ai/workspace/9579e73f-8292-42ea-8d2f-5d390a8f867e
+```
+
+The default output includes documents, connected sources, commits, comments, reviewer turns, and the conversation chain. Use `--summary` when you only need the headline document and review context.
+
+```bash
+scott pull <planspace-url> --summary
+scott pull --list
+```
 
 ### `scott login`
 
@@ -56,5 +115,8 @@ scott logout
 
 ## Typical workflow
 
-See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
-
+1. Run `scott sync` after install so Scott has high-quality local context.
+2. Use Sync Chat to understand themes, priorities, and which sessions matter.
+3. Run `scott push` from a focused agent thread when you need a teammate-readable planspace.
+4. Review, comment, and approve the planspace with your team.
+5. Run `scott pull <planspace-url>` in a fresh agent thread to execute with the reviewed context.

@@ -41,8 +41,12 @@ Public planspaces are accessible at `tryscott.ai/share/{planspace-id}`.
 
 ## Sharing context via the CLI
 
-You can also share planspace context with teammates from the terminal:
+The fastest way to create a sharing document from active agent work is `scott push`:
 
-`scott push` prints a planspace URL on its own line. Share that URL with a teammate. They can open it in the browser, or run `scott pull <planspace-url>` to load the full planspace context into their local terminal or agent thread. See [CLI](/developer-tools/cli) for details.
+```bash
+scott push
+```
+
+Scott captures the current coding-agent thread, generates a planspace document, and prints the planspace URL on its own line. Share that URL with a teammate. They can open it in the browser to comment or review, or run `scott pull <planspace-url>` to load the full planspace context into their local terminal or agent thread. See [CLI](/developer-tools/cli) for details.
 
 Invited members receive a [notification](/collaboration/notifications) when added to a planspace.

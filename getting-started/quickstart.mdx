@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Get started with Scott AI based on your role."
+description: "Install Scott, sync your recent agent work, and share planspaces with your team."
 ---
 
 ## Get a quick overview
@@ -15,7 +15,22 @@ description: "Get started with Scott AI based on your role."
   </Card>
 </CardGroup>
 
-## Install
+## Start with Sync
+
+`scott sync` is the fastest way to onboard. It uploads your recent local coding-agent sessions from the last 14 days, opens the Sync Chat view, and starts an analysis of the work Scott can now see.
+
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+scott sync
+```
+
+After sync finishes, open the URL printed by the CLI. Scott will take you to **For You → Sync**, where you can ask across your recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions in one place.
+
+<Tip>
+  Run `scott sync` from your development machine, not from a hosted browser agent. The command reads local agent history before uploading the relevant context to Scott.
+</Tip>
+
+## Install Options
 
 <AccordionGroup>
 
@@ -24,30 +39,35 @@ description: "Get started with Scott AI based on your role."
   </Accordion>
 
   <Accordion title="Use Scott from your coding agent" icon="terminal">
-    Run the following command to install the `scott` terminal integration.
-    This curl command wires Scott to any detected coding agents, and opens a browser window for sign-in.
+    Run the following command to install the `scott` terminal integration. The installer wires Scott to any detected coding agents and opens a browser window for sign-in.
 
     ```bash
     curl -fsSL https://tryscott.ai/install | sh
     ```
 
-    After install, use the Scott terminal integration in any coding agent by saying somethig like: 
-    
+    Then run the primary onboarding command:
+
+    ```bash
+    scott sync
+    ```
+
+    To turn one active coding-agent thread into a planspace for team review, say something like:
+
     ```bash
     # In Claude Code, Codex, OpenCode, Cursor etc.
     "push this conversation to Scott"
     ```
 
-    Your agent will prepare the context in a form optimized for sharing with your team,
-    and push to Scott so that you can collaborate on the ideas with your team in the UI.
-    
+    Your agent will prepare the context in a form optimized for sharing, then run `scott push`. Scott prints a planspace URL you can share with teammates.
+
     Once your team is sufficiently aligned, you can pull the context back to a new session with all relevant team feedback:
+
     ```bash
     # In Claude Code, Codex, OpenCode, Cursor etc.
     "pull the project requirements from this planspace and start building -- https://app.tryscott.ai/workspace/xxxxxxx-8f6c-yyyyyy-9056-07d8ca0-zzzzz"
     ```
 
-    Under the hood, Scott uses skills, an mcp and a CLI to integrate with the UI.
+    Under the hood, Scott uses skills, an MCP, and the CLI to integrate with your agent and the UI.
     If the installer cannot detect your coding agent automatically, you can manually complete the setup with this command:
 
     ```bash
@@ -65,15 +85,15 @@ description: "Get started with Scott AI based on your role."
 
 <AccordionGroup>
   <Accordion title="I'm setting up for my team" icon="users">
-    1. **Create an account** — see [Install](#install) above. The browser app is recommended for PMs and designers; and you can install a CLI so developers can interact from scott from their coding agent.
-    2. **Create a planspace** — name your [planspace](/planspaces/overview) after your next big idea that you have been thinking about
-    3. **Attach context** — [connect](/planspaces/connected-sources) your GitHub repo, upload docs, or point to a local folder so the agent can ground its output in your codebase
-    4. **Describe what you want to build** — start with a rough prototype from your coding agent, or describe the intent from scratch
-    5. **Invite your team to review** — when the idea is more fleshed out, [request reviews](/collaboration/reviews) from your team
-    6. **Iterate** — as with all good ideas, iteration and collaboration refines the idea into something great
+    1. **Install Scott** — see [Start with Sync](#start-with-sync) above.
+    2. **Run `scott sync`** — bring recent local agent sessions into Scott so the team has high-quality context on day one.
+    3. **Use Sync Chat** — ask what has been happening, which threads matter, and which sessions should become planspaces.
+    4. **Push a focused thread** — run `scott push` when one session should become a sharing document for teammates.
+    5. **Invite your team to review** — use comments and [reviews](/collaboration/reviews) to converge on the plan.
+    6. **Pull for execution** — run `scott pull <planspace-url>` from a fresh agent thread when it is time to build with the approved context.
 
     <Tip>
-      Start with a real project your team is about to begin. The best way to evaluate Scott is with a plan that actually matters.
+      Start by syncing real work. The best first experience is asking Scott about the actual agent sessions your team already ran.
     </Tip>
 
     **Next steps:** [Sharing](/collaboration/sharing) · [Reviews](/collaboration/reviews) · [Making the most of Scott AI](/getting-started/making-the-most)
@@ -81,9 +101,10 @@ description: "Get started with Scott AI based on your role."
 
   <Accordion title="I'm evaluating Scott AI" icon="eye">
     1. **Read The Scott Method** at [tryscott.ai/method](https://tryscott.ai/method)
-    2. **Set up for your team** see [I'm setting up for my team](#im-setting-up-for-my-team) above
-    3. **Read measuring Scott impact** — [Pulse](/collaboration/pulse)
-    4. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs
+    2. **Install the CLI and run `scott sync`** so Scott can analyze real local agent history.
+    3. **Push one session for review** with `scott push`, then share the planspace URL with teammates.
+    4. **Pull the reviewed context into execution** with `scott pull <planspace-url>`.
+    5. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs.
 
     **Next steps:** [For You](/collaboration/notifications) · [Scott CI](/developer-tools/scott-ci) · [Making the most of Scott AI](/getting-started/making-the-most)
   </Accordion>
