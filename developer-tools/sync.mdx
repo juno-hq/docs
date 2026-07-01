@@ -1,0 +1,64 @@
+---
+title: "Sync"
+description: "Run scott sync to onboard Scott with recent local coding-agent history."
+---
+
+`scott sync` is the primary onboarding action for the Scott agent plugin. From your development machine, run:
+
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+scott sync
+```
+
+The installer sets up the Scott plugin for detected coding agents. Then `scott sync` reads recent local coding-agent sessions, uploads the relevant context to Scott, starts a Sync Chat review, and opens `/sync`.
+
+<Tip>
+  Install plus `scott sync` is the exception to the agent-first workflow. Push and pull should stay agent-invoked because they depend on the active thread context.
+</Tip>
+
+## What sync does
+
+1. Finds supported local agent session history
+2. Uploads recent sessions from the last 14 days
+3. Creates unsynthesized planspaces that Scott can reason over
+4. Starts a Sync Chat review of recent themes and priorities
+5. Prints a URL to `/sync`
+
+Run sync from the development machine where the agent sessions happened. Hosted browser agents cannot read your local history.
+
+## What to ask Sync Chat
+
+After sync finishes, ask questions like:
+
+```text
+What have I been working on lately?
+```
+
+```text
+Which of these sessions should become team-facing planspaces?
+```
+
+```text
+What patterns or repeated ideas do you see across my recent agent work?
+```
+
+```text
+Write up the strongest prototype as a planspace for team review.
+```
+
+## Add code context
+
+Sync Chat works from session history by default. For code-aware answers, connect repositories with the [Scott GitHub App](/planspaces/connected-sources).
+
+## When to run sync again
+
+Run `scott sync` whenever you want Scott to refresh its view of local agent work:
+
+- after a day of active agent sessions
+- before planning what to share with the team
+- before a design review or sprint planning meeting
+- when switching machines or agents
+
+## Sync vs push
+
+Use `scott sync` to onboard broad recent history. Use [Push](/developer-tools/push) when one current thread is ready to become a team-readable planspace.

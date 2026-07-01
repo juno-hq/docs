@@ -1,32 +1,16 @@
 ---
-title: "Making the most of Scott AI"
-description: "How to get the best results from Scott AI across the full development lifecycle."
+title: "Daily workflow"
+description: "How teams use Scott every day: sync, push, review, pull, and link PRs."
 ---
 
-Scott works best when teams align on intent before delegating to agents. Learn more about our philosophy in [The Scott Method](https://tryscott.ai/method).
+<Info>
+  This page has moved into the main sections: [Teams](/planspaces/overview), [Scott agent plugin](/developer-tools/cli), and [Scott GitHub App](/developer-tools/github-app).
+</Info>
 
-## Plan
+## The loop
 
-- **Start and iterate with prototypes, not just documents.** Use your coding agent to build something rough, then run `scott push` to bring that context into a planspace. A working prototype resolves more unknowns than a paragraph of speculation. Use the Scott MCP to use Scott context in agent runtimes. 
-- **Attach relevant sources.** Connect your GitHub repo and reference docs so the agent generates specs grounded in your actual codebase.
-- **Include code in your plan.** Code blobs and prototype references are first-class content. Plans with implementation snippets give reviewers and agents concrete material to react to.
-
-## Align
-
-- **Share early.** The DRI creates the planspace, iterates with the agent, and shares with the team once there's a code grounded proposal is ready.
-- **Use comments for specifics.** [Inline comments](/collaboration/comments) are anchored to text in the document. Use them for targeted feedback.
-- **Fork to explore alternatives.** [Branch off](/planspaces/context-flows) from an earlier version, try a different direction, and let the team compare working prototypes.
-- **Request reviews when aligned.** [Reviews](/collaboration/reviews) create a formal approval record. Request a review once the planspace has a prototype and at least one round of comment-driven iteration.
-
-## Delegate
-
-- **Pull the plan into your agent thread.** Run `scott pull <planspace-url>` to load the planspace's documents, comments, commits, reviewer turns, and conversation context into your terminal. Use `--summary` when you only need the headline document and review context.
-- **Hand off to any agent.** Scott is unopinionated about how you build. Use the approved plan with Cursor, Claude Code, Devin, Copilot, or whatever agent your team prefers via the Scott MCP.
-
-## Ship
-
-- **Push to GitHub.** Include the planspace URL in your PR description or a commit message. [Scott CI](/developer-tools/scott-ci) leaves a comment linking the PR to the approved planspace.
-
-<Note>
-  **How we work at Scott.** We use planspaces for every feature that we think others would benefit from knowing about. The DRI creates the planspace, iterates with the agent, and shares it once there's a prototype \+ proposal worth reacting to. Reviews happen asynchronously. Some controversial plans go through 2-3 rounds of comments and one formal review before the DRI runs `scott pull <planspace-url>` and delegates to agents.
-</Note>
+1. Run [`scott sync`](/developer-tools/sync) from your development machine so Scott can understand recent local agent work.
+2. Ask your coding agent to [push](/developer-tools/push) when a focused thread should become a team-readable planspace.
+3. Use [comments](/collaboration/comments), [reviews](/collaboration/reviews), and [sharing](/collaboration/sharing) to align the team.
+4. Ask your next coding agent to [pull](/developer-tools/pull) when a reviewed planspace is ready for execution.
+5. Use the [Scott GitHub App](/developer-tools/github-app) to connect pull requests back to the planspaces that shaped the work.

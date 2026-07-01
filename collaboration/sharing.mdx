@@ -1,48 +1,71 @@
 ---
 title: "Sharing"
-description: "Share planspaces with your team or publish read-only public links."
+description: "Share planspaces for collaboration, review, or handoff."
 ---
+
+Sharing is how a planspace becomes team context. You can invite people to collaborate, request a formal review, send the document to someone, or share a public read-only link.
+
+## Share intents
+
+The share modal supports three common intents:
+
+| Intent | Use it for |
+| --- | --- |
+| Collaborate | Add teammates who should edit, comment, or follow the planspace |
+| Review | Ask specific people to approve or reject a document version |
+| Send to | Send context to someone without changing the core collaboration setup |
 
 ## Invite members
 
-1. Open the planspace and click **Share** in the top bar
-2. Enter a teammate's email address
-3. Select their role: **Editor**, **Commenter**, or **Viewer**
-4. Send the invite
+1. Open the planspace
+2. Click **Share**
+3. Choose **Collaborate**
+4. Add teammates by name or email
+5. Select their role and send the invite
 
-Invited members receive a notification and can access the planspace immediately after accepting.
+Invited members receive a notification and can access the planspace after accepting.
 
-## Manage members
+## Request review from Share
 
-From the Share modal, you can:
+Use **Review** when the plan is ready for approval.
 
-- **Change roles** — promote or demote existing members
-- **Remove members** — revoke access for a specific person
-- **Revoke pending invites** — cancel invites that haven't been accepted
+1. Open the document version you want reviewed
+2. Click **Share**
+3. Choose **Review**
+4. Select reviewers
+5. Add a focus note
+6. Send the request
 
-Only planspace **Owners** can manage members and roles.
+See [Reviews and approvals](/collaboration/reviews) for reviewer states and approval behavior.
 
-## Roles
+## Share from your agent
 
-| Role | Send messages | Edit document | Comment | View | Manage members |
-|------|:---:|:---:|:---:|:---:|:---:|
-| **Owner** | Yes | Yes | Yes | Yes | Yes |
-| **Editor** | Yes | Yes | Yes | Yes | No |
-| **Commenter** | No | No | Yes | Yes | No |
-| **Viewer** | No | No | No | Yes | No |
+The fastest way to create a shareable planspace is to ask the Scott plugin to [push](/developer-tools/push) from the coding-agent thread where the work happened:
+
+`# from claude code, codex, gemini, opencode, etc`
+
+```text
+Push this conversation to Scott so my teammates can review it.
+```
+
+Scott captures the current coding-agent thread, generates a planspace document, and prints the planspace URL. Share that URL in Slack, Linear, a design review, or a pull request.
 
 ## Public links
 
-Toggle **Make public** in the Share modal to generate a read-only link. Anyone with the link can view the document and its version history without signing in.
+Toggle **Make public** in the Share modal to generate a read-only link.
 
-Public planspaces are accessible at `tryscott.ai/share/{planspace-id}`.
+<Info>
+  Public links are read-only. Viewers cannot comment, edit, or see private comments. To collaborate, invite members directly.
+</Info>
 
-<Info>Public links are read-only. Viewers cannot comment, edit, or see private comments. To collaborate, invite members directly.</Info>
+## Pulling shared context
 
-## Sharing context via the CLI
+When a planspace is ready for execution, start a fresh coding-agent thread and ask it to pull from Scott:
 
-You can also share planspace context with teammates from the terminal:
+`# from claude code, codex, gemini, opencode, etc`
 
-`scott push` prints a planspace URL on its own line. Share that URL with a teammate. They can open it in the browser, or run `scott pull <planspace-url>` to load the full planspace context into their local terminal or agent thread. See [CLI](/developer-tools/cli) for details.
+```text
+Pull from Scott using this planspace and start building: https://app.tryscott.ai/workspace/...
+```
 
-Invited members receive a [notification](/collaboration/notifications) when added to a planspace.
+This loads the document, comments, review state, and available implementation context into your coding agent.

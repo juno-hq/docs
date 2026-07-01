@@ -1,60 +1,93 @@
 ---
-title: "CLI"
-description: "Capture coding-agent sessions as planspaces and wire Scott into Claude Code, Cursor, Codex, OpenCode, and Gemini."
+title: "Scott agent plugin"
+description: "Use Scott from your coding agent: sync, push, pull, and setup."
 ---
+
+The Scott agent plugin is the bridge between local coding-agent work and team context in Scott. It bundles agent skills with local `scott` commands. Install and sync start from your terminal; push and pull happen from Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported agent thread where the work is happening.
+
+Use it for three daily jobs:
+
+| Plugin action | Daily job |
+| --- | --- |
+| [Sync](/developer-tools/sync) | Manually onboard Scott with recent local agent history and open Sync Chat |
+| [Push](/developer-tools/push) | Turn the current agent thread into a shareable planspace |
+| [Pull](/developer-tools/pull) | Bring reviewed planspace context into a fresh agent session |
 
 ## Install
 
-See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
+From your development machine, run:
 
-## Commands
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+scott sync
+```
 
-### `scott login`
+The installer signs you in, wires Scott into detected coding agents, and sets up the hosted MCP connection where supported. `scott sync` reads recent local agent history and opens `/sync`.
 
-Authenticates the CLI via your browser. Opens `app.tryscott.ai/auth/cli`, then receives the session token over a local loopback so it never leaves your machine via any third party.
+<Tip>
+  Install plus `scott sync` is the manual getting-started step. After that, invoke push and pull from your coding agent because they depend on the active thread context.
+</Tip>
+
+If you need manual terminal setup, run:
+
+```bash
+scott setup --claude   # or --cursor, --codex, --opencode, --gemini
+```
+
+See [Setup](/developer-tools/setup) for agent-specific details.
+
+## The daily loop
+
+1. **Sync** local agent history from your terminal so Scott has useful context.
+2. **Push** focused threads when a prototype, proposal, or design direction needs team feedback.
+3. **Review** the planspace with comments and approvals in the Scott app.
+4. **Pull** the reviewed context into the next agent session when it is time to execute.
+5. **Link** the pull request back to one or more planspaces with the [Scott GitHub App](/developer-tools/github-app).
+
+## Agent prompts
+
+After manual install and sync, invoke push and pull from the coding agent session where the work is happening:
+
+`# from claude code, codex, gemini, opencode, etc`
+
+```text
+Push this conversation to Scott so my team can review the design.
+```
+
+`# from claude code, codex, gemini, opencode, etc`
+
+```text
+Pull the context from this planspace and start implementation: https://app.tryscott.ai/workspace/...
+```
+
+## Command reference
+
+<CardGroup cols={2}>
+  <Card title="Sync" icon="refresh-cw" href="/developer-tools/sync">
+    Upload recent local agent sessions and start Sync Chat.
+  </Card>
+
+  <Card title="Push" icon="upload" href="/developer-tools/push">
+    Create a shareable planspace from the current agent thread.
+  </Card>
+
+  <Card title="Pull" icon="download" href="/developer-tools/pull">
+    Load reviewed planspace context back into execution.
+  </Card>
+
+  <Card title="Setup" icon="settings" href="/developer-tools/setup">
+    Configure Scott for Claude Code, Cursor, Codex, OpenCode, Gemini, and other agents.
+  </Card>
+</CardGroup>
+
+## Terminal maintenance commands
 
 ```bash
 scott login
-```
-
-### `scott setup`
-
-Wires Scott's skills, rule, and hosted MCP server entry into your coding agent. A bare `scott setup` auto-detects installed agents. Pass flags when you want to target specific agents.
-
-```bash
-scott setup                 # auto-detect agents
-scott setup --claude        # Set up for Claude Code
-scott setup --cursor        # Set up for Cursor
-scott setup --codex         # Set up for Codex
-scott setup --opencode      # Set up for OpenCode
-scott setup --gemini        # Set up for Gemini CLI
-```
-
-Multiple agents in one run:
-
-```bash
-scott setup --claude --cursor
-```
-
-### `scott remove`
-
-Inverse of `scott setup`. Removes Scott's skills, rule, and MCP entry from the chosen agent without touching the rest of its config.
-
-```bash
-scott remove --claude
-```
-
-Use `--skills-only` to leave the MCP entry in place, `--mcp-only` to remove only the MCP entry, or `--project` to operate on current-project config.
-
-### `scott logout`
-
-Clears the stored credentials at `~/.scott/credentials.json`.
-
-```bash
 scott logout
+scott remove --claude
+scott remove --mcp-only
+scott remove --skills-only
 ```
 
-## Typical workflow
-
-See the [Quickstart](/getting-started/quickstart) for instructions on how to install the Scott terminal integration.
-
+Use `scott remove` to undo agent integration without deleting your Scott planspaces.

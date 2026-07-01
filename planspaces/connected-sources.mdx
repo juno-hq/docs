@@ -1,45 +1,53 @@
 ---
-title: "Connected sources"
-description: "Attach GitHub repos, files, and folders as context for the agent."
+title: "Code context"
+description: "Use the Scott GitHub App to make repository context available to Sync Chat and planspaces."
 ---
 
-Connected sources give the agent access to your existing code, docs, and files so it can generate specs grounded in your actual codebase.
+Code context is supporting setup for the Scott GitHub App. It lets Scott answer and review with awareness of your actual repositories instead of only the text in an agent session or planspace.
 
-## Source types
+Use code context when:
 
-### GitHub repositories
+- Sync Chat needs to explain a pattern across recent code work
+- a planspace needs architecture-aware recommendations
+- reviewers need to verify a proposal against the current repo
+- a pulled planspace should give an agent context that matches the codebase
 
-Connect a repo and select specific branches. The agent reads the repository contents to understand your codebase structure and patterns.
+## Connect GitHub
 
-1. Click **Add source** in the planspace
-2. Select **GitHub**
-3. Choose the repository and branch
+1. Click **Connect repo** from Sync Chat or the planspace composer
+2. Install the Scott GitHub App for the GitHub account or organization you want Scott to read from
+3. We recommend granting access to all repositories; limiting access can cap answer quality when relevant context lives outside one repo
 
-<Info>You'll need to authorize Scott's GitHub integration the first time. This is a one-time setup per GitHub account.</Info>
+<Info>
+  Scott is SOC 2 compliant. We do not persist repository contents. We fetch code only into ephemeral sandboxes when an answer needs it, and if you remove GitHub access Scott can no longer fetch that code.
+</Info>
 
-### Uploaded files
+After installation, the repositories you granted access to appear in Scott's repo picker.
 
-Upload files directly — PDFs, design specs, architecture docs, code snippets.
+## Select repositories and branches
 
-1. Click **Add source** and select **Files**
-2. Drag and drop or browse for files
+When you attach a repository, Scott records the repository and branch selection for that Sync Chat turn or planspace. Use the branch that best represents the code your proposal depends on.
 
-### Local folders (desktop app only)
+For example:
 
-Point the agent at a directory on your machine.
+- use `main` for product or architecture context
+- use a feature branch when a prototype already exists
+- use a migration branch when reviewing rollout or compatibility risk
 
-1. Click **Add source** and select **Local folder**
-2. Select the directory
+## Uploaded files
 
-### Google Drive (browser only)
+You can also upload files directly, such as PDFs, design specs, architecture docs, or code snippets.
 
-Connect documents from your Google Drive as reference material.
+1. Click **Add source** or the source picker
+2. Choose **Files**
+3. Drag and drop or browse for files
 
-1. Click **Add source** and select **Google Drive**
-2. Authorize access and select documents
+## Access changes
 
-## Refresh sources
+If a repository does not appear, reopen **Connect repo** and update repository access on the Scott GitHub App installation.
 
-If your code has changed since you attached a source, click **Refresh** to pull in the latest state.
+If access is removed in GitHub, Scott can no longer fetch that repository. Existing planspace documents and comments remain, but future code-aware answers cannot use removed code.
 
-Sources are attached when you [create a planspace](/planspaces/overview).
+## Code context vs PR design review
+
+Code context helps Scott answer questions, write better plans, and run stronger PR reviews. [PR design review](/developer-tools/scott-ci) is the primary GitHub App workflow that links implementation work back to planspaces after a pull request is opened or updated.

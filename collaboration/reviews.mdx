@@ -1,39 +1,55 @@
 ---
-title: "Reviews"
-description: "Request reviews on your spec, approve designs, and track decisions."
+title: "Reviews and approvals"
+description: "Request feedback and approval on a specific planspace document version."
 ---
 
-Reviews bring a pull-request-style approval flow to your specs. Reviews are tied to a specific version of the document — reviewers see exactly which version you want feedback on.
+Reviews bring an approval workflow to design intent. Instead of waiting for code review to discover misalignment, a team can approve the plan while it is still cheap to change.
+
+Reviews are attached to a specific document version. Reviewers see the exact content they are approving, including comments and relevant context.
+
+## When to request a review
+
+Request a review when:
+
+- the planspace has a clear proposal or prototype direction
+- open comments have been answered or intentionally left as decisions for reviewers
+- the author wants a formal approval before delegating implementation
+- a PR will later need to link back to the approved design intent
 
 ## Request a review
 
-Request a review once the planspace has a prototype and at least one round of [comment](/collaboration/comments)-driven iteration.
+1. Open the planspace version you want reviewed
+2. Click **Share**
+3. Choose **Review**
+4. Select one or more reviewers
+5. Add a short note about what they should focus on
+6. Send the request
 
-1. Navigate to the version you want reviewed
-2. Click **Request review** in the top bar or sidebar
-3. Select one or more reviewers from the planspace members
-4. Add an optional message explaining what you'd like feedback on
-5. Submit the request
+Reviewers receive the request in [For You](/collaboration/notifications).
 
-Reviewers receive a notification in their [For You](/collaboration/notifications) inbox with a direct link to the version.
+## Reviewer states
 
-## Submit a review decision
+| State | Meaning |
+| --- | --- |
+| Pending | The reviewer has not engaged yet |
+| In progress | The reviewer is reading, commenting, or discussing |
+| Approved | The reviewer agrees with this version |
+| Rejected | The reviewer requested changes |
 
-1. Open the planspace from the notification or your **Reviews** tab in [For You](/collaboration/notifications)
-2. Read the document version and any comments
-3. Click **Approve** or **Request changes**
-4. Add a comment with your feedback
-5. Submit your decision
+Reviewers can approve, reject, or withdraw their decision if they need to reopen the review.
 
-## Review states
+## Agent-assisted design review
 
-| Status | Meaning |
-|--------|---------|
-| **Open** | Review is pending — waiting for reviewer decisions |
-| **Approved** | All reviewers have approved |
-| **Changes requested** | One or more reviewers requested changes |
-| **Closed** | Author closed the review (superseded or no longer needed) |
+Scott can also request review from agent reviewers in supported environments. Agent reviewers are useful for architecture checks, edge cases, security questions, or consistency with connected source context.
 
-## Reviews and Scott CI
+Human approvals still matter. Agent review is a way to broaden coverage and catch issues earlier, not a replacement for team ownership.
 
-When a review is **approved**, that version becomes the trusted reference point. [Scott CI](/developer-tools/scott-ci) links pull requests back to the approved version, confirming that the implementation matches the signed-off intent.
+## Approval and execution
+
+An approved version becomes the trusted reference for execution:
+
+- [Pull](/developer-tools/pull) can load the reviewed context into a fresh agent thread
+- [Scott GitHub App](/developer-tools/scott-ci) can link pull requests back to the approved plan
+- the team can compare what shipped against what was approved
+
+That is the shift Scott is designed for: review design intent before the diff, then use the diff to verify execution.

@@ -1,0 +1,55 @@
+---
+title: "Scott GitHub App"
+description: "Review pull requests against planspace design intent and keep execution context updated."
+---
+
+The Scott GitHub App connects pull requests to the planspaces that shaped the work. Its main value is PR design review: Scott checks whether implementation matches the linked design intent, flags unexpected drift, and feeds accepted execution decisions back into the document set.
+
+It supports three related workflows:
+
+1. **PR design review** - link pull requests to planspaces and review implementation against original design intent.
+2. **Document OS feedback** - update planspace context when code intentionally diverges and lands.
+3. **Code context** - make repositories available when Sync Chat or a planspace needs code-aware answers.
+
+## Install paths
+
+There are two common install moments:
+
+- Install the Scott GitHub App from team settings when your organization wants PR linking and design review.
+- Click **Connect repo** from Sync Chat or a planspace when you need code context.
+
+In both cases, we recommend granting access to all repositories. Limiting access can cap answer quality when relevant context lives outside one repo.
+
+<Info>
+  Scott is SOC 2 compliant. Scott does not persist repository contents. It fetches code only into ephemeral sandboxes when an answer or review needs it. If you remove GitHub access, Scott can no longer fetch that code.
+</Info>
+
+## What the app enables
+
+| Capability | Why it matters |
+| --- | --- |
+| PR linking | Pull requests can point back to one or more planspace URLs |
+| Agent-assisted review | Scott can compare implementation against the design intent the team reviewed |
+| Execution feedback | Accepted deviations and landed code update the context around what actually shipped |
+| Repository context | Sync Chat and planspaces can answer with awareness of your actual codebase |
+| Branch selection | Authors can attach the branch relevant to a proposal or implementation plan |
+
+## Recommended organization setup
+
+1. Open team settings in Scott
+2. Install the Scott GitHub App for your GitHub organization
+3. Grant access to all repositories where Scott should reason about context or review PRs
+4. Ask teams to add planspace URLs to PR descriptions or commit messages
+5. Use Scott comments and PR links to keep design intent and execution connected
+
+## Where to go next
+
+<CardGroup cols={2}>
+  <Card title="PR design review" icon="git-pull-request" href="/developer-tools/scott-ci">
+    Link PRs to planspaces and review implementation against approved intent.
+  </Card>
+
+  <Card title="Code context" icon="paperclip" href="/planspaces/connected-sources">
+    Connect repositories for Sync Chat, planspace answers, and stronger PR reviews.
+  </Card>
+</CardGroup>
