@@ -1,19 +1,19 @@
 ---
 title: "Push"
-description: "Use scott push to turn an active agent thread into a shareable planspace."
+description: "Ask the Scott plugin to turn an active agent thread into a shareable planspace."
 ---
 
-`scott push` is the fastest way to create a sharing document from work already happening in a coding agent.
+Push is the fastest way to create a sharing document from work already happening in a coding agent. From the active Claude Code, Codex, Cursor, OpenCode, Gemini, or other supported agent thread, paste:
 
-```bash
-scott push
+```text
+Push this conversation to Scott so my teammates can review it.
 ```
 
-Run it when a thread has become a prototype, design direction, investigation, or proposal that deserves team feedback.
+Use it when a thread has become a prototype, design direction, investigation, or proposal that deserves team feedback.
 
 ## What push creates
 
-`scott push` captures the current coding-agent session and creates or updates a matching planspace. Scott generates a document, preserves the conversation context, redacts likely secrets, and prints the planspace URL on its own line.
+The Scott plugin captures the current coding-agent session and creates or updates a matching planspace. Scott generates a document, preserves the conversation context, redacts likely secrets, and prints the planspace URL on its own line.
 
 That URL is the shareable artifact. Send it to teammates, add it to Linear, paste it in Slack, or include it in a PR description.
 
@@ -25,7 +25,7 @@ You can ask your coding agent:
 Push this conversation to Scott so my teammates can review the design direction.
 ```
 
-Scott's installed skill asks what kind of feedback you want and who the audience is, then runs `scott push`.
+Scott's installed skill asks what kind of feedback you want and who the audience is, then runs the push workflow.
 
 ## Daily use
 
@@ -50,4 +50,4 @@ Good push candidates include:
 
 ## Push vs direct app creation
 
-Create a planspace in the app when you want to start from a blank prompt. Use `scott push` when the most valuable context is already in your coding-agent thread.
+Create a planspace in the app when you want to start from a blank prompt. Use the Scott plugin's push action when the most valuable context is already in your coding-agent thread.

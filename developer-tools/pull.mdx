@@ -1,12 +1,12 @@
 ---
 title: "Pull"
-description: "Use scott pull to bring reviewed planspace context back into execution."
+description: "Ask the Scott plugin to bring reviewed planspace context back into execution."
 ---
 
-`scott pull` loads a planspace into your terminal or coding-agent thread as execution context.
+Pull loads a planspace into a fresh coding-agent thread as execution context. Start Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported agent where you want to execute, then paste:
 
-```bash
-scott pull https://app.tryscott.ai/workspace/9579e73f-8292-42ea-8d2f-5d390a8f867e
+```text
+Pull from Scott using this planspace and start building: https://app.tryscott.ai/workspace/9579e73f-8292-42ea-8d2f-5d390a8f867e
 ```
 
 Use it when a planspace has enough team alignment to guide implementation.
@@ -23,10 +23,10 @@ The default pull output includes:
 - commits and PR context when available
 - conversation history needed to understand the plan
 
-Use `--summary` when you only need the headline document and review state:
+When you only need the headline document and review state, ask your agent for a summary-only pull:
 
-```bash
-scott pull <planspace-url> --summary
+```text
+Pull a summary from Scott for this planspace: https://app.tryscott.ai/workspace/...
 ```
 
 ## Agent prompt
@@ -47,8 +47,8 @@ Pull the project requirements from this planspace and start building: https://ap
 
 ## Listing recent planspaces
 
-```bash
-scott pull --list
+```text
+List my recent Scott planspaces so I can choose which one to pull.
 ```
 
 Use this when you know the work exists in Scott but do not have the URL handy.

@@ -45,7 +45,7 @@
             ]
           },
           {
-            "group": "Scott CLI",
+            "group": "Scott agent plugin",
             "pages": [
               "developer-tools/cli",
               "developer-tools/sync",

@@ -7,7 +7,7 @@ description: "Install Scott, sync recent agent work, and learn the daily team wo
 
 <CardGroup cols={2}>
   <Card title="Core concepts" icon="compass" href="/getting-started/concepts">
-    Sync Chat, planspaces, reviews, approvals, the CLI, and the GitHub App.
+    Sync Chat, planspaces, reviews, approvals, the Scott agent plugin, and the GitHub App.
   </Card>
 
   <Card title="The Scott Method" icon="book-open" href="https://tryscott.ai/method">
@@ -17,14 +17,17 @@ description: "Install Scott, sync recent agent work, and learn the daily team wo
 
 ## Start with Sync
 
-`scott sync` is the fastest way to onboard. It uploads recent local coding-agent sessions, opens `/sync`, and starts an analysis of what Scott can now see.
+Sync is the fastest way to onboard. Open Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported coding agent on your development machine and paste:
 
-```bash
-curl -fsSL https://tryscott.ai/install | sh
-scott sync
+```text
+Install Scott AI and run sync so Scott can understand my recent local agent work.
 ```
 
-After sync finishes, open the URL printed by the CLI. Scott will take you to `/sync`, where you can ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
+The Scott plugin installs the needed skill and command support, reads recent local coding-agent sessions, and opens `/sync`. After sync finishes, open the URL Scott prints and ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
+
+<Tip>
+  Power users can also run sync directly from a local terminal with `curl -fsSL https://tryscott.ai/install | sh` and `scott sync`. Agent invocation is the default path, and push/pull should stay agent-invoked because they depend on the active thread context.
+</Tip>
 
 Learn more in [Sync](/developer-tools/sync).
 
@@ -82,8 +85,8 @@ Learn more in [Scott GitHub App](/developer-tools/github-app) and [PR design rev
     Learn how to use planspaces, documents, comments, reviews, approvals, sharing, and For You.
   </Card>
 
-  <Card title="Scott CLI" icon="terminal" href="/developer-tools/cli">
-    Learn how `sync`, `push`, `pull`, and setup fit into your daily agent workflow.
+  <Card title="Scott agent plugin" icon="terminal" href="/developer-tools/cli">
+    Learn how sync, push, pull, and setup fit into your daily agent workflow.
   </Card>
 
   <Card title="Scott GitHub App" icon="github" href="/developer-tools/github-app">

@@ -38,12 +38,12 @@ Use **Review** when the plan is ready for approval.
 
 See [Reviews and approvals](/collaboration/reviews) for reviewer states and approval behavior.
 
-## Share from the CLI
+## Share from your agent
 
-The fastest way to create a shareable planspace is [`scott push`](/developer-tools/push):
+The fastest way to create a shareable planspace is to ask the Scott plugin to [push](/developer-tools/push) from the coding-agent thread where the work happened:
 
-```bash
-scott push
+```text
+Push this conversation to Scott so my teammates can review it.
 ```
 
 Scott captures the current coding-agent thread, generates a planspace document, and prints the planspace URL. Share that URL in Slack, Linear, a design review, or a pull request.
@@ -58,10 +58,10 @@ Toggle **Make public** in the Share modal to generate a read-only link.
 
 ## Pulling shared context
 
-When a planspace is ready for execution, run:
+When a planspace is ready for execution, start a fresh coding-agent thread and ask it to pull from Scott:
 
-```bash
-scott pull <planspace-url>
+```text
+Pull from Scott using this planspace and start building: https://app.tryscott.ai/workspace/...
 ```
 
-This loads the document, comments, review state, and available implementation context into your terminal or coding agent.
+This loads the document, comments, review state, and available implementation context into your coding agent.

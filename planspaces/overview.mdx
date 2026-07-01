@@ -10,17 +10,17 @@ Use planspaces for:
 - prototype writeups and design proposals
 - engineering plans that need PM, design, or leadership feedback
 - implementation context that should survive beyond one agent thread
-- approved intent that should later be pulled into execution with `scott pull`
+- approved intent that should later be pulled into execution with the Scott plugin
 
 ## How planspaces start
 
 You can create a planspace three ways:
 
-1. **From Sync Chat** - pin or write up a useful synced session after `scott sync`
-2. **From your coding agent** - run [`scott push`](/developer-tools/push) from a focused thread
+1. **From Sync Chat** - pin or write up a useful synced session after [Sync](/developer-tools/sync)
+2. **From your coding agent** - ask the Scott plugin to [push](/developer-tools/push) from a focused thread
 3. **From the app** - start a new planspace and describe what you want Scott to draft
 
-For daily team workflows, `scott push` is usually the fastest path. It turns active agent work into a shareable document while the idea is still fresh.
+For daily team workflows, pushing from your coding agent is usually the fastest path. It turns active agent work into a shareable document while the idea is still fresh.
 
 ## The planspace layout
 
@@ -36,11 +36,11 @@ The planspace UI is built for shared review:
 ## Recommended team flow
 
 1. Start with real work: a prototype, implementation sketch, investigation, or product proposal.
-2. Push it into a planspace with [`scott push`](/developer-tools/push).
+2. Ask your coding agent to [push](/developer-tools/push) it into a planspace.
 3. Attach code context with the [Scott GitHub App](/planspaces/connected-sources) when architecture matters.
 4. Share the planspace with engineers, PMs, designers, or leadership.
 5. Use [comments](/collaboration/comments) for targeted feedback and [reviews](/collaboration/reviews) for approval.
-6. Pull the reviewed context into a fresh agent thread with [`scott pull`](/developer-tools/pull).
+6. Ask a fresh agent thread to [pull](/developer-tools/pull) the reviewed context from Scott.
 7. Link the PR back to the planspace with the [Scott GitHub App](/developer-tools/scott-ci).
 
 ## Roles

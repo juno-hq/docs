@@ -1,13 +1,13 @@
 ---
 title: "Core concepts"
-description: "The main ideas behind Scott: sync, planspaces, reviews, approvals, CLI handoff, and GitHub App feedback."
+description: "The main ideas behind Scott: sync, planspaces, reviews, approvals, plugin handoff, and GitHub App feedback."
 ---
 
 Scott is a context system for teams working with coding agents. It keeps local agent work, team feedback, design approvals, and shipped code connected.
 
 ## Sync Chat
 
-**Sync Chat** is your personal starting point after `scott sync`. It lets you ask across recent local coding-agent sessions, find recurring themes, and decide which threads deserve team attention.
+**Sync Chat** is your personal starting point after sync. It lets you ask across recent local coding-agent sessions, find recurring themes, and decide which threads deserve team attention.
 
 Use Sync Chat when:
 
@@ -53,17 +53,17 @@ Use reviews when:
 
 Learn more in [Reviews and approvals](/collaboration/reviews).
 
-## Scott CLI
+## Scott agent plugin
 
-The CLI is how local coding-agent work moves into and out of Scott:
+The Scott agent plugin is the bundle of skills and local `scott` commands that moves coding-agent work into and out of Scott. You usually invoke it from the agent session you are already using:
 
-| Command | Purpose |
+| Agent request | What the plugin does |
 | --- | --- |
-| `scott sync` | Upload recent local agent history and open Sync Chat |
-| `scott push` | Turn the current agent thread into a shareable planspace |
-| `scott pull <url>` | Load reviewed planspace context into a fresh agent or terminal session |
+| "Run sync so Scott can understand my recent local work" | Upload recent local agent history and open Sync Chat |
+| "Push this conversation to Scott" | Turn the current agent thread into a shareable planspace |
+| "Pull from Scott using this planspace URL" | Load reviewed planspace context into a fresh agent session |
 
-Learn more in [Scott CLI](/developer-tools/cli).
+Learn more in [Scott agent plugin](/developer-tools/cli).
 
 ## Scott GitHub App
 

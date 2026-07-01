@@ -1,13 +1,19 @@
 ---
 title: "Sync"
-description: "Use scott sync to onboard Scott with recent local coding-agent history."
+description: "Ask the Scott plugin to sync recent local coding-agent history."
 ---
 
-`scott sync` is the primary onboarding command. It reads recent local coding-agent sessions, uploads the relevant context to Scott, starts a Sync Chat review, and opens the Sync tab in For You.
+Sync is the primary onboarding action for the Scott agent plugin. From Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported coding agent on your development machine, paste:
 
-```bash
-scott sync
+```text
+Run sync so Scott can understand my recent local agent work.
 ```
+
+The plugin reads recent local coding-agent sessions, uploads the relevant context to Scott, starts a Sync Chat review, and opens `/sync`.
+
+<Tip>
+  Power users can also run `scott sync` directly from a local terminal. This works for sync because the command reads local session history from your development machine; push and pull should stay agent-invoked because they depend on the active thread context.
+</Tip>
 
 ## What sync does
 
@@ -15,7 +21,7 @@ scott sync
 2. Uploads recent sessions from the last 14 days
 3. Creates unsynthesized planspaces that Scott can reason over
 4. Starts a Sync Chat review of recent themes and priorities
-5. Prints a URL to the Sync view
+5. Prints a URL to `/sync`
 
 Run sync from the development machine where the agent sessions happened. Hosted browser agents cannot read your local history.
 
@@ -45,7 +51,7 @@ Sync Chat works from session history by default. For code-aware answers, connect
 
 ## When to run sync again
 
-Run `scott sync` whenever you want Scott to refresh its view of local agent work:
+Ask your coding agent to sync whenever you want Scott to refresh its view of local agent work:
 
 - after a day of active agent sessions
 - before planning what to share with the team
@@ -54,4 +60,4 @@ Run `scott sync` whenever you want Scott to refresh its view of local agent work
 
 ## Sync vs push
 
-Use `scott sync` to onboard broad recent history. Use [`scott push`](/developer-tools/push) when one current thread is ready to become a team-readable planspace.
+Use sync to onboard broad recent history. Use [Push](/developer-tools/push) when one current thread is ready to become a team-readable planspace.
