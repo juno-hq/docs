@@ -30,6 +30,17 @@ After sync finishes, open the URL printed by the CLI. Scott will take you to **F
   Run `scott sync` from your development machine, not from a hosted browser agent. The command reads local agent history before uploading the relevant context to Scott.
 </Tip>
 
+### Add code context
+
+Sync Chat works immediately from session history. For code-aware answers, connect GitHub from the Sync Chat source picker or the planspace composer.
+
+1. Click **Connect repo**
+2. Install the Scott GitHub App for the GitHub account or organization you want Scott to read from
+3. Choose which repositories the GitHub App can access
+4. Return to Scott, then select the repository and branch from the repo picker
+
+Scott lists only repositories available through your linked GitHub App installation. A repository is used as context only after you select it.
+
 ## Install Options
 
 <AccordionGroup>
@@ -88,9 +99,10 @@ After sync finishes, open the URL printed by the CLI. Scott will take you to **F
     1. **Install Scott** — see [Start with Sync](#start-with-sync) above.
     2. **Run `scott sync`** — bring recent local agent sessions into Scott so the team has high-quality context on day one.
     3. **Use Sync Chat** — ask what has been happening, which threads matter, and which sessions should become planspaces.
-    4. **Push a focused thread** — run `scott push` when one session should become a sharing document for teammates.
-    5. **Invite your team to review** — use comments and [reviews](/collaboration/reviews) to converge on the plan.
-    6. **Pull for execution** — run `scott pull <planspace-url>` from a fresh agent thread when it is time to build with the approved context.
+    4. **Connect GitHub when code matters** — install the Scott GitHub App, select repos, and attach the relevant branch.
+    5. **Push a focused thread** — run `scott push` when one session should become a sharing document for teammates.
+    6. **Invite your team to review** — use comments and [reviews](/collaboration/reviews) to converge on the plan.
+    7. **Pull for execution** — run `scott pull <planspace-url>` from a fresh agent thread when it is time to build with the approved context.
 
     <Tip>
       Start by syncing real work. The best first experience is asking Scott about the actual agent sessions your team already ran.
@@ -102,9 +114,10 @@ After sync finishes, open the URL printed by the CLI. Scott will take you to **F
   <Accordion title="I'm evaluating Scott AI" icon="eye">
     1. **Read The Scott Method** at [tryscott.ai/method](https://tryscott.ai/method)
     2. **Install the CLI and run `scott sync`** so Scott can analyze real local agent history.
-    3. **Push one session for review** with `scott push`, then share the planspace URL with teammates.
-    4. **Pull the reviewed context into execution** with `scott pull <planspace-url>`.
-    5. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs.
+    3. **Connect GitHub for code-aware answers** by installing the Scott GitHub App and selecting the repo branches you want Scott to use.
+    4. **Push one session for review** with `scott push`, then share the planspace URL with teammates.
+    5. **Pull the reviewed context into execution** with `scott pull <planspace-url>`.
+    6. **See how intent links to code** — [Scott CI](/developer-tools/scott-ci) auto-links PRs back to approved specs.
 
     **Next steps:** [For You](/collaboration/notifications) · [Scott CI](/developer-tools/scott-ci) · [Making the most of Scott AI](/getting-started/making-the-most)
   </Accordion>
