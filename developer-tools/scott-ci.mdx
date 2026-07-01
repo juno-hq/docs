@@ -42,7 +42,7 @@ When you open or update a PR, Scott looks for planspace URLs in the PR descripti
 5. When the code lands, Scott feeds execution context back into the document set
 
 <Tip>
-  When `scott push` prints a planspace URL, paste it into your PR description or include it in a commit message on the branch. Scott takes it from there.
+  Paste any Scott URL into your PR description or include it in a commit message on the branch. Scott takes it from there.
 </Tip>
 
 ## Multiple planspaces
@@ -70,15 +70,20 @@ Scott's PR comment focuses on whether implementation matches design intent:
 
 Traditional code review asks, "Is this diff acceptable?" Scott asks, "Does this implementation match the design intent the team reviewed?"
 
-That creates a feedback loop:
+By default, Scott checks whether the implementation deviates from the linked planspace. That creates two useful outcomes:
+
+- **Unexpected drift** - Scott flags the gap. If the PR is wrong, update the code before merging.
+- **Intentional drift** - tell Scott the deviation is expected and the team plans to move forward. When the code lands, Scott loops that direction back into the original document context.
+
+That makes the document set continuously update:
 
 1. [`scott push`](/developer-tools/push) captures proposals and prototypes as planspaces
 2. teammates comment and approve direction before implementation hardens
 3. PRs link back to one or more planspaces
-4. Scott reviews the PR against the original intent
-5. landed code updates context around what actually shipped
+4. Scott reviews the PR against the original intent and flags deviations
+5. expected deviations and landed code update the context around what actually shipped
 
-The result is a continuously updating document set: original design intent, team feedback, implementation changes, and the gap between what was approved and what landed.
+The result is a document OS that preserves original design intent while still reflecting real execution decisions.
 
 ## FAQ
 

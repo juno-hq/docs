@@ -17,18 +17,14 @@ description: "Install Scott, sync recent agent work, and learn the daily team wo
 
 ## Start with Sync
 
-`scott sync` is the fastest way to onboard. It uploads recent local coding-agent sessions, opens the Sync Chat view, and starts an analysis of what Scott can now see.
+`scott sync` is the fastest way to onboard. It uploads recent local coding-agent sessions, opens `/sync`, and starts an analysis of what Scott can now see.
 
 ```bash
 curl -fsSL https://tryscott.ai/install | sh
 scott sync
 ```
 
-After sync finishes, open the URL printed by the CLI. Scott will take you to **For You > Sync**, where you can ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
-
-<Tip>
-  Run `scott sync` from your development machine, not from a hosted browser agent. The command reads local agent history before uploading relevant context to Scott.
-</Tip>
+After sync finishes, open the URL printed by the CLI. Scott will take you to `/sync`, where you can ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
 
 Learn more in [Sync](/developer-tools/sync).
 
@@ -50,18 +46,18 @@ Learn more in [Code context](/planspaces/connected-sources).
 
 ## Push early, pull when ready
 
-Use `scott push` whenever an agent thread becomes a prototype, design direction, or proposal that needs team feedback.
+Ask your coding agent to push to Scott whenever a thread becomes a prototype, design direction, or proposal that needs team feedback.
 
-```bash
-scott push
+```text
+push this conversation to Scott so my teammates can review it
 ```
 
-Scott creates a planspace with a readable document and a URL you can share in Slack, Linear, a design review, or a PR description. Teammates can comment, request changes, and approve a specific document version.
+Your agent runs the Scott workflow from the thread that already has the context. Scott creates a planspace with a readable document and a URL you can share in Slack, Linear, a design review, or a PR description. Teammates can comment, request changes, and approve a specific document version.
 
-When the team is aligned, pull the planspace into a fresh agent thread:
+When the team is aligned, start a fresh agent thread and ask it to pull from Scott:
 
-```bash
-scott pull <planspace-url>
+```text
+pull from Scott using this planspace and start building: https://app.tryscott.ai/workspace/...
 ```
 
 Learn more in [Push](/developer-tools/push), [Pull](/developer-tools/pull), and [Teams](/planspaces/overview).
@@ -91,7 +87,7 @@ Learn more in [Scott GitHub App](/developer-tools/github-app) and [PR design rev
   </Card>
 
   <Card title="Scott GitHub App" icon="github" href="/developer-tools/github-app">
-    Learn how repository context and PR design review connect planspaces to code.
+    Learn how PR design review, execution feedback, and code context connect planspaces to code.
   </Card>
 
   <Card title="Reviews and approvals" icon="circle-check" href="/collaboration/reviews">

@@ -58,8 +58,8 @@
             "group": "Scott GitHub App",
             "pages": [
               "developer-tools/github-app",
-              "planspaces/connected-sources",
-              "developer-tools/scott-ci"
+              "developer-tools/scott-ci",
+              "planspaces/connected-sources"
             ]
           }
         ]
