@@ -5,15 +5,17 @@ description: "Install and configure Scott for your local coding agents."
 
 The installer configures Scott for detected local coding agents:
 
-```text
-Install Scott AI and set up the Scott plugin for this coding agent.
+```bash
+curl -fsSL https://tryscott.ai/install | sh
 ```
 
-The agent will use the local installer and configure the skills, rules, and hosted MCP connection where supported. Then ask it to sync:
+Then run the manual onboarding sync:
 
-```text
-Run sync so Scott can understand my recent local agent work.
+```bash
+scott sync
 ```
+
+The installer configures the skills, rules, and hosted MCP connection where supported. `scott sync` reads recent local agent work and opens `/sync`.
 
 ## Manual setup
 

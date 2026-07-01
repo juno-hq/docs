@@ -3,28 +3,29 @@ title: "Scott agent plugin"
 description: "Use Scott from your coding agent: sync, push, pull, and setup."
 ---
 
-The Scott agent plugin is the bridge between local coding-agent work and team context in Scott. It bundles agent skills with local `scott` commands, so you can ask Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported agent to move context into and out of Scott from the thread where the work is happening.
+The Scott agent plugin is the bridge between local coding-agent work and team context in Scott. It bundles agent skills with local `scott` commands. Install and sync start from your terminal; push and pull happen from Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported agent thread where the work is happening.
 
 Use it for three daily jobs:
 
 | Plugin action | Daily job |
 | --- | --- |
-| [Sync](/developer-tools/sync) | Onboard Scott with recent local agent history and open Sync Chat |
+| [Sync](/developer-tools/sync) | Manually onboard Scott with recent local agent history and open Sync Chat |
 | [Push](/developer-tools/push) | Turn the current agent thread into a shareable planspace |
 | [Pull](/developer-tools/pull) | Bring reviewed planspace context into a fresh agent session |
 
 ## Install
 
-From your active coding agent, paste:
+From your development machine, run:
 
-```text
-Install Scott AI and run sync so Scott can understand my recent local agent work.
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+scott sync
 ```
 
-The plugin setup signs you in, wires Scott into detected coding agents, and sets up the hosted MCP connection where supported.
+The installer signs you in, wires Scott into detected coding agents, and sets up the hosted MCP connection where supported. `scott sync` reads recent local agent history and opens `/sync`.
 
 <Tip>
-  Power users can also install and sync directly from a local terminal with `curl -fsSL https://tryscott.ai/install | sh` and `scott sync`. For day-to-day use, invoke Scott from your coding agent; push and pull depend on the active thread context.
+  Install plus `scott sync` is the manual getting-started step. After that, invoke push and pull from your coding agent because they depend on the active thread context.
 </Tip>
 
 If you need manual terminal setup, run:
@@ -37,7 +38,7 @@ See [Setup](/developer-tools/setup) for agent-specific details.
 
 ## The daily loop
 
-1. **Sync** local agent history so Scott has useful context.
+1. **Sync** local agent history from your terminal so Scott has useful context.
 2. **Push** focused threads when a prototype, proposal, or design direction needs team feedback.
 3. **Review** the planspace with comments and approvals in the Scott app.
 4. **Pull** the reviewed context into the next agent session when it is time to execute.
@@ -45,11 +46,7 @@ See [Setup](/developer-tools/setup) for agent-specific details.
 
 ## Agent prompts
 
-Invoke Scott from the coding agent session where the work is happening:
-
-```text
-Install Scott AI and run sync so Scott can understand my recent local agent work.
-```
+After manual install and sync, invoke push and pull from the coding agent session where the work is happening:
 
 ```text
 Push this conversation to Scott so my team can review the design.

@@ -17,16 +17,17 @@ description: "Install Scott, sync recent agent work, and learn the daily team wo
 
 ## Start with Sync
 
-Sync is the fastest way to onboard. Open Claude Code, Codex, Cursor, OpenCode, Gemini, or another supported coding agent on your development machine and paste:
+`scott sync` is the fastest way to onboard. From your development machine, run:
 
-```text
-Install Scott AI and run sync so Scott can understand my recent local agent work.
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+scott sync
 ```
 
-The Scott plugin installs the needed skill and command support, reads recent local coding-agent sessions, and opens `/sync`. After sync finishes, open the URL Scott prints and ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
+The installer sets up the Scott plugin for detected coding agents. Then `scott sync` reads recent local coding-agent sessions and opens `/sync`. After sync finishes, open the URL Scott prints and ask across recent Claude Code, Codex, Cursor, OpenCode, Gemini, and other supported agent sessions.
 
 <Tip>
-  Power users can also run sync directly from a local terminal with `curl -fsSL https://tryscott.ai/install | sh` and `scott sync`. Agent invocation is the default path, and push/pull should stay agent-invoked because they depend on the active thread context.
+  Install plus `scott sync` is the manual getting-started step. After that, push and pull should be invoked from your coding agent because they depend on the active thread context.
 </Tip>
 
 Learn more in [Sync](/developer-tools/sync).
