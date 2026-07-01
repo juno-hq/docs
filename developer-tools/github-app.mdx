@@ -1,21 +1,22 @@
 ---
 title: "Scott GitHub App"
-description: "Connect repository context and link pull requests to planspace design intent."
+description: "Review pull requests against planspace design intent and keep execution context updated."
 ---
 
-The Scott GitHub App connects code to design intent.
+The Scott GitHub App connects pull requests to the planspaces that shaped the work. Its main value is PR design review: Scott checks whether implementation matches the linked design intent, flags unexpected drift, and feeds accepted execution decisions back into the document set.
 
-It supports two related workflows:
+It supports three related workflows:
 
-1. **Code context** - Scott can read repository contents when Sync Chat or a planspace needs code-aware answers.
-2. **PR design review** - Scott can link pull requests to planspaces and review implementation against original design intent.
+1. **PR design review** - link pull requests to planspaces and review implementation against original design intent.
+2. **Document OS feedback** - update planspace context when code intentionally diverges and lands.
+3. **Code context** - make repositories available when Sync Chat or a planspace needs code-aware answers.
 
 ## Install paths
 
 There are two common install moments:
 
-- Click **Connect repo** from Sync Chat or a planspace when you need code context.
 - Install the Scott GitHub App from team settings when your organization wants PR linking and design review.
+- Click **Connect repo** from Sync Chat or a planspace when you need code context.
 
 In both cases, we recommend granting access to all repositories. Limiting access can cap answer quality when relevant context lives outside one repo.
 
@@ -27,11 +28,11 @@ In both cases, we recommend granting access to all repositories. Limiting access
 
 | Capability | Why it matters |
 | --- | --- |
-| Repository context | Sync Chat and planspaces can answer with awareness of your actual codebase |
-| Branch selection | Authors can attach the branch relevant to a proposal or implementation plan |
 | PR linking | Pull requests can point back to one or more planspace URLs |
 | Agent-assisted review | Scott can compare implementation against the design intent the team reviewed |
-| Execution feedback | Landed code can update the context around what actually shipped |
+| Execution feedback | Accepted deviations and landed code update the context around what actually shipped |
+| Repository context | Sync Chat and planspaces can answer with awareness of your actual codebase |
+| Branch selection | Authors can attach the branch relevant to a proposal or implementation plan |
 
 ## Recommended organization setup
 
@@ -44,11 +45,11 @@ In both cases, we recommend granting access to all repositories. Limiting access
 ## Where to go next
 
 <CardGroup cols={2}>
-  <Card title="Code context" icon="paperclip" href="/planspaces/connected-sources">
-    Connect repositories for Sync Chat and planspace answers.
-  </Card>
-
   <Card title="PR design review" icon="git-pull-request" href="/developer-tools/scott-ci">
     Link PRs to planspaces and review implementation against approved intent.
+  </Card>
+
+  <Card title="Code context" icon="paperclip" href="/planspaces/connected-sources">
+    Connect repositories for Sync Chat, planspace answers, and stronger PR reviews.
   </Card>
 </CardGroup>
