@@ -1,0 +1,53 @@
+---
+title: "Push"
+description: "Use scott push to turn an active agent thread into a shareable planspace."
+---
+
+`scott push` is the fastest way to create a sharing document from work already happening in a coding agent.
+
+```bash
+scott push
+```
+
+Run it when a thread has become a prototype, design direction, investigation, or proposal that deserves team feedback.
+
+## What push creates
+
+`scott push` captures the current coding-agent session and creates or updates a matching planspace. Scott generates a document, preserves the conversation context, redacts likely secrets, and prints the planspace URL on its own line.
+
+That URL is the shareable artifact. Send it to teammates, add it to Linear, paste it in Slack, or include it in a PR description.
+
+## Agent prompt
+
+You can ask your coding agent:
+
+```text
+Push this conversation to Scott so my teammates can review the design direction.
+```
+
+Scott's installed skill asks what kind of feedback you want and who the audience is, then runs `scott push`.
+
+## Daily use
+
+Use push early and often:
+
+1. Prototype or investigate in your agent
+2. Push once there is a concrete direction
+3. Share the planspace with teammates
+4. Collect comments and review decisions
+5. Pull the approved context back into execution
+
+## What to share
+
+Good push candidates include:
+
+- a prototype that changes product direction
+- an architecture proposal
+- an implementation plan that needs senior engineering feedback
+- a risky migration or refactor
+- a design critique or alternate approach
+- a thread that explains why a decision was made
+
+## Push vs direct app creation
+
+Create a planspace in the app when you want to start from a blank prompt. Use `scott push` when the most valuable context is already in your coding-agent thread.

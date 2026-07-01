@@ -1,0 +1,63 @@
+---
+title: "Setup"
+description: "Install and configure Scott for your local coding agents."
+---
+
+The installer configures Scott for detected local coding agents:
+
+```bash
+curl -fsSL https://tryscott.ai/install | sh
+```
+
+Then run:
+
+```bash
+scott sync
+```
+
+## Manual setup
+
+Use `scott setup` when the installer cannot detect an agent automatically or when you want to target a specific tool.
+
+```bash
+scott setup                 # auto-detect agents
+scott setup --claude        # Claude Code
+scott setup --cursor        # Cursor
+scott setup --codex         # Codex
+scott setup --opencode      # OpenCode
+scott setup --gemini        # Gemini CLI
+```
+
+You can target multiple agents in one run:
+
+```bash
+scott setup --claude --cursor --codex
+```
+
+## What setup installs
+
+Setup adds the Scott skill, rule, and hosted MCP entry needed for your coding agent to:
+
+- run `scott sync`
+- push the current conversation with `scott push`
+- pull planspace context with `scott pull`
+- understand when to ask for feedback before creating a planspace
+
+## Remove setup
+
+```bash
+scott remove --claude
+scott remove --mcp-only
+scott remove --skills-only
+```
+
+Removing local setup does not delete planspaces or team context from Scott.
+
+## Login and logout
+
+```bash
+scott login
+scott logout
+```
+
+`scott login` opens your browser and stores credentials locally. `scott logout` clears the local credentials file.

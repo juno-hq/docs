@@ -25,26 +25,18 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Getting started",
             "pages": [
               "index",
               "getting-started/quickstart",
-              "getting-started/concepts",
-              "getting-started/making-the-most"
-            ]
-          },
-          {
-            "group": "Planspaces",
-            "pages": [
-              "planspaces/overview",
-              "planspaces/documents",
-              "planspaces/context-flows",
-              "planspaces/connected-sources"
+              "getting-started/concepts"
             ]
           },
           {
             "group": "Teams",
             "pages": [
+              "planspaces/overview",
+              "planspaces/documents",
               "collaboration/comments",
               "collaboration/reviews",
               "collaboration/sharing",
@@ -53,9 +45,20 @@
             ]
           },
           {
-            "group": "Developer Tools",
+            "group": "Scott CLI",
             "pages": [
               "developer-tools/cli",
+              "developer-tools/sync",
+              "developer-tools/push",
+              "developer-tools/pull",
+              "developer-tools/setup"
+            ]
+          },
+          {
+            "group": "Scott GitHub App",
+            "pages": [
+              "developer-tools/github-app",
+              "planspaces/connected-sources",
               "developer-tools/scott-ci"
             ]
           }
@@ -76,7 +79,7 @@
         },
         {
           "anchor": "Install",
-          "href": "/getting-started/quickstart#install",
+          "href": "/getting-started/quickstart#start-with-sync",
           "icon": "terminal"
         }
       ]

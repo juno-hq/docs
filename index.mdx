@@ -1,50 +1,56 @@
 ---
-title: "Scott AI Docs"
-description: "Learn how to use Scott AI to plan, align, delegate, and ship with coding agents."
+title: "Scott AI docs"
+description: "Sync agent work, share design intent, gather team feedback, and connect planspaces to code."
 ---
 
-## Popular
+Scott helps teams move from isolated agent execution to shared design intent. Start by syncing recent local agent work, push focused threads into planspaces for feedback, pull approved context back into execution, and connect PRs to the design decisions that shaped them.
 
 <CardGroup cols={2}>
-  <Card title="Quickstart" icon="play" href="/getting-started/quickstart">
-    Install the CLI, run `scott sync`, and start chatting with your recent work.
+  <Card title="Quickstart" icon="rocket" href="/getting-started/quickstart">
+    Install Scott, run `scott sync`, connect code context, and learn the daily push/pull loop.
   </Card>
-  <Card title="How Scott AI works" icon="compass" href="/getting-started/concepts">
-    The Plan → Align → Delegate → Ship lifecycle and the concepts behind it.
-  </Card>
-  <Card title="Context flows" icon="code-branch" href="/planspaces/context-flows">
-    The DAG of every decision your team considered — not just what shipped.
-  </Card>
-  <Card title="CLI" icon="terminal" href="/developer-tools/cli">
-    `scott sync`, `scott push`, and `scott pull` move context between your agents, Scott, and your team.
+
+  <Card title="Core concepts" icon="compass" href="/getting-started/concepts">
+    Planspaces, Sync Chat, reviews, approvals, the CLI, and the GitHub App.
   </Card>
 </CardGroup>
 
-## Scott AI basics
+## Daily workflow
 
 <CardGroup cols={2}>
-  <Card title="Planspaces" icon="layer-group" href="/planspaces/overview">
-    Collaborative containers for specs, decisions, and version history.
+  <Card title="Teams" icon="users" href="/planspaces/overview">
+    Use planspaces, documents, comments, reviews, approvals, sharing, and For You to align people before agents execute.
   </Card>
-  <Card title="Documents" icon="file-code" href="/planspaces/documents">
-    Versioned specs with code, prototypes, Mermaid diagrams, and semantic diffs.
+
+  <Card title="Scott CLI" icon="terminal" href="/developer-tools/cli">
+    Use `scott sync`, `scott push`, and `scott pull` from your coding agent and terminal.
   </Card>
-  <Card title="Comments" icon="messages" href="/collaboration/comments">
-    Inline threaded comments anchored to specific text.
+
+  <Card title="Scott GitHub App" icon="github" href="/developer-tools/github-app">
+    Connect repository context, link PRs to planspaces, and review implementation against design intent.
   </Card>
-  <Card title="Reviews" icon="circle-check" href="/collaboration/reviews">
-    Request reviews, approve specs, and track decisions.
+
+  <Card title="PR design review" icon="git-pull-request" href="/developer-tools/scott-ci">
+    Add planspace URLs to pull requests so Scott can review implementation against design intent.
   </Card>
-  <Card title="Sharing" icon="globe" href="/collaboration/sharing">
-    Invite teammates with role-based access or publish public links.
+</CardGroup>
+
+## Common paths
+
+<CardGroup cols={2}>
+  <Card title="Create and share a planspace" icon="file-text" href="/collaboration/sharing">
+    Turn a proposal or prototype into a teammate-readable document with comments and reviews.
   </Card>
-  <Card title="Scott CI" icon="link" href="/developer-tools/scott-ci">
-    Auto-link PRs to approved specs.
+
+  <Card title="Request approvals" icon="circle-check" href="/collaboration/reviews">
+    Ask humans or review agents to approve a specific document version before implementation.
   </Card>
-  <Card title="Connected sources" icon="paperclip" href="/planspaces/connected-sources">
-    Attach GitHub repos, files, and folders as context for the agent.
+
+  <Card title="Connect repository context" icon="paperclip" href="/planspaces/connected-sources">
+    Install the Scott GitHub App and make repository context available to Sync Chat and planspaces.
   </Card>
-  <Card title="For You" icon="inbox" href="/collaboration/notifications">
-    Notifications, review requests, and mentions.
+
+  <Card title="Pull context into execution" icon="download" href="/developer-tools/pull">
+    Load planspace documents, comments, approvals, and implementation context into a fresh agent thread.
   </Card>
 </CardGroup>

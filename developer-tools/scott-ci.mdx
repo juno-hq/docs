@@ -1,68 +1,97 @@
 ---
-title: "Scott CI"
-description: "Link pull requests to planspaces and run agent-assisted design review."
+title: "PR design review"
+description: "Use the Scott GitHub App to link pull requests to planspaces and review implementation against design intent."
 ---
 
-Scott CI connects pull requests back to the planspaces that drove the work. It helps teams move review earlier in the process: planspaces capture design intent and team feedback before execution, then pull requests report back against that intent.
+PR design review connects implementation back to the planspaces that shaped it. Instead of treating code review as the first real alignment point, Scott helps teams review design intent earlier and then verify that code matches it.
 
 ## Setup
 
 1. Open your team settings in Scott
-2. Install the Scott CI GitHub App for your GitHub organization
+2. Install the Scott GitHub App for your GitHub organization
 3. Select the repositories you want Scott to review and link
 4. Add one or more planspace URLs to a pull request description or commit message
 5. Open or update the pull request
 
 No repo config file is required. The planspace URL is the contract between design intent and execution.
 
-## How it works
+## How linking works
 
 ```text
-planspace (proposal, prototype, or approved design)
-       ↓ planspace URL in PR description or commit message
+planspace proposal or approved design
+       |
+       v
+planspace URL in PR description or commit message
+       |
+       v
 pull request
-       ↓ Scott CI GitHub App
-agent-assisted architectural review
-       ↓
+       |
+       v
+Scott GitHub App review
+       |
+       v
 PR comment + planspace execution feedback
 ```
 
-When you open or update a PR, Scott CI looks for planspace URLs in the PR description and commit messages. If it finds one or more links:
+When you open or update a PR, Scott looks for planspace URLs in the PR description and commit messages. If it finds one or more links:
 
 1. Scott links the PR to the relevant planspace versions
-2. It traces back through the [context flow](/planspaces/context-flows) to the [approved version](/collaboration/reviews)
-3. It runs an agent-assisted architectural review against the PR using the planspace context
+2. It traces the PR back to the review and approval context
+3. It runs an agent-assisted architectural review using planspace context
 4. It leaves a GitHub comment with the review and links back to the planspace
-5. When the code lands, Scott feeds the execution context back into the document set
+5. When the code lands, Scott feeds execution context back into the document set
 
 <Tip>
-  When `scott push` prints the planspace URL, paste it into your PR description or include it in a commit message on the branch. Scott CI takes it from there.
+  When `scott push` prints a planspace URL, paste it into your PR description or include it in a commit message on the branch. Scott takes it from there.
 </Tip>
 
-## Why this matters
+## Multiple planspaces
 
-Traditional code review asks, "Is this diff acceptable?" Scott CI asks the earlier question: "Does this implementation match the design intent the team reviewed?"
+A single pull request can reference more than one planspace. This is useful when a PR implements:
 
-That creates a feedback loop for your team's document OS:
+- an approved product proposal
+- a technical design
+- a migration plan
+- a risk review or security review
 
-1. `scott push` captures proposals and prototypes as planspaces
+Add every relevant planspace URL so Scott can reason across the full design record.
+
+## Review output
+
+Scott's PR comment focuses on whether implementation matches design intent:
+
+- architectural alignment
+- missing requirements or edge cases
+- places where the code diverges from the planspace
+- risks introduced during implementation
+- links back to the relevant planspaces
+
+## Document OS feedback loop
+
+Traditional code review asks, "Is this diff acceptable?" Scott asks, "Does this implementation match the design intent the team reviewed?"
+
+That creates a feedback loop:
+
+1. [`scott push`](/developer-tools/push) captures proposals and prototypes as planspaces
 2. teammates comment and approve direction before implementation hardens
 3. PRs link back to one or more planspaces
 4. Scott reviews the PR against the original intent
-5. landed code updates the context around what was actually executed
+5. landed code updates context around what actually shipped
+
+The result is a continuously updating document set: original design intent, team feedback, implementation changes, and the gap between what was approved and what landed.
 
 ## FAQ
 
 <AccordionGroup>
-  <Accordion title="What if I didn't include a planspace URL?">
-    Scott CI only links PRs to planspaces when it can find a URL reference. Add the URL to the PR description (or amend a commit message) and re-push — Scott CI re-runs on PR updates.
+  <Accordion title="What if I did not include a planspace URL?">
+    Scott only links PRs to planspaces when it can find a URL reference. Add the URL to the PR description or a commit message, then update the PR.
   </Accordion>
 
-  <Accordion title="Does Scott CI block merges?">
-    No. Scott CI is informational — it leaves comments but does not create required status checks.
+  <Accordion title="Does Scott block merges?">
+    No. Scott leaves review comments and context links. It does not create a required status check by default.
   </Accordion>
 
-  <Accordion title="Can I use Scott CI without the rest of Scott?">
-    Scott CI requires a planspace with an approved spec to link to.
+  <Accordion title="Do planspaces need to be approved first?">
+    Approval is recommended because it gives Scott a stronger design-intent baseline. You can still link a PR to an unapproved planspace when the work is intentionally exploratory.
   </Accordion>
 </AccordionGroup>

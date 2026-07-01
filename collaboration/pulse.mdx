@@ -1,52 +1,42 @@
 ---
-title: "Pulse"
-description: "Org-wide visibility into what's being planned, what's approved, and how intent maps to shipped code."
+title: "Team pulse"
+description: "How teams use Scott to see design intent, review health, and execution drift."
 ---
 
-Coding agents are accelerating how fast code gets written — [55% faster task completion](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) in controlled studies, [~20% steady-state time savings](https://arxiv.org/html/2501.13282v1) in enterprise deployments. But without alignment on *what* to build, that speed compounds cost instead of reducing it:
+Team pulse is the operating view Scott is building toward: a way to see what is being planned, what has been approved, and how implementation compares to original design intent.
 
-- **Stability degrades.** The [2024 DORA State of DevOps Report](https://dora.dev/research/2024/dora-report/) found that a 25% increase in AI usage quickened code reviews but **decreased delivery stability by 7.2%**. More code, shipped faster, with more incidents. Their conclusion: "writing code isn't the bottleneck to deploying reliable applications."
-- **Senior engineers absorb the cost.** A [2025 study of experienced developers](https://arxiv.org/abs/2510.10165) measured a 39-44% gap between perceived and actual productivity. Developers *felt* 20% faster but were **19% slower in practice**. The reason: senior engineers spent their time reviewing and coordinating misaligned agent output instead of shipping their own work — reviewing 6.5% more code while their own output dropped 19%.
-- **Coordination breaks silently.** A [longitudinal study tracking teams from 2023-2025](https://arxiv.org/html/2509.10956v1) found that even as AI adoption increased, core teamwork problems persisted: **misaligned communication across roles, lack of shared visibility into project goals, and ambiguity around accountability**.
+## Why it matters
 
-Each of these problems — rework from instability, wasted senior eng time on coordination, agents executing on misaligned intent — has a direct dollar cost. DORA reports that high-performing teams spend [22% less time on unplanned rework](https://dora.dev/concepts/wellbeing/). Agent compute is [metered per request](https://docs.github.com/en/copilot/get-started/plans), and a single misaligned prompt can consume an [order of magnitude more tokens](https://cursor.com/blog/aug-2025-pricing-teams) than a well-scoped one. Multiply that across a team running agents in parallel on the wrong direction, and the waste scales with the speed.
+Agent output makes execution faster, but it also makes misalignment easier to miss. Teams need to know:
 
-**Alignment is the force multiplier.** When teams agree on intent before agents execute, every dollar spent on agent compute goes further, every senior engineer's review time is spent on substance instead of correction, and every PR ships code that matches what was actually approved. Pulse makes this visible.
+- which proposals are waiting on feedback
+- which plans have been approved
+- which pull requests are linked to approved intent
+- where implementation diverged from what the team reviewed
+- which areas of the product lack current design context
 
-## What Pulse does
+## Inputs
 
-Pulse is a conversational interface that lets you query the relationship between what your team planned and what actually shipped. Ask questions in natural language:
+Scott's team-level view comes from the same daily workflow:
 
-- "Which approved plans have drifted from what landed?" — surfaces **stability risk** before it becomes an incident
-- "Who's blocked on reviews this sprint?" — shows where **senior eng time** is being absorbed by coordination instead of output
-- "What shipped without an approved plan?" — reveals **alignment gaps** where agents executed without shared intent
+1. [`scott sync`](/developer-tools/sync) keeps recent agent work discoverable
+2. [`scott push`](/developer-tools/push) turns useful threads into planspaces
+3. [comments](/collaboration/comments) and [reviews](/collaboration/reviews) capture team feedback
+4. [Scott GitHub App](/developer-tools/github-app) links pull requests to planspace intent
+5. landed code feeds execution context back into the document set
 
-Every answer references real planspaces, real code changes, and real review decisions. Pulse connects to your team's tools (Slack, Notion, Linear, GitHub) so answers draw from the full context, not just what lives in Scott.
+## Signals
 
-## How it works
+Useful team signals include:
 
-1. Engineers share plans and proposals in [planspaces](/planspaces/overview)
-2. Plans are [reviewed and approved](/collaboration/reviews) by stakeholders
-3. [Scott CI](/developer-tools/scott-ci) traces each PR back to the approved intent automatically
+| Signal | What it answers |
+| --- | --- |
+| Review queue | Which plans are waiting on decision makers? |
+| Approval coverage | Which shipped work had reviewed design intent? |
+| PR links | Which pull requests implemented a given planspace? |
+| Design drift | Where did implementation differ from the approved plan? |
+| Stale plans | Which documents need to be updated after code landed? |
 
-This creates a data layer that didn't exist before — every PR linked to the plan that drove it, every plan linked to the PRs that implemented it. Pulse queries this layer. Traditional tools measure code throughput. Pulse measures whether the code matches what was agreed on.
+## Document OS
 
-## Metrics
-
-Each metric maps directly to the cost problems above.
-
-| Metric | What it measures | Which problem it tracks |
-|--------|-----------------|------------------------|
-| **Intent coverage** | % of shipped PRs backed by an approved plan | **Coordination gaps.** Low coverage means agents are executing without shared intent — the silent coordination failure the research identifies. |
-| **Design fidelity** | How closely shipped code matches approved intent | **Stability risk.** Low fidelity is the leading indicator of the instability DORA measured — code that shipped fast but didn't match the plan. |
-| **Rework rate** | How often a team revisits intent after implementation starts | **Senior eng burden.** Every rework cycle is a senior engineer reviewing, correcting, and re-coordinating instead of shipping. This is the [22% rework gap](https://dora.dev/concepts/wellbeing/) between high and low performers. |
-| **Review cycle time** | Time from review request to first decision | **Alignment speed.** Slow cycles mean intent is stuck waiting for feedback while agents keep executing — widening the gap between what's approved and what's being built. |
-
-## Attention alerts
-
-Pulse surfaces the specific situations that cost the most if left unaddressed:
-
-- **Stale reviews** — a review open for days means a senior engineer's feedback is blocking a team, or intent is stalling while agent compute continues to burn
-- **Design drift** — an approved plan where the shipped code diverged significantly. This is the stability problem made concrete: what landed doesn't match what was agreed on
-- **Blocked work** — planspaces waiting on unresolved comments or external dependencies. Work that's blocked but still consuming agent sessions is pure waste
-- **High fork activity** — multiple competing branches on the same design. Healthy exploration or misalignment that needs a decision — Pulse surfaces it so you can tell the difference
+The goal is a continuously updating document OS for teams: not static specs, not disconnected PR comments, and not lost agent chats. Scott keeps the original design intent, team review, implementation record, and future execution context in one place.

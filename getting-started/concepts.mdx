@@ -1,54 +1,75 @@
 ---
-title: "How Scott AI works"
-description: "The Plan → Align → Delegate (to agents) → Ship lifecycle and the concepts behind it."
+title: "Core concepts"
+description: "The main ideas behind Scott: sync, planspaces, reviews, approvals, CLI handoff, and GitHub App feedback."
 ---
 
-Scott AI gives your team one place to plan intent, align on direction, and connect approved specs to the code that ships.
+Scott is a context system for teams working with coding agents. It keeps local agent work, team feedback, design approvals, and shipped code connected.
 
-## Principles
+## Sync Chat
 
-Scott is built on four ideas from [The Scott Method](https://tryscott.ai/method):
+**Sync Chat** is your personal starting point after `scott sync`. It lets you ask across recent local coding-agent sessions, find recurring themes, and decide which threads deserve team attention.
 
-- **Review requirements more often than code** — as agents take over the responsibility of writing and reviewing code, the quality gate moves upstream to the plan
-- **Prototype to decide** — the fastest way to resolve a design debate is to prove your perspective by building it
-- **Make context visible** — every engineer should see the full reasoning behind what's being built, including which parts came from an agent
-- **Stay unopinionated about everything else** — how you write code, which agents you use, how you structure your team: your call
+Use Sync Chat when:
 
-## Plan
+- You are onboarding Scott and want it to understand your recent work
+- You need to search across Claude Code, Codex, Cursor, OpenCode, Gemini, and other local agent sessions
+- You want Scott to recommend which sessions should become shared planspaces
 
-**Planspaces** are where plans take shape. The layout is a chat on the left and a versioned document on the right. Describe what you want to build, or use `scott push` to turn one coding-agent session into a team-readable planspace. The agent generates a structured spec grounded in the context you provide. Plans contain code: code blobs, prototype references, and Mermaid diagrams are first-class planning content.
+Learn more in [Sync](/developer-tools/sync).
 
-**Sync Chat** is your personal entry point after `scott sync`. It lets you ask across recent local coding-agent sessions, identify themes, and decide which sessions deserve to become shared planspaces.
+## Planspaces
 
-**Connected sources** (GitHub repos, uploaded files, local folders, Google Drive) give the agent context about your codebase so it generates specs that fit your architecture. [Learn more](/planspaces/connected-sources).
+**Planspaces** are shared workspaces for design intent. They combine a chat, a living document, source context, comments, reviews, approvals, and team membership.
 
-## Align
+Use a planspace when:
 
-**Context flows** are the version history of your plan — a directed acyclic graph (DAG) where every branch, fork, and direction the team explored is preserved. [Learn more](/planspaces/context-flows).
+- a prototype or proposal needs feedback before implementation hardens
+- engineers and non-technical teammates need one place to discuss intent
+- you want an approved plan that can later be pulled into an agent thread
 
-**Comments** are anchored to specific text in the document and can be promoted into the chat as context for the agent. **Reviews** create a formal approval record — when a version is approved, it becomes the trusted reference for implementation. [Comments](/collaboration/comments) · [Reviews](/collaboration/reviews).
+Learn more in [Planspaces](/planspaces/overview).
 
-## Delegate
+## Documents and versions
 
-Once your team is sufficiently aligned, you can pull the planspace context back to a new session with documents, comments, review feedback, commits, and conversation history:
-```bash
-# In Claude Code, Codex, OpenCode, Cursor etc.
-"pull the project requirements from this planspace and start building -- https://app.tryscott.ai/workspace/xxxxxxx-8f6c-yyyyyy-9056-07d8ca0-zzzzz"
-```
+Every planspace has a document that evolves as you work with Scott. Saved versions let reviewers approve a specific state of the design, not a moving target.
 
-[Learn more](/developer-tools/cli).
+Use document versions to:
 
-## Ship
+- preserve the proposal that teammates reviewed
+- compare intent before and after comments
+- link pull requests to the exact design version they implement
 
-**Scott CI** traces pull requests back to the approved planspace automatically. Every PR carries a link to the plan that drove it. Every plan shows which PRs implemented it. [Learn more](/developer-tools/scott-ci).
+Learn more in [Documents](/planspaces/documents).
 
-## Key terms
+## Comments, reviews, and approvals
 
-| Term | Meaning |
+Comments are anchored to document text. Reviews turn a document version into an approval workflow with clear reviewer state: pending, in progress, approved, or rejected.
+
+Use reviews when:
+
+- a plan is ready for formal feedback
+- you need design approval before an agent starts execution
+- you want the Scott GitHub App to compare a pull request against the approved intent
+
+Learn more in [Reviews and approvals](/collaboration/reviews).
+
+## Scott CLI
+
+The CLI is how local coding-agent work moves into and out of Scott:
+
+| Command | Purpose |
 | --- | --- |
-| **Planspace** | A collaborative environment with a chat, versioned document, and context flow |
-| **Sync Chat** | The per-user chat over local agent history uploaded by `scott sync` |
-| **Version** | A turn that produced a document snapshot |
-| **Context flow** | The DAG of all versions and branches in a planspace |
-| **Branch** | A divergent path where someone explored a different direction |
-| **Connected source** | A GitHub repo, file, or folder attached as context for the agent |
+| `scott sync` | Upload recent local agent history and open Sync Chat |
+| `scott push` | Turn the current agent thread into a shareable planspace |
+| `scott pull <url>` | Load reviewed planspace context into a fresh agent or terminal session |
+
+Learn more in [Scott CLI](/developer-tools/cli).
+
+## Scott GitHub App
+
+The GitHub App has two roles:
+
+- **Code context** - make repositories available to Sync Chat and planspaces without persisting repository contents
+- **PR design review** - link pull requests to planspaces so Scott can review implementation against approved design intent
+
+Learn more in [Scott GitHub App](/developer-tools/github-app).

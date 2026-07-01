@@ -1,48 +1,49 @@
 ---
-title: "Documents"
-description: "Versioned specs that evolve as your conversation progresses."
+title: "Documents and versions"
+description: "How planspace documents evolve, get reviewed, and become durable design intent."
 ---
 
-Every planspace produces a **document** — a spec that the agent maintains and updates with each turn. You, your team and your agent have the ability to edit documents. Edit history and attribution is continuously recorded so that you can navigate to any previous version, see what changed, who changed it and why.
+Every planspace has a document. The document is the team-readable artifact that turns agent conversation into a proposal, design, implementation plan, or reviewable spec.
 
-The document is always connected to the conversation and reasoning that shaped it.
+Documents are useful because they let non-technical teammates participate without reading an entire agent transcript. They can read the current version, comment on exact passages, and approve a direction before engineers delegate execution.
+
+## What belongs in the document
+
+Good Scott documents usually include:
+
+- the problem and desired outcome
+- constraints, risks, and open questions
+- architecture or product decisions
+- prototype notes and screenshots when relevant
+- implementation plan and rollout notes
+- links to the code, PRs, or follow-up planspaces that matter
+
+## Versions
+
+Scott saves document versions as the plan changes. A version is the stable thing a teammate can review and approve.
+
+Use versions when:
+
+- comments have changed the direction and you need a clean review point
+- a reviewer needs to approve a specific plan, not a live draft
+- a PR should link to the exact design version it implements
+- you want to compare original intent with actual execution later
 
 ## Editing
 
-The document editor by default prefers to use markdown with:
+The author can keep iterating with Scott in chat, edit the document directly, or incorporate selected comments back into the conversation. The goal is not to preserve a perfect first draft. The goal is to make team feedback explicit and keep the document aligned with what the team intends to build.
 
-- **Rich text** — headings, bold, italic, lists, links
-- **Code blocks** — syntax-highlighted, language-aware
-- **Mermaid diagrams** — rendered inline from Mermaid syntax
+## Review handoff
 
-However, it is very flexible and its default tools can be adjusted in user settings.
+When the document is ready for sign-off:
 
-Planspaces also view prototype code references as first class primitives to enable clarity of design and provide reviewers and agents concrete material reference in their reasoning.
+1. Save or open the version you want reviewed
+2. Use **Share** and choose **Review**
+3. Select reviewers and explain what they should focus on
+4. Reviewers approve or reject from the review panel
 
-You can edit the document directly at any time. Your edits are saved as a **draft** at the current branch tip. When the agent responds next, your manual edits are incorporated into the new version and you can easily inspect which edits were done by who.
+Once approved, that version becomes the strongest reference for [`scott pull`](/developer-tools/pull) and [Scott GitHub App](/developer-tools/scott-ci) PR review.
 
-## Semantic diffs
+## PR feedback
 
-When the agent updates the document, Scott generates a **semantic diff** — a structured summary of what changed:
-
-| Change type | Meaning |
-| --- | --- |
-| **Added** | New sections, concepts, or requirements introduced |
-| **Modified** | Existing content refined or updated |
-| **Removed** | Content deleted from the previous version |
-
-Diffs appear as badges in the conversation and can be expanded for detail.
-
-## Version navigation
-
-Every document version is accessible through the [context flow](/planspaces/context-flows):
-
-- Use the **title dropdown** to jump to the latest version or branch tip
-- Switch to the **Versions tab** in the left panel to see the full DAG
-- Click any node in the context flow to view that version's document
-
-You can reply from any version to create a new branch. When a version is ready for sign-off, [request a review](/collaboration/reviews).
-
-## Inline comments
-
-Select text in the document and leave a [comment](/collaboration/comments) anchored to that selection. 
+When a pull request links back to a planspace, Scott can connect implementation work to the document that shaped it. This is how the document set keeps updating: original design intent, review feedback, implementation decisions, and shipped code stay connected.

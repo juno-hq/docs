@@ -1,56 +1,63 @@
 ---
 title: "Planspaces"
-description: "Create and manage collaborative containers for your specs, decisions, and version history."
+description: "The shared UI where teams turn agent work into documents, feedback, reviews, and execution context."
 ---
 
-A planspace combines three things that are usually separate:
+A planspace is where a team aligns on what should be built before handing work back to agents. It combines a conversation, a living document, connected sources, comments, reviews, approvals, and sharing controls.
 
-- A **conversation** with the Scott agent that is optimized for plan design
-- A [**versioned document**](/planspaces/documents) that updates as you iterate
-- A [**context flow**](/planspaces/context-flows) — the branching history of all versions
+Use planspaces for:
 
-The planspace layout is split into two panels. The **left panel** shows the conversation and version history. The **right panel** shows the current document and team comments/reviews.
+- prototype writeups and design proposals
+- engineering plans that need PM, design, or leadership feedback
+- implementation context that should survive beyond one agent thread
+- approved intent that should later be pulled into execution with `scott pull`
 
-## Create a planspace
+## How planspaces start
 
-Start from `scott sync` when you are onboarding or exploring recent work across agents. Use `scott push` when one active coding-agent thread is ready to become a teammate-readable planspace. You can also create one directly in the app:
+You can create a planspace three ways:
 
-1. Click **New planspace** from the home screen
-2. Name your planspace — this becomes the document title
-3. Choose your sandbox environment:
-   - **Local sandbox** (desktop app) — the agent runs on your machine
-   - **Cloud sandbox** (browser) — the agent runs in the cloud, auto-pauses when idle
-4. Attach [connected sources](/planspaces/connected-sources) — GitHub repos, files, or folders
+1. **From Sync Chat** - pin or write up a useful synced session after `scott sync`
+2. **From your coding agent** - run [`scott push`](/developer-tools/push) from a focused thread
+3. **From the app** - start a new planspace and describe what you want Scott to draft
 
-## Navigate a planspace
+For daily team workflows, `scott push` is usually the fastest path. It turns active agent work into a shareable document while the idea is still fresh.
 
-The **title bar** at the top of the planspace shows your current position in the version history:
+## The planspace layout
 
-| Indicator | Meaning |
-| --- | --- |
-| Checkmark | You're viewing the **latest** version across all branches |
-| Branch icon | You're at the **tip** of a specific branch |
-| History icon | You're viewing an **older version** |
+The planspace UI is built for shared review:
 
-Click the title dropdown to quickly jump to the latest version, the current branch tip, or open the full context flow.
+- **Chat** is where the author works with Scott and folds feedback back into the proposal.
+- **Document** is the readable artifact teammates review, edit, comment on, and approve.
+- **Sources** show the GitHub repos or uploaded files Scott can use for grounded answers.
+- **Comments** anchor feedback to exact document text.
+- **Reviews** create an approval record for a specific saved version.
+- **Share** controls who can collaborate, review, or receive the planspace.
 
-## Planspace access
+## Recommended team flow
 
-Planspaces support role-based access for team members:
+1. Start with real work: a prototype, implementation sketch, investigation, or product proposal.
+2. Push it into a planspace with [`scott push`](/developer-tools/push).
+3. Attach code context with the [Scott GitHub App](/planspaces/connected-sources) when architecture matters.
+4. Share the planspace with engineers, PMs, designers, or leadership.
+5. Use [comments](/collaboration/comments) for targeted feedback and [reviews](/collaboration/reviews) for approval.
+6. Pull the reviewed context into a fresh agent thread with [`scott pull`](/developer-tools/pull).
+7. Link the PR back to the planspace with the [Scott GitHub App](/developer-tools/scott-ci).
 
-| Role | Permissions |
-| --- | --- |
-| **Owner** | Full control — edit, comment, review, manage members, delete |
-| **Editor** | Edit the document, send messages, comment, request reviews |
-| **Commenter** | View and leave comments, but cannot edit or send messages |
-| **Viewer** | Read-only access |
+## Roles
 
-You can also make a planspace **public**, which generates a shareable read-only link. See [Sharing](/collaboration/sharing) for details.
+| Role | Send messages | Edit document | Comment | Review | Manage members |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Owner | Yes | Yes | Yes | Yes | Yes |
+| Editor | Yes | Yes | Yes | Yes | No |
+| Commenter | No | No | Yes | Yes | No |
+| Viewer | No | No | No | No | No |
 
-## Delete a planspace
+## What good looks like
 
-Open the planspace settings menu and select **Delete planspace**. This action is permanent and removes all version history, comments, and reviews.
+A strong planspace is not a polished spec dropped at the end of the process. It is a working design record that captures:
 
-<Warning>
-  Deleting a planspace cannot be undone. Make sure any important decisions or context have been captured elsewhere before deleting.
-</Warning>
+- the rough prototype or proposal that started the thread
+- what the team questioned or changed
+- the version that was approved
+- the context an agent needs to execute
+- the PRs that implemented the approved design

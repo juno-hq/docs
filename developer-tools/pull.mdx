@@ -1,0 +1,54 @@
+---
+title: "Pull"
+description: "Use scott pull to bring reviewed planspace context back into execution."
+---
+
+`scott pull` loads a planspace into your terminal or coding-agent thread as execution context.
+
+```bash
+scott pull https://app.tryscott.ai/workspace/9579e73f-8292-42ea-8d2f-5d390a8f867e
+```
+
+Use it when a planspace has enough team alignment to guide implementation.
+
+## What pull includes
+
+The default pull output includes:
+
+- the current document
+- relevant document versions
+- comments and review context
+- reviewer turns and approval state
+- connected source summaries
+- commits and PR context when available
+- conversation history needed to understand the plan
+
+Use `--summary` when you only need the headline document and review state:
+
+```bash
+scott pull <planspace-url> --summary
+```
+
+## Agent prompt
+
+You can ask your coding agent:
+
+```text
+Pull the project requirements from this planspace and start building: https://app.tryscott.ai/workspace/...
+```
+
+## Execution workflow
+
+1. Confirm the planspace has the right comments and approvals
+2. Pull the planspace into a fresh agent thread
+3. Ask the agent to restate the implementation plan before writing code
+4. Execute against the pulled context
+5. Put the planspace URL in the PR description so the [Scott GitHub App](/developer-tools/scott-ci) can connect code back to design intent
+
+## Listing recent planspaces
+
+```bash
+scott pull --list
+```
+
+Use this when you know the work exists in Scott but do not have the URL handy.
