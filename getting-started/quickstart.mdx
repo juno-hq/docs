@@ -36,10 +36,42 @@ Sync Chat works immediately from session history. For code-aware answers, connec
 
 1. Click **Connect repo**
 2. Install the Scott GitHub App for the GitHub account or organization you want Scott to read from
-3. Choose which repositories the GitHub App can access
-4. Return to Scott, then select the repository and branch from the repo picker
+3. We recommend granting access to all repositories; limiting access can cap answer quality when relevant context lives outside one repo
 
-Scott lists only repositories available through your linked GitHub App installation. A repository is used as context only after you select it.
+<Info>
+  **Security note:** Scott is SOC 2 compliant. We do not persist repository contents. We fetch code only into ephemeral sandboxes when an answer needs it, and if you remove GitHub access Scott can no longer fetch that code.
+</Info>
+
+After installation, the repositories you granted access to appear in Scott's repo picker.
+
+### Push early, pull when ready
+
+Use `scott push` whenever an agent thread becomes a prototype, design direction, or proposal that needs team feedback. Scott turns the thread into a planspace with a readable document, the original conversation, and the context teammates need to comment before execution hardens.
+
+1. **Explore with your agent** - prototype the design, implementation path, or product proposal in your normal coding tool.
+2. **Push the thread** - run `scott push` to create a planspace and sharing document.
+3. **Share the planspace** - send the URL in Slack, Linear, a design review, or a PR description.
+4. **Gather feedback early** - teammates comment, ask questions, and review the planspace while the idea is still cheap to change.
+5. **Pull approved context** - run `scott pull <planspace-url>` from a fresh agent thread when it is time to execute.
+
+This shifts team execution from late code review toward early design review. The planspace becomes the shared record of what you meant to build, why the team agreed to it, and what context the next agent should carry forward.
+
+Learn more in [CLI](/developer-tools/cli), [Sharing](/collaboration/sharing), [Reviews](/collaboration/reviews), and [Planspaces](/planspaces/overview).
+
+### Configure PR design review
+
+Set up the Scott CI GitHub App for your organization when you want pull requests to stay linked to the planspaces that shaped the work.
+
+1. Open your team settings in Scott
+2. Install the Scott CI GitHub App for the GitHub organization
+3. Select the repositories where your team wants Scott review and PR linking
+4. Add one or more planspace URLs to a pull request description or commit message
+
+When a pull request includes planspace links, Scott connects the PR to the original design approvals and review context. The GitHub App can then run an agent-assisted architectural review against the PR and leave a comment on GitHub.
+
+After code lands, the PR link feeds execution context back into Scott. That gives your team a continuously updating document set: original design intent, team feedback, implementation changes, and the gap between what was approved and what actually shipped.
+
+See [Scott CI](/developer-tools/scott-ci) for setup details.
 
 ## Install Options
 
